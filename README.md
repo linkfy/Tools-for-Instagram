@@ -2,5 +2,5 @@
 Automation scripts for Instagram </br>
 
 Things to do:
-[ ] Login Flow
-[ ] Save Cookies in files
+[checkbox:unchecked] Login Flow
+[o] Save Cookies in files
