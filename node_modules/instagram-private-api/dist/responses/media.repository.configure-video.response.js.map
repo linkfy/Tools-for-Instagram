@@ -1,0 +1,1 @@
+{"version":3,"file":"media.repository.configure-video.response.js","sourceRoot":"","sources":["../../src/responses/media.repository.configure-video.response.ts"],"names":[],"mappings":""}

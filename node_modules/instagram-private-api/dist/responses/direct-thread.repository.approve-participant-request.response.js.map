@@ -1,0 +1,1 @@
+{"version":3,"file":"direct-thread.repository.approve-participant-request.response.js","sourceRoot":"","sources":["../../src/responses/direct-thread.repository.approve-participant-request.response.ts"],"names":[],"mappings":""}

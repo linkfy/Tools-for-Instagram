@@ -1,0 +1,1 @@
+{"version":3,"file":"direct-thread.feed.response.js","sourceRoot":"","sources":["../../src/responses/direct-thread.feed.response.ts"],"names":[],"mappings":""}

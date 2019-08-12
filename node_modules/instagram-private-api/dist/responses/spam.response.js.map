@@ -1,0 +1,1 @@
+{"version":3,"file":"spam.response.js","sourceRoot":"","sources":["../../src/responses/spam.response.ts"],"names":[],"mappings":""}

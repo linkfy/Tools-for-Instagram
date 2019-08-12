@@ -1,0 +1,1 @@
+{"version":3,"file":"ig-client.error.js","sourceRoot":"","sources":["../../src/errors/ig-client.error.ts"],"names":[],"mappings":";;AAAA,qDAA8C;AAE9C,MAAa,aAAc,SAAQ,6BAAW;IAC5C,YAAY,OAAO,GAAG,+BAA+B;QACnD,KAAK,CAAC,OAAO,CAAC,CAAC;QAEf,MAAM,CAAC,cAAc,CAAC,IAAI,EAAE,MAAM,EAAE;YAClC,KAAK,EAAE,GAAG,CAAC,MAAM,CAAC,IAAI;YACtB,UAAU,EAAE,KAAK;SAClB,CAAC,CAAC;IACL,CAAC;CACF;AATD,sCASC"}

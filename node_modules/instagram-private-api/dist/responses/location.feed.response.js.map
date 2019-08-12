@@ -1,0 +1,1 @@
+{"version":3,"file":"location.feed.response.js","sourceRoot":"","sources":["../../src/responses/location.feed.response.ts"],"names":[],"mappings":""}

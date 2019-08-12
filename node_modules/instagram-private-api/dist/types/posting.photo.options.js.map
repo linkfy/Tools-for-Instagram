@@ -1,0 +1,1 @@
+{"version":3,"file":"posting.photo.options.js","sourceRoot":"","sources":["../../src/types/posting.photo.options.ts"],"names":[],"mappings":""}

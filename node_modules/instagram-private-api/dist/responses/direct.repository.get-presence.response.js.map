@@ -1,0 +1,1 @@
+{"version":3,"file":"direct.repository.get-presence.response.js","sourceRoot":"","sources":["../../src/responses/direct.repository.get-presence.response.ts"],"names":[],"mappings":""}

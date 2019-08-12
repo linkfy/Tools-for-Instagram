@@ -1,0 +1,1 @@
+{"version":3,"file":"direct.repository.ranked-recipients.response.js","sourceRoot":"","sources":["../../src/responses/direct.repository.ranked-recipients.response.ts"],"names":[],"mappings":""}

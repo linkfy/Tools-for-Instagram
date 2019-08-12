@@ -1,0 +1,16 @@
+# Installation
+> `npm install --save @types/chance`
+
+# Summary
+This package contains type definitions for Chance (http://chancejs.com).
+
+# Details
+Files were exported from https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/chance
+
+Additional Details
+ * Last updated: Mon, 01 Jul 2019 17:57:08 GMT
+ * Dependencies: none
+ * Global values: none
+
+# Credits
+These definitions were written by Chris Bowdon <https://github.com/cbowdon>, Brice BERNARD <https://github.com/brikou>, Carlos Sanchez <https://github.com/cafesanu>, and Colby M. White <https://github.com/colbywhite>.

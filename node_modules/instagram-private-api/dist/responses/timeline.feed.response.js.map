@@ -1,0 +1,1 @@
+{"version":3,"file":"timeline.feed.response.js","sourceRoot":"","sources":["../../src/responses/timeline.feed.response.ts"],"names":[],"mappings":""}

@@ -1,0 +1,1 @@
+{"version":3,"file":"posting.options.js","sourceRoot":"","sources":["../../src/types/posting.options.ts"],"names":[],"mappings":""}

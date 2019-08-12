@@ -1,0 +1,1 @@
+{"version":3,"file":"news.repository.inbox.response.js","sourceRoot":"","sources":["../../src/responses/news.repository.inbox.response.ts"],"names":[],"mappings":""}

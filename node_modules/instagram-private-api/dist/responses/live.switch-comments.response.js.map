@@ -1,0 +1,1 @@
+{"version":3,"file":"live.switch-comments.response.js","sourceRoot":"","sources":["../../src/responses/live.switch-comments.response.ts"],"names":[],"mappings":""}

@@ -1,0 +1,1 @@
+{"version":3,"file":"timeline-feed.types.js","sourceRoot":"","sources":["../../src/types/timeline-feed.types.ts"],"names":[],"mappings":""}

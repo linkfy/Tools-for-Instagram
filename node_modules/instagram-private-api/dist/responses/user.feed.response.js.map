@@ -1,0 +1,1 @@
+{"version":3,"file":"user.feed.response.js","sourceRoot":"","sources":["../../src/responses/user.feed.response.ts"],"names":[],"mappings":""}

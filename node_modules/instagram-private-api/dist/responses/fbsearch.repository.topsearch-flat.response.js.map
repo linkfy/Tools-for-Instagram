@@ -1,0 +1,1 @@
+{"version":3,"file":"fbsearch.repository.topsearch-flat.response.js","sourceRoot":"","sources":["../../src/responses/fbsearch.repository.topsearch-flat.response.ts"],"names":[],"mappings":""}

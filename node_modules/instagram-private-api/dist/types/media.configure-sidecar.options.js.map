@@ -1,0 +1,1 @@
+{"version":3,"file":"media.configure-sidecar.options.js","sourceRoot":"","sources":["../../src/types/media.configure-sidecar.options.ts"],"names":[],"mappings":""}

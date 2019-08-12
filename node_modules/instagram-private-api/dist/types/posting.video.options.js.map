@@ -1,0 +1,1 @@
+{"version":3,"file":"posting.video.options.js","sourceRoot":"","sources":["../../src/types/posting.video.options.ts"],"names":[],"mappings":""}

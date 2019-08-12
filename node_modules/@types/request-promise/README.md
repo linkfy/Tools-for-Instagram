@@ -1,0 +1,16 @@
+# Installation
+> `npm install --save @types/request-promise`
+
+# Summary
+This package contains type definitions for request-promise ( https://github.com/request/request-promise ).
+
+# Details
+Files were exported from https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/request-promise
+
+Additional Details
+ * Last updated: Fri, 24 May 2019 21:01:00 GMT
+ * Dependencies: @types/request, @types/bluebird
+ * Global values: none
+
+# Credits
+These definitions were written by Christopher Glantschnig <https://github.com/cglantschnig>, Joe Skeen <https://github.com/joeskeen>, Aya Morisawa <https://github.com/AyaMorisawa>, Matt R. Wilson <https://github.com/mastermatt>.
