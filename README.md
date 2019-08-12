@@ -1,3 +1,6 @@
 # Tools-for-Instagram
 Automation scripts for Instagram </br>
-First Commit.
+
+Things to do:
+[] Login Flow
+[] Save Cookies in files
