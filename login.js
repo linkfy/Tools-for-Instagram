@@ -1,6 +1,3 @@
-//import { IgApiClient } from './src';
-//import { sample } from 'lodash';
-//const ig = new IgApiClient();
 require('dotenv').config();
 let Bluebird = require('bluebird');
 let inquirer = require('inquirer');
