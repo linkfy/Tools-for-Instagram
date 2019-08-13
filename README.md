@@ -13,3 +13,7 @@ Automation scripts for Instagram </br>
 - [ ] Save post list into scrape list
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 - [ ] Implement LokiJS
+## Follow the project
+You can follow the streams of the project on the Twitch channel
+[mimi_twitchbot]: https://www.twitch.tv/mimi_twitchbot
+
