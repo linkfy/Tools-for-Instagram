@@ -12,3 +12,4 @@ Automation scripts for Instagram </br>
 - [ ] Get post list by location
 - [ ] Save post list into scrape list
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
+- [ ] Implement LokiJS
