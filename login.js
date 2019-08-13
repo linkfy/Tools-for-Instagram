@@ -11,7 +11,9 @@ function saveCookies(cookies, state) {
 	//console.log(cookies);
     //console.log(state);
     var cookiepath = "cookies/" + process.env.IG_USERNAME + ".json";
-
+    if(!fs.existsSync("cookies/")) {
+        fs.mkdirSync("cookies/");
+    }
     if (!fs.existsSync(cookiepath)) {
         //Create the file if it does not exists
         fs.closeSync(fs.openSync(cookiepath,'w'));
