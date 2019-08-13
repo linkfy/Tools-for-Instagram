@@ -100,8 +100,8 @@ async function login() {
         }
         // Time to try if we can interact
         let pk = await ig.user.getIdByUsername(process.env.IG_USERNAME);
-        const userFeed = ig.feed.user(pk);
-        //console.log(userFeed);
+        // const userFeed = ig.feed.user(pk);
+        // console.log(await ig.user.info(pk));
         // If interaction works, we send the IG session to the result
         return ig;
     }).catch(Api.IgCheckpointError, async () => {
