@@ -31,7 +31,7 @@ function saveCookies(cookies, state) {
 async function loadCookies() {
     
     var cookiepath = "cookies/" + process.env.IG_USERNAME + ".json";
-    console.log("Trying to load filepath " + cookiepath);
+    //console.log("Trying to load filepath " + cookiepath);
     //console.log(__dirname);
     if (fs.existsSync(cookiepath)) {
         let cookies =  fs.readFileSync(cookiepath).toString();
@@ -59,7 +59,7 @@ async function loadCookies() {
 ig.state.generateDevice(process.env.IG_USERNAME);
 // Optionally you can setup proxy url
 ig.state.proxyUrl = process.env.IG_PROXY;
-(async () => {
+async function login() {
     console.log("Trying to log with " + process.env.IG_USERNAME);
     //First we check if the user have cookies
     let hasCookies = await loadCookies();
@@ -91,16 +91,19 @@ ig.state.proxyUrl = process.env.IG_PROXY;
 	});	
 
 	await ig.simulate.preLoginFlow();
-    Bluebird.try( async() => {
+    let result = await Bluebird.try( async() => {
         if(!hasCookies) {
         console.log("User not logged in, login in");
          const loggedInUser = await ig.account.login(process.env.IG_USERNAME, process.env.IG_PASSWORD);
-         console.log(loggedInUser);
+        //console.log(loggedInUser);
         
         }
+        // Time to try if we can interact
         let pk = await ig.user.getIdByUsername(process.env.IG_USERNAME);
         const userFeed = ig.feed.user(pk);
-        console.log(userFeed);
+        //console.log(userFeed);
+        // If interaction works, we send the IG session to the result
+        return ig;
     }).catch(Api.IgCheckpointError, async () => {
 
         console.log(ig.state.checkpoint);
@@ -115,7 +118,7 @@ ig.state.proxyUrl = process.env.IG_PROXY;
             },
         ]);
 
-        //Code is an object, lets parse the content
+        // Code is an object, lets parse the content
         code = code.code;
         
         let sendCode = await ig.challenge.sendSecurityCode(code);
@@ -124,11 +127,13 @@ ig.state.proxyUrl = process.env.IG_PROXY;
         if(hasCookies) {
             console.log("Invalid cookies");
         } else {
-            //This block is not supossed to be used never (IgLoginBadPasswordError) exists
+            // This block is not supossed to be used never (IgLoginBadPasswordError) exists
             console.log("Incorrect password");
         }
-
     }).catch(Api.IgLoginBadPasswordError, () => {
         console.log("Incorrect password");
     });
-})();
+    // If result is not undefined we send the ig object session
+    return result;
+}
+module.exports =  login;
