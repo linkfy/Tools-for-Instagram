@@ -8,6 +8,8 @@ Automation scripts for Instagram </br>
 - [x] Save Cookies in files
 - [x] Get User Information
 - [x] Get Followers (save into a txt file)
+- [x] Like Content by URL
+- [x] Like Content by mediaId 
 - [ ] Get post list by hashtag
 - [ ] Get post list by location
 - [ ] Save post list into scrape list
@@ -17,3 +19,6 @@ Automation scripts for Instagram </br>
 You can follow the streams of the project on the Twitch channel
 [mimi_twitchbot]: https://www.twitch.tv/mimi_twitchbot
 
+## Api mods
+
+- Injected loggedInUser inside ig Object after login (ig.loggedInUser)
