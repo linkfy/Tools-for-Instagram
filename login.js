@@ -94,7 +94,8 @@ async function login() {
     let result = await Bluebird.try( async() => {
         if(!hasCookies) {
         console.log("User not logged in, login in");
-         const loggedInUser = await ig.account.login(process.env.IG_USERNAME, process.env.IG_PASSWORD);
+        const loggedInUser = await ig.account.login(process.env.IG_USERNAME, process.env.IG_PASSWORD);
+        console.log(loggedInUser);
         //console.log(loggedInUser);
         
         }
@@ -103,6 +104,9 @@ async function login() {
         // const userFeed = ig.feed.user(pk);
         // console.log(await ig.user.info(pk));
         // If interaction works, we send the IG session to the result
+        
+        //Inject user information
+        ig.loggedInUser = await ig.account.currentUser();
         return ig;
     }).catch(Api.IgCheckpointError, async () => {
 
