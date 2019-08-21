@@ -2,10 +2,12 @@ let fs = require('fs');
 let getUserInfo = require('./getUserInfo.js');
 
 async function getFollowers(ig, username){
+    let filename = "followers.json"
+    let filepath = "./output/" + filename;
     let pk = await ig.user.getIdByUsername(username);
     const feed = ig.feed.accountFollowers(pk);
-
-    fs.writeFileSync('followers.txt','', function (err) {
+    //Start JSON with [
+    fs.writeFileSync(filepath, '[', function (err) {
         if (err) throw err;
         console.log("file was created");
     });
@@ -20,7 +22,7 @@ async function getFollowers(ig, username){
             Object.keys(i).map(function(objectKey, index) {
                 var value = i[objectKey];
                 //console.log(value);
-                fs.appendFileSync('followers.txt',JSON.stringify(value)+"\r\n", function (err){
+                fs.appendFileSync(filepath ,JSON.stringify(value, undefined, '\t')+",\r\n", function (err){
                     if (err) throw err;
                 });
                 counter +=1;
@@ -33,12 +35,17 @@ async function getFollowers(ig, username){
                 sleep_after = 10000;
                 console.log ("continue");
             }
+            
 
         } catch(e) {
             console.log(e);
         }
 	
-	} while(feed.moreAvailable == true);
+    } while(feed.moreAvailable == true);
+    //End of JSON file
+    fs.appendFileSync(filepath ,"\n]", function (err){
+        if (err) throw err;
+    });
     return console.log('Followers saved to followers.txt');
 }
 

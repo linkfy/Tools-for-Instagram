@@ -13,7 +13,7 @@ Automation scripts for Instagram </br>
 - [x] Like Content by Post 
 - [X] Get recent posts list of a hashtag
 - [~] Get top posts list of a hashtag // Using deopard Repo edit to implement it
-- [ ] Get post list by location
+- [X] Get recent post list by location
 - [ ] Save post list into scrape list
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 - [ ] Implement LokiJS

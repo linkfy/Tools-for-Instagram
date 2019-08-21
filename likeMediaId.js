@@ -11,7 +11,7 @@ async function likeMediaId(ig, media_id){
         },
         d: _.sample([0,1]),  // d - means double-tap. If you liked post by double tap then d=1. You cant unlike post by double tap 
     });
-    return console.log("Liked media www.instagram.com/p/" + parser.instagramIdToUrlSegment(media_id));
+    return console.log("Liked media https://www.instagram.com/p/".green + parser.instagramIdToUrlSegment(media_id).green);
 }
 
 module.exports = likeMediaId;

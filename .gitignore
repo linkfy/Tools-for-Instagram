@@ -1,4 +1,5 @@
 .env
 .DS_Store
 cookies/*
+output/*
 *.txt

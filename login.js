@@ -5,7 +5,7 @@ let inquirer = require('inquirer');
 let Api = require('./instagram-private-api/dist/src');
 let _ = require('lodash');
 let ig = new Api.IgApiClient();
-
+let colors = require('colors');
 
 function saveCookies(cookies, state) {
 	//console.log(cookies);
@@ -51,6 +51,12 @@ async function loadCookies() {
     }
     console.log("No cookie file found in loadCookies function");
     return false;
+}
+
+
+//Generate Basic directories
+if(!fs.existsSync("output/")) {
+    fs.mkdirSync("output/");
 }
 
 // You must generate device id's before login.
