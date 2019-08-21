@@ -3,14 +3,16 @@ Automation scripts for Instagram </br>
 ## How to use it
     1. Rename .env_example to .env and edit the configuration.
     2. Execute main.js to test the scripts. 
-## Things to do:
+## Bot skills:
 - [x] Login Flow
 - [x] Save Cookies in files
 - [x] Get User Information
-- [x] Get Followers (save into a txt file)
+- [x] Get Followers of account (save into a txt file)
 - [x] Like Content by URL
-- [x] Like Content by mediaId 
-- [ ] Get post list by hashtag
+- [x] Like Content by MediaId 
+- [x] Like Content by Post 
+- [X] Get recent posts list of a hashtag
+- [~] Get top posts list of a hashtag // Using deopard Repo edit to implement it
 - [ ] Get post list by location
 - [ ] Save post list into scrape list
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)

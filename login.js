@@ -2,7 +2,7 @@ require('dotenv').config();
 let fs = require('fs');
 let Bluebird = require('bluebird');
 let inquirer = require('inquirer');
-let Api = require('instagram-private-api');
+let Api = require('./instagram-private-api/dist/src');
 let _ = require('lodash');
 let ig = new Api.IgApiClient();
 
@@ -100,12 +100,8 @@ async function login() {
         
         }
         // Time to try if we can interact
-        let pk = await ig.user.getIdByUsername(process.env.IG_USERNAME);
-        // const userFeed = ig.feed.user(pk);
-        // console.log(await ig.user.info(pk));
-        // If interaction works, we send the IG session to the result
-        
-        //Inject user information
+        // If interaction works, we send the IG session to the result 
+        // Inject user information on the interaction intent
         ig.loggedInUser = await ig.account.currentUser();
         return ig;
     }).catch(Api.IgCheckpointError, async () => {
