@@ -25,9 +25,20 @@ Automation scripts for Instagram </br></br>
 - [x] Save Follows information
 - [ ] Save Unfollows information
 
+## Wiki
+
+https://github.com/linkfy/Tools-for-Instagram/wiki
+
 ## Follow the project
-You can follow the streams of the project on the Twitch channel
-[mimi_twitchbot]: https://www.twitch.tv/mimi_twitchbot
+
+You can follow the streams of the project on the Twitch channel<br>
+https://www.twitch.tv/mimi_twitchbot
+
+## Follow the development status
+
+Follow the development status to see what's the next upcoming idea<br>
+https://trello.com/b/ZlwRr6l0/tools-for-instagram
+
 
 ## Api mods
 
