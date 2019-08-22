@@ -10,11 +10,14 @@ Automation scripts for Instagram </br>
 - [x] Get Followers of account (save into a txt file)
 - [x] Like Content by URL
 - [x] Like Content by MediaId 
-- [x] Like Content by Post 
-- [X] Get recent posts list of a hashtag
+- [x] Like Content by Post
+- [x] Follow by Username
+- [x] Unfollow by Username
+- [x] Get recent posts list of a hashtag
 - [~] Get top posts list of a hashtag // Using deopard Repo edit to implement it
-- [X] Get recent post list by location
-- [ ] Save post list into scrape list
+- [x] Get recent post list by location
+- [x] Get top post list by location
+- [x] Save post list into scrape list
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 - [ ] Implement LokiJS
 ## Follow the project

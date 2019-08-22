@@ -1,5 +1,6 @@
 let fs = require('fs');
 let getUserInfo = require('./getUserInfo.js');
+let sleep = require('./sleep.js');
 
 async function getFollowers(ig, username){
     let filename = "followers.json"
@@ -46,11 +47,8 @@ async function getFollowers(ig, username){
     fs.appendFileSync(filepath ,"\n]", function (err){
         if (err) throw err;
     });
-    return console.log('Followers saved to followers.txt');
+    return console.log("Followers saved to 'output' folder with name followers.json".green);
 }
 
-function sleep(seconds) {
-    let ms = seconds * 1000;
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+
 module.exports = getFollowers;

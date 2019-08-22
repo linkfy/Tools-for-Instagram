@@ -2,7 +2,9 @@ require('dotenv').config();
 let fs = require('fs');
 let Bluebird = require('bluebird');
 let inquirer = require('inquirer');
-let Api = require('./instagram-private-api/dist/src');
+//Unofficial Repo with media top results
+let Api = require('../instagram-private-api/dist/src');
+//let Api = require('instagram-private-api');
 let _ = require('lodash');
 let ig = new Api.IgApiClient();
 let colors = require('colors');
