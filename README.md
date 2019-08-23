@@ -49,3 +49,42 @@ https://trello.com/b/ZlwRr6l0/tools-for-instagram
 - Injected loggedInUser inside ig Object after login (ig.loggedInUser)
 - Injected db inside ig Object after login (ig.db)
 - Injected shortid generator inside ig Object
+
+# Api
+### Basic example
+```javascript
+require('./src/tools-for-instagram');
+
+(async () => {
+    let ig = await login();
+    
+    // .. Implement your code here
+    let info = await getUserInfo(ig, "Instagram");
+    console.log("User information, username: " + info.username);
+    
+    // ..
+
+})();
+
+```
+#### getUserInfo(ig, username)
+Get the user information of the desired username
+```javascript
+   let info = await getUserInfo(ig, 'Instagram');
+```
+#### getFollowers(ig, username)
+It will save the followers inside the outputfolder with the format "acountName_followers.json"
+```javascript
+   await getFollowers(ig, 'Instagram');
+```
+#### likeUrl(ig, username, [force: bool])
+like the desired instagram Url, the like will be saved inside database. 
+```javascript
+   await likeUrl(ig, 'https://www.instagram.com/p/B1gzzVpA462/');
+```
+If 'force' is set to true, when the item was already liked before it will force to continue the operation.
+```javascript
+   await likeUrl(ig, 'https://www.instagram.com/p/B1gzzVpA462/', true);
+```
+
+### This documentation is not yet finished...
