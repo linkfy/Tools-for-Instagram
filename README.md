@@ -44,3 +44,4 @@ https://trello.com/b/ZlwRr6l0/tools-for-instagram
 
 - Injected loggedInUser inside ig Object after login (ig.loggedInUser)
 - Injected db inside ig Object after login (ig.db)
+- Injected shortid generator inside ig object
