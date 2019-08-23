@@ -8,8 +8,9 @@ let Api = require('../instagram-private-api/dist/src');
 let _ = require('lodash');
 let ig = new Api.IgApiClient();
 let colors = require('colors');
-let JsonDB = require('node-json-db').JsonDB;
-const Config = require('node-json-db/dist/lib/JsonDBConfig').Config;
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+const shortid = require('shortid');
 
 function saveCookies(cookies, state) {
 	//console.log(cookies);
@@ -116,7 +117,12 @@ async function login() {
         // If interaction works, we send the IG session to the result 
         // Inject user information on the interaction intent
         ig.loggedInUser = await ig.account.currentUser();
-        let db = new JsonDB(new Config("./db/"+process.env.IG_USERNAME.toLowerCase(), true, false, '/'));
+        
+        //Open DB
+        const adapter = new FileSync("./db/"+process.env.IG_USERNAME.toLowerCase()+".json");
+        const db = low(adapter);
+        db.defaults({likes: [], follows: []}).write()
+        ig.shortid = shortid;
         ig.db = db;
         return ig;
     }).catch(Api.IgCheckpointError, async () => {

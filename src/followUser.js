@@ -1,11 +1,11 @@
 async function followUser(ig, username) {
     const userId = (await ig.user.searchExact(username)).pk;
-    try{
-        ig.db.getData('/follows/' + userId);
+
+    let alreadyExists = ig.db.get('follows').find({user_id: userId}).value();
+    alreadyExists == undefined ? false : true;
+    if(alreadyExists) {
         console.log('Already followed'.yellow);
         return "already_followed";
-    } catch (error) {
-        console.log('User not followed before..');
     }
     
     const response = await ig.friendship.create(userId);
@@ -17,12 +17,11 @@ async function followUser(ig, username) {
     } else {
         console.log(('Can not Follow user at the moment' + username).red);
     }
-    //The object container will be the Media ID itself
     
-    response.time = Date.now();
 
-    //The object container will be the media ID
-    ig.db.push('/follows/' + userId, response);
+    let timestamp = Date.now();
+    ig.db.get('follows').push({id: ig.shortid.generate(), user_id: userId, info: response, created_at: timestamp}).write();
+
     return response;
 }
 

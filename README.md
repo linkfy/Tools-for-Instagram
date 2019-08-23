@@ -20,7 +20,7 @@ Automation scripts for Instagram </br></br>
 - [x] Get top post list by location
 - [x] Save post list into scrape list
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
-- [x] Implement node-json-database Database
+- [x] Implement lowdb Database
 - [x] Save Likes information
 - [x] Save Follows information
 - [ ] Save Unfollows information
