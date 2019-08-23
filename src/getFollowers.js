@@ -2,8 +2,8 @@ let fs = require('fs');
 let getUserInfo = require('./getUserInfo.js');
 let sleep = require('./sleep.js');
 
-async function getFollowers(ig, username){
-    let filename = "followers.json"
+async function getFollowers(ig, username, maxIterations = undefined){
+    let filename = username.toString().toLowerCase() +"_followers.json"
     let filepath = "./output/" + filename;
     let pk = await ig.user.getIdByUsername(username);
     const feed = ig.feed.accountFollowers(pk);
@@ -16,6 +16,7 @@ async function getFollowers(ig, username){
     let user_info = await getUserInfo(ig,username);
     let counter = 0;
     let sleep_after = 10000;
+    let iterations = 0;
     do {
         try {
             let i = await feed.items();
@@ -31,6 +32,14 @@ async function getFollowers(ig, username){
             });
 
             if(sleep_after <= 0) {
+                iterations += 1;
+                if(maxIterations != undefined && iterations >= maxIterations) {
+                    
+                    fs.appendFileSync(filepath ,'{"EOF": true}\n]', function (err){
+                        if (err) throw err;
+                    });
+                    return console.log("Desired iterations completed, skipping the other followers\nFollowers saved to 'output' folder with name ".green + filename.green);
+                }
                 console.log("Wait a minute ..");
                 await sleep(60);
                 sleep_after = 10000;
@@ -44,7 +53,7 @@ async function getFollowers(ig, username){
 	
     } while(feed.moreAvailable == true);
     //End of JSON file
-    fs.appendFileSync(filepath ,"\n]", function (err){
+    fs.appendFileSync(filepath ,'{"EOF": true}\n]', function (err){
         if (err) throw err;
     });
     return console.log("Followers saved to 'output' folder with name followers.json".green);

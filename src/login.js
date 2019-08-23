@@ -54,7 +54,7 @@ async function loadCookies() {
 		ig.state.phoneId = cookies.state.phoneId;
 		ig.state.adid = cookies.state.adid;
 	    ig.state.build = cookies.state.build;
-        console.log("Cookies loaded");
+        console.log("Cookies loaded".cyan);
         return true;
     }
     console.log("No cookie file found in loadCookies function");
@@ -74,7 +74,7 @@ ig.state.generateDevice(process.env.IG_USERNAME);
 // Optionally you can setup proxy url
 ig.state.proxyUrl = process.env.IG_PROXY;
 async function login() {
-    console.log("Trying to log with " + process.env.IG_USERNAME);
+    console.log("Trying to log with ".cyan + process.env.IG_USERNAME.green);
     //First we check if the user have cookies
     let hasCookies = await loadCookies();
     
@@ -116,8 +116,16 @@ async function login() {
         // Time to try if we can interact
         // If interaction works, we send the IG session to the result 
         // Inject user information on the interaction intent
-        ig.loggedInUser = await ig.account.currentUser();
         
+        try{
+            ig.loggedInUser = await ig.account.currentUser();
+            console.log("Logged in".green);
+        } catch (e){
+            console.log(e);
+            return console.log("Login failed".red);
+        };
+        
+
         //Open DB
         const adapter = new FileSync("./db/"+process.env.IG_USERNAME.toLowerCase()+".json");
         const db = low(adapter);

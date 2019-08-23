@@ -1,5 +1,4 @@
-
-function loadScripts() {
+function toolsForInstagram() {
     global.fs = require('fs');
     global.sleep = require('./sleep.js');
     global.login =  require('./login.js');
@@ -14,6 +13,7 @@ function loadScripts() {
     global.savePosts = require('./savePosts.js');
     global.followUser = require('./followUser.js');
     global.unfollowUser = require('./unfollowUser.js');
+    global.getLikeActivityByHours = require('./getLikeActivityByHours');
 }
 
-module.exports = loadScripts;
+module.exports = toolsForInstagram();

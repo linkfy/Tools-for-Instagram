@@ -19,12 +19,16 @@ Automation scripts for Instagram </br></br>
 - [x] Get recent post list by location
 - [x] Get top post list by location
 - [x] Save post list into scrape list
-- [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 - [x] Implement lowdb Database
 - [x] Save Likes information
 - [x] Save Follows information
-- [ ] Save Unfollows information
-
+- [X] Save Unfollows information
+- [X] Get Like activity
+- [ ] Get Follow activity
+- [ ] Get Unfollow activity
+- [ ] Multi-login
+- [ ] Simple Bot
+- [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 ## Wiki
 
 https://github.com/linkfy/Tools-for-Instagram/wiki
@@ -44,4 +48,4 @@ https://trello.com/b/ZlwRr6l0/tools-for-instagram
 
 - Injected loggedInUser inside ig Object after login (ig.loggedInUser)
 - Injected db inside ig Object after login (ig.db)
-- Injected shortid generator inside ig object
+- Injected shortid generator inside ig Object
