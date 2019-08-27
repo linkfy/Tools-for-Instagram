@@ -5,6 +5,9 @@ async function topLocationList(ig, location, randomResult = false) {
     locationId = selectedLocation.external_id;
     let feed = await ig.feed.location(locationId,'ranked');
     items = await feed.items();
+    items.forEach(element => {
+        element.comes_from = "top_location";
+    });
     return items;
 }
 

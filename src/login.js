@@ -12,6 +12,7 @@ const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const shortid = require('shortid');
 
+
 function saveCookies(cookies, state) {
 	//console.log(cookies);
     //console.log(state);
@@ -132,6 +133,7 @@ async function login() {
         db.defaults({likes: [], follows: []}).write()
         ig.shortid = shortid;
         ig.db = db;
+        
         return ig;
     }).catch(Api.IgCheckpointError, async () => {
 

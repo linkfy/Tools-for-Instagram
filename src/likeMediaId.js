@@ -1,7 +1,7 @@
 parser = require('instagram-id-to-url-segment');
 
-async function likeMediaId(ig, media_id, forceLike = false){
-
+async function likeMediaId(ig, media_id, forceLike = false, extraInfo = new Object()){
+    
     let alreadyExists = ig.db.get('likes').find({media_id: media_id}).value();
     alreadyExists == undefined ? false : true;
     if(alreadyExists && forceLike == false) {
@@ -27,7 +27,7 @@ async function likeMediaId(ig, media_id, forceLike = false){
         ig.db.get('likes').find({media_id: media_id}).assign({created_at: timestamp}).write();
     } else {
         
-        ig.db.get('likes').push({id: ig.shortid.generate(), media_id: media_id, link: link, created_at: timestamp}).write();
+        ig.db.get('likes').push({id: ig.shortid.generate(), media_id: media_id, link: link, created_at: timestamp, extra_info: extraInfo}).write();
     }
 
     return console.log("Liked media https://www.instagram.com/p/".green + parser.instagramIdToUrlSegment(media_id).green);

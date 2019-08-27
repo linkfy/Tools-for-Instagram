@@ -29,6 +29,7 @@ require('../src/tools-for-instagram.js');
     // for this purpose we need first to define a database with node-json-db
 
     let ig = await login();
+    console.log(await isTimeInRange("13:00","1:29"));
     
     //1. What time is it? Is it too late? Is it to early? Then Skip
     //2. Check like Activity in last 24 hours, if activity < 80 continue
@@ -36,14 +37,23 @@ require('../src/tools-for-instagram.js');
     //4. Start the Liker Bot
     //5. Liker Bot will try to like 20 pictures,
 
-    await getLikeActivityByHours(ig, 1);
-    await getLikeActivityByHours(ig, 2);
-    await getLikeActivityByHours(ig, 3);
-
-
+    
     //await followUser(ig, "Instagram", force = true);
     //await likeUrl(ig, "https://www.instagram.com/p/B1earbyAT0Z/", force = true);
     //await unfollowUser(ig, "Instagram", force = true);
+    //let posts = await recentHashtagList(ig, "animals");spp
+    //await followUserByPost(ig, posts[0]);
+    //await sleep(30);
+    //posts = await recentHashtagList(ig, "iguana");
+    //await followUserByPost(ig, posts[0]);
+
+    //await likePost(ig, posts[0]);s
+    
+
+    //await getLikeActivityByHours(ig, 24 * 5);
+    //await getFollowActivityByHours(ig, 24 * 5);
+    //sawait getUnfollowActivityByHours(ig, 24 * 5);
+
+
  
 })();
-

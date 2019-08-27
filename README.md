@@ -13,6 +13,7 @@ Automation scripts for Instagram </br></br>
 - [x] Like Content by MediaId 
 - [x] Like Content by Post
 - [x] Follow by Username
+- [x] Follow User by Post
 - [x] Unfollow by Username
 - [x] Get recent posts list of a hashtag
 - [~] Get top posts list of a hashtag // Using deopard Repo edit to implement it
@@ -22,10 +23,11 @@ Automation scripts for Instagram </br></br>
 - [x] Implement lowdb Database
 - [x] Save Likes information
 - [x] Save Follows information
-- [X] Save Unfollows information
-- [X] Get Like activity
-- [ ] Get Follow activity
-- [ ] Get Unfollow activity
+- [x] Save Unfollows information
+- [x] Get Like activity
+- [x] Get Follow activity
+- [x] Get Unfollow activity
+- [x] Current Time In Range Validator [ex: from 8:00 to 23:00]
 - [ ] Multi-login
 - [ ] Simple Bot
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
@@ -87,4 +89,25 @@ If 'force' is set to true, when the item was already liked before it will force 
    await likeUrl(ig, 'https://www.instagram.com/p/B1gzzVpA462/', true);
 ```
 
+
+#### isTimeInRange(startTime, endTime)
+Returns True or False if the current time is inside the range
+```javascript
+   await isTimeInRange("10:00", "23:00");
+```
+It is also possible to calculate night ranges between the current day and tomorrow.
+
+```javascript
+   await isTimeInRange("23:00", "3:00");
+```
 ### This documentation is not yet finished...
+#### recentHashtagList()
+#### topHashtagList()
+#### likePost()
+#### recentLocationList()
+#### topLocationList()
+#### savePosts()
+#### followUser()
+#### getLikeActivityByHours()
+#### getFollowActivityByHours()
+#### getUnfollowActivityByHours()

@@ -5,6 +5,9 @@ async function recentLocationList(ig, location, randomResult = false) {
     locationId = selectedLocation.external_id;
     let feed = await ig.feed.location(locationId,'recent');
     items = await feed.items();
+    items.forEach(element => {
+        element.comes_from = "recent_location";
+    });
     return items;
 }
 

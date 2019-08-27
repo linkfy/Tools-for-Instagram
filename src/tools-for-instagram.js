@@ -12,8 +12,12 @@ function toolsForInstagram() {
     global.topLocationList = require('./topLocationList.js');
     global.savePosts = require('./savePosts.js');
     global.followUser = require('./followUser.js');
+    global.followUserByPost = require('./followUserByPost');
     global.unfollowUser = require('./unfollowUser.js');
     global.getLikeActivityByHours = require('./getLikeActivityByHours');
+    global.getFollowActivityByHours = require('./getFollowActivityByHours');
+    global.getUnfollowActivityByHours = require('./getUnfollowActivityByHours');
+    global.isTimeInRange = require('./isTimeInRange.js');
 }
 
 module.exports = toolsForInstagram();

@@ -3,7 +3,7 @@ async function getLikeActivityByHours(ig, hours = 24) {
     currentTime.setHours(currentTime.getHours() - hours);
     currentTimeMiliseconds = currentTime.getTime();
     let results = ig.db.get('likes').filter(like => like.created_at > currentTimeMiliseconds).value();
-    console.log(("Activity in last " + hours + " hours: " + results.length).cyan);
+    console.log(("Like activity in last " + hours + " hours: " + results.length).cyan);
     return results.length;
 }
 
