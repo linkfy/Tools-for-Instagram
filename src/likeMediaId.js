@@ -1,7 +1,7 @@
 parser = require('instagram-id-to-url-segment');
 
 async function likeMediaId(ig, media_id, forceLike = false, extraInfo = new Object()){
-    
+
     let alreadyExists = ig.db.get('likes').find({media_id: media_id}).value();
     alreadyExists == undefined ? false : true;
     if(alreadyExists && forceLike == false) {
@@ -20,7 +20,8 @@ async function likeMediaId(ig, media_id, forceLike = false, extraInfo = new Obje
         d: _.sample([0,1]),  // d - means double-tap. If you liked post by double tap then d=1. You cant unlike post by double tap 
     });
 
-    let timestamp = Date.now();
+    let timestamp = new Date().getTime() - new Date().getTimezoneOffset()*60*1000;
+    
     let link = "https://www.instagram.com/p/" + parser.instagramIdToUrlSegment(media_id);
     if(alreadyExists) {
 

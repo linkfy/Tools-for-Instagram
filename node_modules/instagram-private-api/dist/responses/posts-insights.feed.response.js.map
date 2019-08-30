@@ -1,0 +1,1 @@
+{"version":3,"file":"posts-insights.feed.response.js","sourceRoot":"","sources":["../../src/responses/posts-insights.feed.response.ts"],"names":[],"mappings":""}

@@ -15,7 +15,8 @@ async function unfollowUser(ig, username, forceUnfollow = false) {
             console.log("Already unfollowed, skipping".yellow);
             return "aleady_unfollowed";
         }
-        let timestamp = Date.now();
+        
+        let timestamp = new Date().getTime() - new Date().getTimezoneOffset()*60*1000;
         ig.db.get('follows').find({user_id: userId}).assign({unfollowed_at: timestamp}).write();
         
         

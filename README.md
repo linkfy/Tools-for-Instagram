@@ -16,7 +16,7 @@ Automation scripts for Instagram </br></br>
 - [x] Follow User by Post
 - [x] Unfollow by Username
 - [x] Get recent posts list of a hashtag
-- [~] Get top posts list of a hashtag // Using deopard Repo edit to implement it
+- [x] Get top posts list of a hashtag
 - [x] Get recent post list by location
 - [x] Get top post list by location
 - [x] Save post list into scrape list
@@ -28,7 +28,9 @@ Automation scripts for Instagram </br></br>
 - [x] Get Follow activity
 - [x] Get Unfollow activity
 - [x] Current Time In Range Validator [ex: from 8:00 to 23:00]
+- [ ] Proxies
 - [ ] Multi-login
+- [ ] Like Recent Hashtags By Intervals
 - [ ] Simple Bot
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 ## Wiki
@@ -100,6 +102,38 @@ It is also possible to calculate night ranges between the current day and tomorr
 ```javascript
    await isTimeInRange("23:00", "3:00");
 ```
+
+#### likeRecentHashtagsByIntervals(ig, intervals, hashtagArray, likesPerInterval, waitMinutesBetweenLikes)
+```javascript
+    let likesPerInterval = 15;
+    let waitMinutesBetweenLikes = 3;
+
+    let intervals = [
+        ["7:00",    "8:00"],
+        ["10:00",   "11:00"],
+        ["22:00",   "23:00"],
+    ];
+    let hashtagArray = [
+        "cats",
+        "dogs",
+        "music"
+    ];
+
+   let likeInterval = likeRecentHashtagsByIntervals(
+                                                    ig, 
+                                                    intervals, 
+                                                    hashtagArray, 
+                                                    likesPerInterval,
+                                                    waitMinutesBetweenLikes);
+```
+It is also possible to stop the interval clearing it
+
+```javascript
+   clearInterval(likeInterval);
+```
+
+
+
 ### This documentation is not yet finished...
 #### recentHashtagList()
 #### topHashtagList()
@@ -111,3 +145,5 @@ It is also possible to calculate night ranges between the current day and tomorr
 #### getLikeActivityByHours()
 #### getFollowActivityByHours()
 #### getUnfollowActivityByHours()
+#### getLikeActivityFromHourToNow(ig, "12:00")
+#### lastLikeMinutesAgo(ig)

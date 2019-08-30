@@ -1,0 +1,1 @@
+{"version":3,"file":"insights.options.js","sourceRoot":"","sources":["../../src/types/insights.options.ts"],"names":[],"mappings":""}

@@ -14,10 +14,13 @@ function toolsForInstagram() {
     global.followUser = require('./followUser.js');
     global.followUserByPost = require('./followUserByPost');
     global.unfollowUser = require('./unfollowUser.js');
-    global.getLikeActivityByHours = require('./getLikeActivityByHours');
-    global.getFollowActivityByHours = require('./getFollowActivityByHours');
-    global.getUnfollowActivityByHours = require('./getUnfollowActivityByHours');
+    global.getLikeActivityByHours = require('./getLikeActivityByHours.js');
+    global.getFollowActivityByHours = require('./getFollowActivityByHours.js');
+    global.getUnfollowActivityByHours = require('./getUnfollowActivityByHours.js');
     global.isTimeInRange = require('./isTimeInRange.js');
+    global.getLikeActivityFromHourToNow = require("./getLikeActivityFromHourToNow.js");
+    global.lastLikeMinutesAgo = require("./lastLikeMinutesAgo.js");
+    global.likeRecentHashtagsByIntervals = require("./likeRecentHashtagsByIntervals.js");
 }
 
 module.exports = toolsForInstagram();

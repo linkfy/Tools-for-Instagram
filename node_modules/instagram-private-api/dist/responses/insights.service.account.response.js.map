@@ -1,0 +1,1 @@
+{"version":3,"file":"insights.service.account.response.js","sourceRoot":"","sources":["../../src/responses/insights.service.account.response.ts"],"names":[],"mappings":""}

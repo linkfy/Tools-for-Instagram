@@ -1,0 +1,1 @@
+{"version":3,"file":"tags.feed.response.js","sourceRoot":"","sources":["../../src/responses/tags.feed.response.ts"],"names":[],"mappings":""}

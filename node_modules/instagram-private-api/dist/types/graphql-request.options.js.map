@@ -1,0 +1,1 @@
+{"version":3,"file":"graphql-request.options.js","sourceRoot":"","sources":["../../src/types/graphql-request.options.ts"],"names":[],"mappings":""}

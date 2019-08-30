@@ -1,0 +1,1 @@
+{"version":3,"file":"stories-insights.feed.response.js","sourceRoot":"","sources":["../../src/responses/stories-insights.feed.response.ts"],"names":[],"mappings":""}

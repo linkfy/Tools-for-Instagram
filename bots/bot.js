@@ -1,11 +1,53 @@
 
 require('../src/tools-for-instagram.js');
 
+
 (async () => {
     //WARNING --- THIS BOT IS CURRENTLY an idea in progress
+    // https://github.com/linkfy/Tools-for-Instagram/wiki/Bot-1-%5BDoing%5D
+    let likesPerInterval = 15;
+    let waitMinutesBetweenLikesPerInterval = 3;
+
+    let intervals = [
+        ["7:00",    "8:00"],
+        ["10:00",   "11:00"],
+        ["14:00",   "15:00"],
+        ["17:00",   "18:00"],
+        ["20:00",   "21:00"],
+        ["22:00",   "23:00"],
+    ];
+
+    let hashtagArray = [
+        "cats",
+        "dogs",
+        "chameleon",
+        "fish",
+        "gaming",
+        "music"
+    ];
     
+    let ig = await login();
+    
+    
+    let likeInterval = likeRecentHashtagsByIntervals(
+                                                    ig, 
+                                                    intervals, 
+                                                    hashtagArray, 
+                                                    likesPerInterval, 
+                                                    waitMinutesBetweenLikesPerInterval);
+    
+})();
 
     
+    //await followUser(ig, "Instagram", force = true);
+    //await likeUrl(ig, "https://www.instagram.com/p/B1earbyAT0Z/", force = true);
+    //await unfollowUser(ig, "Instagram", force = true);
+    //let posts = await recentHashtagList(ig, "animals");spp
+    //await followUserByPost(ig, posts[0]);
+    //await sleep(30);
+    //posts = await recentHashtagList(ig, "iguana");
+    //await followUserByPost(ig, posts[0]);
+
 
     //Experimental Stuff going on for scapping
 
@@ -19,41 +61,12 @@ require('../src/tools-for-instagram.js');
     console.log(followers[followers.length-1]); */
 // ----------------------
     
-
-    
-    //Let's try to make a simple bot
-    //The bot will: 
-    // - follow 80 users per day
-    // - give 100 likes per day
-    // we need to carry the follows / likes / unfollows / timers of the action
-    // for this purpose we need first to define a database with node-json-db
-
-    let ig = await login();
-    console.log(await isTimeInRange("13:00","1:29"));
-    
-    //1. What time is it? Is it too late? Is it to early? Then Skip
-    //2. Check like Activity in last 24 hours, if activity < 80 continue
-    //3. Check like Activity in the last 2 hours, like Activity > 20? then skip
-    //4. Start the Liker Bot
-    //5. Liker Bot will try to like 20 pictures,
-
-    
-    //await followUser(ig, "Instagram", force = true);
-    //await likeUrl(ig, "https://www.instagram.com/p/B1earbyAT0Z/", force = true);
-    //await unfollowUser(ig, "Instagram", force = true);
-    //let posts = await recentHashtagList(ig, "animals");spp
-    //await followUserByPost(ig, posts[0]);
-    //await sleep(30);
-    //posts = await recentHashtagList(ig, "iguana");
-    //await followUserByPost(ig, posts[0]);
-
-    //await likePost(ig, posts[0]);s
-    
-
-    //await getLikeActivityByHours(ig, 24 * 5);
-    //await getFollowActivityByHours(ig, 24 * 5);
-    //sawait getUnfollowActivityByHours(ig, 24 * 5);
-
-
- 
-})();
+    /* Intervals used for testing
+    let intervals = [
+        ["02:00",    "3:00"],
+        ["10:00",   "11:00"],
+        ["14:00",   "15:00"],
+        ["17:00",   "18:00"],
+        ["20:00",   "21:00"],
+        ["22:00",   "23:00"],
+    ]; */

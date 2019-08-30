@@ -19,7 +19,7 @@ async function followUser(ig, username, forceFollow = false, extraInfo = new Obj
     }
     
 
-    let timestamp = Date.now();
+    let timestamp = new Date().getTime() - new Date().getTimezoneOffset()*60*1000;
     if(alreadyExists) {
 
         ig.db.get('follows').find({user_id: userId}).assign( {info: response, created_at: timestamp}).write();    
