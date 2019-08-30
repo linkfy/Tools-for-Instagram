@@ -30,7 +30,7 @@ Automation scripts for Instagram </br></br>
 - [x] Current Time In Range Validator [ex: from 8:00 to 23:00]
 - [ ] Proxies
 - [ ] Multi-login
-- [ ] Like Recent Hashtags By Intervals
+- [x] Like Recent Hashtags By Intervals
 - [ ] Simple Bot
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 ## Wiki
@@ -104,6 +104,9 @@ It is also possible to calculate night ranges between the current day and tomorr
 ```
 
 #### likeRecentHashtagsByIntervals(ig, intervals, hashtagArray, likesPerInterval, waitMinutesBetweenLikes)
+
+Automate like actions on given array of recent hashtags feed
+
 ```javascript
     let likesPerInterval = 15;
     let waitMinutesBetweenLikes = 3;
