@@ -14,7 +14,7 @@ const shortid = require('shortid');
 function saveCookies(cookies, state) {
 	//console.log(cookies);
     //console.log(state);
-    var cookiepath = "cookies/" + process.env.IG_USERNAME + ".json";
+    var cookiepath = "cookies/" + (process.env.IG_USERNAME).toLowerCase() + ".json";
     if(!fs.existsSync("cookies/")) {
         fs.mkdirSync("cookies/");
     }
@@ -37,7 +37,7 @@ function saveCookies(cookies, state) {
 }
 async function loadCookies() {
     
-    var cookiepath = "cookies/" + process.env.IG_USERNAME + ".json";
+    var cookiepath = "cookies/" + (process.env.IG_USERNAME).toLowerCase() + ".json";
     //console.log("Trying to load filepath " + cookiepath);
     //console.log(__dirname);
     if (fs.existsSync(cookiepath)) {
@@ -65,6 +65,9 @@ async function loadCookies() {
 if(!fs.existsSync("output/")) {
     fs.mkdirSync("output/");
 }
+if(!fs.existsSync("logins/")) {
+    fs.mkdirSync("logins/");
+}
 
 // You must generate device id's before login.
 // Id's generated based on seed
@@ -72,7 +75,12 @@ if(!fs.existsSync("output/")) {
 ig.state.generateDevice(process.env.IG_USERNAME);
 // Optionally you can setup proxy url
 ig.state.proxyUrl = process.env.IG_PROXY;
-async function login() {
+async function login(inputLogin = null, inputPassword = null) {
+    if(inputLogin!=null && inputPassword !=null) {
+        process.env.IG_USERNAME = inputLogin;
+        process.env.IG_PASSWORD = inputPassword;
+    }
+
     console.log("Trying to log with ".cyan + process.env.IG_USERNAME.green);
     //First we check if the user have cookies
     let hasCookies = await loadCookies();
@@ -121,12 +129,13 @@ async function login() {
             console.log("Logged in".green);
         } catch (e){
             console.log(e);
-            return console.log("Login failed".red);
+            console.log("Login failed from cookie | Remove incorrect cookie".red);
+            return "removeCookie";
         };
         
 
         //Open DB
-        const adapter = new FileSync("./db/"+process.env.IG_USERNAME.toLowerCase()+".json");
+        const adapter = new FileSync("./db/"+(process.env.IG_USERNAME).toLowerCase()+".json");
         const db = low(adapter);
         db.defaults({likes: [], follows: []}).write()
         ig.shortid = shortid;
@@ -158,9 +167,11 @@ async function login() {
         } else {
             // This block is not supossed to be used never (IgLoginBadPasswordError) exists
             console.log("Incorrect password");
+            return "incorrectPassword";
         }
     }).catch(Api.IgLoginBadPasswordError, () => {
         console.log("Incorrect password");
+        return "incorrectPassword";
     });
     // If result is not undefined we send the ig object session
     return result;

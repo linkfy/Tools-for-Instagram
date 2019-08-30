@@ -7,6 +7,7 @@ Automation scripts for Instagram </br></br>
 ## Bot skills:
 - [x] Login Flow
 - [x] Save Cookies in files
+- [x] Remove Cookies
 - [x] Get User Information
 - [x] Get Followers of account (save into a txt file)
 - [x] Like Content by URL
@@ -103,7 +104,7 @@ It is also possible to calculate night ranges between the current day and tomorr
    await isTimeInRange("23:00", "3:00");
 ```
 
-#### likeRecentHashtagsByIntervals(ig, intervals, hashtagArray, likesPerInterval, waitMinutesBetweenLikes)
+#### likeRecentHashtagsByIntervals(ig, hashtagArray, intervals, likesPerInterval, waitMinutesBetweenLikes)
 
 Automate like actions on given array of recent hashtags feed
 
@@ -123,9 +124,9 @@ Automate like actions on given array of recent hashtags feed
     ];
 
    let likeInterval = likeRecentHashtagsByIntervals(
-                                                    ig, 
-                                                    intervals, 
+                                                    ig,
                                                     hashtagArray, 
+                                                    intervals, 
                                                     likesPerInterval,
                                                     waitMinutesBetweenLikes);
 ```
@@ -150,3 +151,5 @@ It is also possible to stop the interval clearing it
 #### getUnfollowActivityByHours()
 #### getLikeActivityFromHourToNow(ig, "12:00")
 #### lastLikeMinutesAgo(ig)
+#### removeCookie(ig)
+#### followRecentHashtagsByIntervals(ig, hashtagArray, intervals, followsPerInterval, waitMinutesBetweenFollows)

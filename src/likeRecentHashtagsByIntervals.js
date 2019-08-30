@@ -1,10 +1,10 @@
-function likeRecentHashtagsByIntervals(ig, intervals, hashtagArray, likesPerInterval = 5, waitMinutesBetweenLikesPerInterval = 2) {
+function likeRecentHashtagsByIntervals(ig, hashtagArray, intervals, likesPerInterval = 5, waitMinutesBetweenLikesPerInterval = 2) {
     console.log("Like intervals started".underline.cyan + ": Waiting for the first interval".cyan);
     return setInterval(function() {
         intervals.forEach(async interval => {
             await executeLikeIntervalForRecentHashtags(ig, interval, hashtagArray, likesPerInterval, waitMinutesBetweenLikesPerInterval);
         });
-    }, 10000);
+    }, 10 * 1000);
     
 }
 

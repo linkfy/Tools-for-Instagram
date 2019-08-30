@@ -4,3 +4,5 @@ cookies/*
 output/*
 db/*
 *.txt
+logins/*
+!logins/exampleAccount.js
