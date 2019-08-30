@@ -30,7 +30,7 @@ Automation scripts for Instagram </br></br>
 - [x] Get Unfollow activity
 - [x] Current Time In Range Validator [ex: from 8:00 to 23:00]
 - [ ] Proxies
-- [ ] Multi-login
+- [x] Multi-login
 - [x] Like Recent Hashtags By Intervals
 - [ ] Simple Bot
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
@@ -70,6 +70,13 @@ require('./src/tools-for-instagram');
     // ..
 
 })();
+```
+#### loadConfig(loginFileName)
+Load a config file from the logins folder
+```javascript
+    let acc = loadConfig('exampleAccount');
+    let myAccount2 = await login(acc.account, acc.password);
+    //same as await login("username", "password");
 
 ```
 #### getUserInfo(ig, username)
