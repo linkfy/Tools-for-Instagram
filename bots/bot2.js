@@ -38,8 +38,6 @@ require('../src/tools-for-instagram.js');
     
     let ig = await login();
 
-    
-    
     let likeInterval = likeRecentHashtagsByIntervals(
         ig,
         hashtagArray,
