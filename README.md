@@ -32,6 +32,7 @@ Automation scripts for Instagram </br></br>
 - [ ] Proxies
 - [x] Multi-login
 - [x] Like Recent Hashtags By Intervals
+- [x] Follow Recent Hashtags By Intervals
 - [ ] Simple Bot
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 ## Wiki
@@ -151,7 +152,7 @@ It is also possible to stop the interval clearing it
 #### likePost(ig, post)
 #### recentLocationList(ig, location, [randomize: bool])
 #### topLocationList(ig, location, [randomize: bool])
-#### savePosts(ig, posts, nameFile)
+#### savePosts(ig, posts, filename)
 #### followUser(ig, username)
 #### followUserByPost(ig. post)
 #### getLikeActivityByHours(ig, startingHour)
