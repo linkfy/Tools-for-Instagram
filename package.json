@@ -1,0 +1,32 @@
+{
+  "name": "tools-for-instagram",
+  "version": "1.0.0",
+  "description": "Tools for instagram",
+  "main": "src/tools-for-instagram.js",
+  "dependencies": {
+    "bluebird": "^3.5.5",
+    "colors": "^1.3.3",
+    "dotenv": "^8.1.0",
+    "inquirer": "^6.5.2",
+    "instagram-id-to-url-segment": "^0.0.0",
+    "instagram-private-api": "^1.27.0",
+    "lowdb": "^1.0.0",
+    "moment": "^2.24.0",
+    "ora": "^3.4.0",
+    "shortid": "^2.2.14"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linkfy/Tools-for-Instagram.git"
+  },
+  "author": "TheLinkfy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linkfy/Tools-for-Instagram/issues"
+  },
+  "homepage": "https://github.com/linkfy/Tools-for-Instagram#readme"
+}
