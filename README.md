@@ -5,6 +5,7 @@ Automation scripts for Instagram </br></br>
 ### Easy way:
     1. npm install tools-for-instagram
     2. create a .env file on the main directory with this fields
+    
     ```
     IG_USERNAME=myUsername
     IG_PASSWORD=myPassword
