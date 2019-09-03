@@ -2,6 +2,14 @@
 Automation scripts for Instagram </br></br>
 <img src="https://media.giphy.com/media/ignhVpXU7h4qHMwXix/giphy.gif" width="340">
 ## How to use it
+### Easy way:
+    1. npm install tools-for-instagram
+    2. create a .env file on the main directory with this fields
+    ```
+    IG_USERNAME=myUsername
+    IG_PASSWORD=myPassword
+    ```
+### Git way:
     1. Rename .env_example to .env and edit the configuration.
     2. Execute main.js to test the scripts. 
 ## Bot skills:
@@ -33,7 +41,8 @@ Automation scripts for Instagram </br></br>
 - [x] Multi-login
 - [x] Like Recent Hashtags By Intervals
 - [x] Follow Recent Hashtags By Intervals
-- [ ] Simple Bot
+- [x] Simple Bot
+- [x] create npm package
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 ## Wiki
 
@@ -58,6 +67,22 @@ https://trello.com/b/ZlwRr6l0/tools-for-instagram
 
 # Api
 ### Basic example
+#### Using npm package
+```javascript
+require("tools-for-instagram");
+
+(async () => {
+
+    let ig = await login();
+
+    // .. Implement your code here
+    let info = await getUserInfo(ig, "Instagram");
+    console.log("User information, username: " + info.username);
+    
+    // ..
+})();
+```
+#### Using Git repo:
 ```javascript
 require('./src/tools-for-instagram');
 
