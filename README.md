@@ -42,7 +42,7 @@ Automation scripts for Instagram </br></br>
 - [x] Like Recent Hashtags By Intervals
 - [x] Follow Recent Hashtags By Intervals
 - [x] Simple Bot
-- [x] create npm package
+- [x] NPM package support
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 ## Wiki
 
