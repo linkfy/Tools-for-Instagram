@@ -9,6 +9,7 @@ Automation scripts for Instagram </br></br>
 ```
 IG_USERNAME=myUsername
 IG_PASSWORD=myPassword
+
 ```
 
 ### Git way:
