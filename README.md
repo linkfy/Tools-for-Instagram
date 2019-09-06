@@ -16,7 +16,8 @@ IG_PASSWORD=myPassword
     3. Execute 'node main.js' to test the scripts.
 
 #### Following steps:
-    1. Write your automation bots or copy the existent ones inside tools-from-instagram module (Recommended to create a 'bots' folder in root of the project)
+    1. Write your automation bots or copy the existent ones inside Tools-for-Instagram module 
+    (Recommended to create a 'bots' folder in root of the project)
     2. Tests the bot using 'node bots/yourBot.js'
 
 ### Git way:
