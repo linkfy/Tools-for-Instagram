@@ -3,7 +3,7 @@ require('../src/tools-for-instagram.js');
 
 
 (async () => {
-    //WARNING --- THIS BOT2 IS CURRENTLY an idea in progress
+    //WARNING --- THIS BOT IS CURRENTLY an idea in progress
     // https://github.com/linkfy/Tools-for-Instagram/wiki/Bot-1-%5BDoing%5D
 
     // 81 likes per day
