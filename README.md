@@ -10,9 +10,18 @@ Automation scripts for Instagram </br></br>
 IG_USERNAME=myUsername
 IG_PASSWORD=myPassword
 ```
+#### Following steps:
+    1. Write your automation bots or copy the existent ones inside tools-from-instagram module (Recommended to create a 'bots' folder in root of the project)
+    2. Tests the bot using 'node bots/yourBot.js'
+
 ### Git way:
     1. Rename .env_example to .env and edit the configuration.
-    2. Execute main.js to test the scripts. 
+    2. Execute 'node main.js' to test the scripts.
+
+#### Following steps:
+    1. Write your automation bots inside bot folder or use the existent ones
+    2. Tests the bot using 'node bots/bot.js'
+
 ## Bot skills:
 - [x] Login Flow
 - [x] Save Cookies in files
