@@ -45,13 +45,13 @@ require('../src/tools-for-instagram.js');
         likesPerInterval, 
         waitMinutesBetweenLikes);
 
-    let followInterval = followRecentHashtagsByIntervals(
+/*     let followInterval = followRecentHashtagsByIntervals(
         ig,
         hashtagArray,
         intervals, 
         followsPerInterval, 
         waitMinutesBetweenFollows);
-
+ */
     
 
     process.on('unhandledRejection', async function(err) {

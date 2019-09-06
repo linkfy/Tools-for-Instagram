@@ -10,7 +10,6 @@ Automation scripts for Instagram </br></br>
 IG_USERNAME=myUsername
 IG_PASSWORD=myPassword
 ```
-
 ### Git way:
     1. Rename .env_example to .env and edit the configuration.
     2. Execute main.js to test the scripts. 
@@ -39,7 +38,7 @@ IG_PASSWORD=myPassword
 - [x] Get Follow activity
 - [x] Get Unfollow activity
 - [x] Current Time In Range Validator [ex: from 8:00 to 23:00]
-- [ ] Proxies
+- [x] Proxies
 - [x] Multi-login
 - [x] Like Recent Hashtags By Intervals
 - [x] Follow Recent Hashtags By Intervals
@@ -103,7 +102,7 @@ require('./src/tools-for-instagram');
 Load a config file from the logins folder
 ```javascript
     let acc = loadConfig('exampleAccount');
-    let myAccount2 = await login(acc.account, acc.password);
+    let myAccount2 = await login(acc.account, acc.password, acc.proxy);
     //same as await login("username", "password");
 
 ```

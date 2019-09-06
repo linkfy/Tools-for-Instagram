@@ -1,5 +1,5 @@
 module.exports = {
     account: 'accountName',
     password: 'password',
-    proxy: 'someProxyIfRequired'
+    proxy: 'http://proxyuser:proxypassword@xxx.xxx.xxx.xxx:xxxxx'
 }
