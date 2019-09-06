@@ -13,8 +13,8 @@ IG_PASSWORD=myPassword
 # Uncomment next line to use a proxy
 # IG_PROXY=http://proxyuser:proxypassword@xxx.xxx.xxx.xxx:xxxxx
 ```
-    3. Copy the main.js example on the root folder of your project from the repo
-    4. Execute'node main.js' to test the scripts.
+    3. Copy the example.js on the root folder of your project from the repo
+    4. Execute'node example.js' to test the scripts.
 
 #### Following steps:
     1. Write your automation bots or copy the existent ones inside Tools-for-Instagram module 
@@ -24,7 +24,7 @@ IG_PASSWORD=myPassword
 ### Git way:
     1. git clone https://github.com/linkfy/Tools-for-Instagram.git
     2. Rename .env_example to .env and edit the configuration.
-    3. Execute 'node main.js' to test the scripts.
+    3. Execute 'node example.js' to test the scripts.
 
 #### Following steps:
     1. Write your automation bots inside bots folder or use the existent ones
