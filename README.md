@@ -9,6 +9,9 @@ Automation scripts for Instagram </br></br>
 ```
 IG_USERNAME=myUsername
 IG_PASSWORD=myPassword
+
+# Uncomment next line to use a proxy
+# IG_PROXY=http://proxyuser:proxypassword@xxx.xxx.xxx.xxx:xxxxx
 ```
     3. Execute 'node main.js' to test the scripts.
 
