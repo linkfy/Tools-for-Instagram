@@ -79,32 +79,7 @@ require('../src/tools-for-instagram.js');
             myAccount = await login();
         }
     });
-    //followRecentHashtagsByIntervals(ig, hashtagArray, intervals, likesPerInterval, waitMinutesBetweenLikesPerInterval);
     
 
     
 })();
-
-    
-    //await followUser(ig, "Instagram", force = true);
-    //await likeUrl(ig, "https://www.instagram.com/p/B1earbyAT0Z/", force = true);
-    //await unfollowUser(ig, "Instagram", force = true);
-    //let posts = await recentHashtagList(ig, "animals");spp
-    //await followUserByPost(ig, posts[0]);
-    //await sleep(30);
-    //posts = await recentHashtagList(ig, "iguana");
-    //await followUserByPost(ig, posts[0]);
-
-
-    //Experimental Stuff going on for scapping
-
-// ----------------------
-/*  let info = fs.readFileSync("./output/instagram_followers.json");
-    let enc = new TextDecoder("utf-8");
-    let decodedInfo = enc.decode(info);
-    let followers = JSON.parse(decodedInfo);
-    //The last element is EOF, so we can delete it
-    followers.pop();
-    console.log(followers[followers.length-1]); */
-// ----------------------
-    
