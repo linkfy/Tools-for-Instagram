@@ -25,7 +25,7 @@ IG_PASSWORD=myPassword
     3. Execute 'node main.js' to test the scripts.
 
 #### Following steps:
-    1. Write your automation bots inside bot folder or use the existent ones
+    1. Write your automation bots inside bots folder or use the existent ones
     2. Tests the bot using 'node bots/bot.js'
 
 ## Bot skills:
