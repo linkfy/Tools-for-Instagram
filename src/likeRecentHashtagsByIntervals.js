@@ -20,12 +20,15 @@ async function executeLikeIntervalForRecentHashtags(ig, interval, hashtagArray, 
         //console.log(("Checking interval " + interval[0] + " to " + interval[1]).green);
         let currentIntervalLikes = await getLikeActivityFromHourToNow(ig, interval[0]);
         console.log("Likes from " + interval[0] + " to " + interval[1] + ": " + (currentIntervalLikes+"/"+likesPerInterval).cyan);
-
+        
         // If likes < 5
         if(currentIntervalLikes < likesPerInterval) {
             
-
+            let lastLikeMins = await lastLikeMinutesAgo(ig);
+            console.log(lastLikeMins + "test");
+            
             if(await lastLikeMinutesAgo(ig) >= waitMinutesBetweenLikesPerInterval) {
+                
                 console.log("\n".bgCyan);
                 var hashtag = hashtagArray[Math.floor(Math.random()*hashtagArray.length)];
                 console.log(("Executing like for current interval, selected hashtag: " + hashtag).cyan);
