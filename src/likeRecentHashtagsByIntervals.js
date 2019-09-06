@@ -25,7 +25,6 @@ async function executeLikeIntervalForRecentHashtags(ig, interval, hashtagArray, 
         if(currentIntervalLikes < likesPerInterval) {
             
             let lastLikeMins = await lastLikeMinutesAgo(ig);
-            console.log(lastLikeMins + "test");
             
             if(await lastLikeMinutesAgo(ig) >= waitMinutesBetweenLikesPerInterval) {
                 
