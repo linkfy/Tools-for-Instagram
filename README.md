@@ -1,5 +1,7 @@
-[![Synk](https://snyk.io/test/github/linkfy/Tools-for-Instagram/badge.svg)](https://snyk.io/test/github/linkfy/Tools-for-Instagram)
 # Tools-for-Instagram
+
+[![Synk](https://snyk.io/test/github/linkfy/Tools-for-Instagram/badge.svg?maxAge=600)](https://snyk.io/test/github/linkfy/Tools-for-Instagram)
+
 Automation scripts for Instagram </br></br>
 <img src="https://media.giphy.com/media/ignhVpXU7h4qHMwXix/giphy.gif" width="340">
 ## How to use it
