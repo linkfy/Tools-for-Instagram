@@ -1,6 +1,8 @@
 # Tools-for-Instagram
 
-[![Synk](https://snyk.io/test/github/linkfy/Tools-for-Instagram/badge.svg?maxAge=600)](https://snyk.io/test/github/linkfy/Tools-for-Instagram)
+![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/tools-for-instagram)
+![NPM](https://img.shields.io/npm/l/tools-for-instagram)
+![npm](https://img.shields.io/npm/dt/tools-for-instagram)
 
 Automation scripts for Instagram </br></br>
 <img src="https://media.giphy.com/media/ignhVpXU7h4qHMwXix/giphy.gif" width="340">
