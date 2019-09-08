@@ -73,6 +73,7 @@ if(!fs.existsSync("logins/")) {
 // Id's generated based on seed
 // So if you pass the same value as first argument - the same id's are generated every time
 ig.state.generateDevice(process.env.IG_USERNAME);
+ig.simulate.preLoginFlow();
 // Optionally you can setup proxy url
 
 async function login(inputLogin = null, inputPassword = null, inputProxy = null) {
@@ -88,7 +89,7 @@ async function login(inputLogin = null, inputPassword = null, inputProxy = null)
         console.log("Not using proxy".yellow);
         console.log("Mobile/Residential proxy recommended".yellow);
     }
-    
+
     ig.state.proxyUrl = process.env.IG_PROXY;
     console.log("Trying to log with ".cyan + process.env.IG_USERNAME.green);
     //First we check if the user have cookies
