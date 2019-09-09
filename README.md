@@ -122,12 +122,24 @@ require('./src/tools-for-instagram');
 ```
 #### loadConfig(loginFileName)
 Load a config file from the logins folder
+
+By default it will use the proxy from .env file if the proxy is not set on login().
+
 ```javascript
     let acc = loadConfig('exampleAccount');
     let myAccount2 = await login(acc.account, acc.password, acc.proxy);
     //same as await login("username", "password");
 
 ```
+
+To avoid the default proxy from the .env file use false as a third parameter on login:
+
+```javascript
+    let acc = loadConfig('exampleAccount');
+    let myAccount2 = await login(acc.account, acc.password, false);
+
+```
+
 #### getUserInfo(ig, username)
 Get the user information of the desired username
 ```javascript
