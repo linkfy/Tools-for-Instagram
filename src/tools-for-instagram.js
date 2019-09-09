@@ -26,6 +26,8 @@ function toolsForInstagram() {
     global.likeRecentHashtagsByIntervals = require("./likeRecentHashtagsByIntervals.js");
     global.followRecentHashtagsByIntervals = require('./followRecentHashtagsByIntervals.js');
     global.loadConfig = require('./loadConfig.js');
+    global.viewStoriesFromUser = require('./viewStoriesFromUser');
+    global.viewStoriesFromId = require('./viewStoriesFromId');
 }
 
 module.exports = toolsForInstagram();

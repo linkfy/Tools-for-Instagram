@@ -47,6 +47,8 @@ IG_PASSWORD=myPassword
 - [x] Follow by Username
 - [x] Follow User by Post
 - [x] Unfollow by Username
+- [x] view stories by User Id
+- [x] view stories by Username
 - [x] Get recent posts list of a hashtag
 - [x] Get top posts list of a hashtag
 - [x] Get recent post list by location
@@ -66,6 +68,7 @@ IG_PASSWORD=myPassword
 - [x] Follow Recent Hashtags By Intervals
 - [x] Simple Bot
 - [x] NPM package support
+- [ ] View Stories from User Followers
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 ## Wiki
 
@@ -160,6 +163,11 @@ If 'force' is set to true, when the item was already liked before it will force 
    await likeUrl(ig, 'https://www.instagram.com/p/B1gzzVpA462/', true);
 ```
 
+#### viewStoriesFromUser(ig, username)
+View all the current stories of the given username
+```javascript
+   await viewStoriesFromUser(ig, 'instagram');
+```
 
 #### isTimeInRange(startTime, endTime)
 Returns True or False if the current time is inside the range
@@ -222,3 +230,4 @@ It is also possible to stop the interval clearing it
 #### lastLikeMinutesAgo(ig)
 #### removeCookie(ig)
 #### followRecentHashtagsByIntervals(ig, hashtagArray, intervals, followsPerInterval, waitMinutesBetweenFollows)
+#### viewStoriesFromId(ig, userId)
