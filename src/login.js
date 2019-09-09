@@ -76,14 +76,17 @@ ig.state.generateDevice(process.env.IG_USERNAME);
 ig.simulate.preLoginFlow();
 // Optionally you can setup proxy url
 
+//if Input proxy == false then we force to not use the proxy
 async function login(inputLogin = null, inputPassword = null, inputProxy = null) {
     if(inputLogin!=null && inputPassword !=null) {
         process.env.IG_USERNAME = inputLogin;
         process.env.IG_PASSWORD = inputPassword;
-        process.env.IG_PROXY = inputProxy;
+        if(inputProxy!=null && inputProxy != false)
+            process.env.IG_PROXY = inputProxy;
+        
     }
 
-    if(process.env.IG_PROXY) {
+    if(process.env.IG_PROXY && inputProxy != false) {
         console.log("Using proxy".green);
     } else {
         console.log("Not using proxy".yellow);
