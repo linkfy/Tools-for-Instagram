@@ -47,8 +47,8 @@ IG_PASSWORD=myPassword
 - [x] Follow by Username
 - [x] Follow User by Post
 - [x] Unfollow by Username
-- [x] view stories by User Id
-- [x] view stories by Username
+- [x] View stories by User Id
+- [x] View stories by Username
 - [x] Get recent posts list of a hashtag
 - [x] Get top posts list of a hashtag
 - [x] Get recent post list by location
