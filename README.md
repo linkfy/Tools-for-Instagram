@@ -1,5 +1,7 @@
 # Tools-for-Instagram
 
+<img src="https://i.imgur.com/J2PsoIZ.png" width="100">
+
 ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/tools-for-instagram)
 ![NPM](https://img.shields.io/npm/l/tools-for-instagram)
 ![npm](https://img.shields.io/npm/dt/tools-for-instagram)
