@@ -1,11 +1,14 @@
 # Tools-for-Instagram
 
+<img src="https://i.imgur.com/J2PsoIZ.png" width="100">
+
 ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/tools-for-instagram)
 ![NPM](https://img.shields.io/npm/l/tools-for-instagram)
 ![npm](https://img.shields.io/npm/dt/tools-for-instagram)
 
 Automation scripts for Instagram </br></br>
-<img src="https://media.giphy.com/media/ignhVpXU7h4qHMwXix/giphy.gif" width="340">
+<img src="https://i.imgur.com/aaTVSP2.png" width="540">
+
 ## How to use it
 ### Easy way:
     1. npm install tools-for-instagram
@@ -70,6 +73,9 @@ IG_PASSWORD=myPassword
 - [x] NPM package support
 - [ ] View Stories from User Followers
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
+
+<img src="https://media.giphy.com/media/ignhVpXU7h4qHMwXix/giphy.gif" width="340">
+
 ## Wiki
 
 https://github.com/linkfy/Tools-for-Instagram/wiki
