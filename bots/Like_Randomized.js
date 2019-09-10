@@ -130,9 +130,9 @@ function totalAssigments(array) {
 
         console.log(arrayIndex);
         arrayConsoleViewer(dayArray, initialHour, endHour);
-        await sleep(1);
+        
 
-    }, 5000);
+    }, 20000);
 
     process.on('unhandledRejection', async function(err) {
         console.log(err.response.body);
