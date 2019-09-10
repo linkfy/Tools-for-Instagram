@@ -43,7 +43,9 @@ IG_PASSWORD=myPassword
 - [x] Save Cookies in files
 - [x] Remove Cookies
 - [x] Get User Information
-- [x] Get Followers of account (save into a txt file)
+- [x] Get Followers of account (save into a json file)
+- [x] Get Followings of account (save into a json file)
+- [x] Read Following/Followers files generated and return Array.
 - [x] Like Content by URL
 - [x] Like Content by MediaId 
 - [x] Like Content by Post
@@ -71,7 +73,8 @@ IG_PASSWORD=myPassword
 - [x] Follow Recent Hashtags By Intervals
 - [x] Simple Bot
 - [x] NPM package support
-- [ ] View Stories from User Followers
+- [x] View Stories from User Followers
+- [x] View Stories from User Following
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 
 <img src="https://media.giphy.com/media/ignhVpXU7h4qHMwXix/giphy.gif" width="340">
