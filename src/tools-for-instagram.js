@@ -3,6 +3,9 @@ function toolsForInstagram() {
     global.sleep = require('./sleep.js');
     global.login =  require('./login.js');
     global.getFollowers = require('./getFollowers.js');
+    global.getFollowing = require('./getFollowing.js');
+    global.readFollowers = require('./readFollowers.js');
+    global.readFollowing = require('./readFollowing.js');
     global.getUserInfo = require('./getUserInfo.js');
     global.likeUrl = require('./likeUrl.js');
     global.recentHashtagList = require('./recentHashtagList.js');
@@ -26,8 +29,10 @@ function toolsForInstagram() {
     global.likeRecentHashtagsByIntervals = require("./likeRecentHashtagsByIntervals.js");
     global.followRecentHashtagsByIntervals = require('./followRecentHashtagsByIntervals.js');
     global.loadConfig = require('./loadConfig.js');
-    global.viewStoriesFromUser = require('./viewStoriesFromUser');
-    global.viewStoriesFromId = require('./viewStoriesFromId');
+    global.viewStoriesFromUser = require('./viewStoriesFromUser.js');
+    global.viewStoriesFromId = require('./viewStoriesFromId.js');
+    global.viewStoriesFromFollowing = require('./viewStoriesFromFollowing.js');
+    global.viewStoriesFromFollowers = require('./viewStoriesFromFollowers.js');
 }
 
 module.exports = toolsForInstagram();

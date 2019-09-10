@@ -2,11 +2,11 @@ let fs = require('fs');
 let getUserInfo = require('./getUserInfo.js');
 let sleep = require('./sleep.js');
 
-async function getFollowers(ig, username, maxIterations = undefined){
-    let filename = username.toString().toLowerCase() +"_followers.json"
+async function getFollowing(ig, username, maxIterations = undefined){
+    let filename = username.toString().toLowerCase() +"_following.json"
     let filepath = "./output/" + filename;
     let pk = await ig.user.getIdByUsername(username);
-    const feed = ig.feed.accountFollowers(pk);
+    const feed = ig.feed.accountFollowing(pk);
     //Start JSON with [
     fs.writeFileSync(filepath, '[', function (err) {
         if (err) throw err;
@@ -21,7 +21,7 @@ async function getFollowers(ig, username, maxIterations = undefined){
     do {
         try {
             let i = await feed.items();
-            let logOutput = parseInt((counter/user_info.follower_count)*100) + "% " + counter + "/" + user_info.follower_count;
+            let logOutput = parseInt((counter/user_info.following_count)*100) + "% " + counter + "/" + user_info.following_count;
             process.stdout.write("\r\x1b[K");
             process.stdout.write(logOutput);
             Object.keys(i).map(function(objectKey, index) {
@@ -60,8 +60,8 @@ async function getFollowers(ig, username, maxIterations = undefined){
         if (err) throw err;
     });
 
-    return console.log(("\nFollowers saved to 'output' folder with name " + username + "_followers.json").green);
+    return console.log(("\nFollowers saved to 'output' folder with name " + username + "_following.json").green);
 }
 
 
-module.exports = getFollowers;
+module.exports = getFollowing;
