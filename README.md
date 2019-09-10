@@ -159,6 +159,24 @@ It will save the followers inside the outputfolder with the format "acountName_f
 ```javascript
    await getFollowers(ig, 'Instagram');
 ```
+
+#### getFollowing(ig, username)
+It will save the following inside the outputfolder with the format "acountName_following.json"
+```javascript
+   await getFollowing(ig, 'Instagram');
+```
+
+#### readFollowers(ig, username)
+It will return the followers inside the outputfolder with the format "acountName_followers.json"
+```javascript
+   let followers = await readFollowers(ig, 'Instagram');
+```
+#### readFollowing(ig, username)
+It will return the following inside the outputfolder with the format "acountName_following.json"
+```javascript
+   let followers = await readFollowing(ig, 'Instagram');
+```
+
 #### likeUrl(ig, username, [force: bool])
 like the desired instagram Url, the like will be saved inside database. 
 ```javascript
@@ -237,3 +255,5 @@ It is also possible to stop the interval clearing it
 #### removeCookie(ig)
 #### followRecentHashtagsByIntervals(ig, hashtagArray, intervals, followsPerInterval, waitMinutesBetweenFollows)
 #### viewStoriesFromId(ig, userId)
+#### viewStoriesFromFollowing(ig, username)
+#### viewStoriesFromFollowers(ig, username)
