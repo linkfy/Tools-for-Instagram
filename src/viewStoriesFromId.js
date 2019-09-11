@@ -3,7 +3,7 @@ async function viewStoriesFromId(ig, id) {
         const reelsFeed = await ig.feed.reelsMedia({
             userIds:[id],
         });
-        
+        await sleep(1, false);
         const storyItems = await reelsFeed.items();
         if (storyItems.length != 0) {
             process.stdout.write("Viewing => ");
@@ -24,7 +24,7 @@ async function viewStoriesFromId(ig, id) {
 
     } catch(e) {
         console.log(e);
-        await sleep(10*60);
+        await sleep(20*60);
         return await viewStoriesFromId(ig, id);
     }
     
