@@ -1,5 +1,5 @@
 require('../src/tools-for-instagram.js');
-let totalLikes = 80;
+let totalLikes = 120;
 let initialHour = 15, endHour = 23;
 
 /*  When bot is started every row of '0's is an hour of the day
@@ -33,7 +33,7 @@ function arrayInitializer(initialHour, endHour) {
 
     
     initialHour = initialHour * 60;
-    endHour = endHour * 60;
+    endHour = endHour * 60 -1;
 
     do{
         let choosenIndex = Math.floor(Math.random() * (endHour - initialHour +1)) + initialHour;

@@ -43,10 +43,10 @@ async function getFollowing(ig, username, maxIterations = undefined){
                     });
                     return console.log("\nDesired iterations completed, skipping the other followers\nFollowers saved to 'output' folder with name ".green + filename.green);
                 }
-                console.log(" | Wait a minute ..");
-                await sleep(60);
+                process.stdout.write(" | Wait a minute ..");
+                await sleep(60, false);
                 sleep_after = 10000;
-                console.log ("Continue");
+                
             }
             
 

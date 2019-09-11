@@ -14,7 +14,12 @@ async function viewStoriesFromFollowers(ig, username, iterations = null) {
         totalViews += await viewStoriesFromId(ig, followers[i].pk);
         process.stdout.write("\r\x1b[K");
         process.stdout.write("Follower:"+i+"/"+followers.length+" Total views: " + totalViews + " ");
-        
+        if(i % 100 == 0 && i != 0) {
+            let minutes = 1;
+            process.stdout.write("\r\x1b[K");
+            process.stdout.write("Watched " + i + " users, "+  totalViews + " stories viewed, waiting "+ minutes +" Minutes.. ");
+            await sleep(60 * minutes, false);
+        }
     }
     console.log(("\nStories from " + username + " followers completed").green);
     return totalViews;
