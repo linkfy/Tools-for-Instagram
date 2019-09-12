@@ -73,6 +73,7 @@ IG_PASSWORD=myPassword
 - [x] Follow Recent Hashtags By Intervals
 - [x] Simple Bot
 - [x] NPM package support
+- [x] View Stories from User  Id/Ids
 - [x] View Stories from User Followers
 - [x] View Stories from User Following
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
