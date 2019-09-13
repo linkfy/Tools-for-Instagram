@@ -9,6 +9,8 @@
 Automation scripts for Instagram </br></br>
 <img src="https://i.imgur.com/aaTVSP2.png" width="540">
 
+![View changes](https://github.com/linkfy/Tools-for-Instagram/wiki/Changelog)
+
 ## How to use it
 ### Easy way:
     1. npm install tools-for-instagram
