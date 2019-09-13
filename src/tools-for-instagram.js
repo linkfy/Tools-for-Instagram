@@ -9,6 +9,7 @@ function toolsForInstagram() {
     global.readFollowers = require('./readFollowers.js');
     global.readFollowing = require('./readFollowing.js');
     global.getUserInfo = require('./getUserInfo.js');
+    global.getUserRecentPosts = require('./getUserRecentPosts.js');
     global.likeUrl = require('./likeUrl.js');
     global.recentHashtagList = require('./recentHashtagList.js');
     global.topHashtagList = require('./topHashtagList.js');

@@ -39,6 +39,7 @@ async function doSteps(ig, followers) {
         await sleep(5, false);
         process.stdout.write(".");
         await sleep(5, false);
+
         process.stdout.write("\r\x1b[K");
         
         process.stdout.write("Follower:"+counter+"/"+followers.length+" Total views: " + totalViews + " ");

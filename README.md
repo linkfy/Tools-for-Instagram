@@ -43,6 +43,7 @@ IG_PASSWORD=myPassword
 - [x] Save Cookies in files
 - [x] Remove Cookies
 - [x] Get User Information
+- [x] Get User Recent Posts
 - [x] Get Followers of account (save into a json file)
 - [x] Get Followings of account (save into a json file)
 - [x] Read Following/Followers files generated and return Array.
@@ -261,3 +262,4 @@ It is also possible to stop the interval clearing it
 #### viewStoriesFromId(ig, userId)
 #### viewStoriesFromFollowing(ig, username)
 #### viewStoriesFromFollowers(ig, username)
+#### getUserRecentPosts(ig, username)
