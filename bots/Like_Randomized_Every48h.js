@@ -137,14 +137,8 @@ function totalAssigments(array) {
         let minutes = new Date().getMinutes();
         let arrayIndex = hour * 60 + minutes;
         
-        if(!isValidInput()) {
-            console.log("Not valid Input, check if there is enought time for the desired input");
-            return;
-        }
         
         if(dayArray[arrayIndex] == 1) {
-
-
             var rand = hashtagArray[Math.floor(Math.random() * hashtagArray.length)];
             let posts = await recentHashtagList(ig, rand);
             await likePost(ig, posts[0]);
