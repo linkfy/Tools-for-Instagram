@@ -32,7 +32,7 @@ IG_PASSWORD=myPassword
     2. Tests the bot using 'node bots/yourBot.js'
 
 ### Git way:
-    1. Download the repo and install dependencies
+    1. Download the repo and install dependencies using this terminal commands:
 ```
     git clone https://github.com/linkfy/Tools-for-Instagram.git
     cd Tools-for-Instagram
