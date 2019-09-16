@@ -13,8 +13,7 @@
     "lowdb": "^1.0.0",
     "moment": "^2.24.0",
     "ora": "^3.4.0",
-    "shortid": "^2.2.15",
-    "sleep": "^6.1.0"
+    "shortid": "^2.2.15"
   },
   "devDependencies": {},
   "keywords": [
