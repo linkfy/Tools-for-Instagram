@@ -1,1 +1,0 @@
-{"version":3,"file":"upload.photo.options.js","sourceRoot":"","sources":["../../src/types/upload.photo.options.ts"],"names":[],"mappings":""}

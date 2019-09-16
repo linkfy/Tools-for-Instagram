@@ -1,1 +1,0 @@
-{"version":3,"file":"posting.album.options.js","sourceRoot":"","sources":["../../src/types/posting.album.options.ts"],"names":[],"mappings":""}

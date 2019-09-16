@@ -1,1 +1,0 @@
-{"version":3,"file":"direct-thread.broadcast.options.js","sourceRoot":"","sources":["../../src/types/direct-thread.broadcast.options.ts"],"names":[],"mappings":""}

@@ -11,8 +11,6 @@
     "instagram-id-to-url-segment": "^0.0.0",
     "instagram-private-api": "^1.28.0",
     "lowdb": "^1.0.0",
-    "moment": "^2.24.0",
-    "ora": "^3.4.0",
     "shortid": "^2.2.15"
   },
   "devDependencies": {},
