@@ -1,7 +1,7 @@
 function toolsForInstagram() {
     global.fs = require('fs');
     global.sleep = require('./sleep.js');
-    global.sleepSync = require('sleep').msleep;
+    global.sleepSync = require('./sleepSync.js');
     require('./logo.js')();
     global.login =  require('./login.js');
     global.getFollowers = require('./getFollowers.js');
