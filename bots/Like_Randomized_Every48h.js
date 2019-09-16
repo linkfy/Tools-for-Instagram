@@ -1,6 +1,7 @@
 require('../src/tools-for-instagram.js');
 let totalLikes = 120;
 let initialHour = 15, endHour = 23;
+let activeDay = true;
 
 /*  When bot is started every row of '0's is an hour of the day
     so it goes from 00 to 23. 
@@ -12,19 +13,18 @@ let initialHour = 15, endHour = 23;
 
 function isValidInput() {
   
-  if(endHour <= initialHour) {
-    return false
-  }
-
-  let maxIterations = (endHour - initialHour) * 60;
-  console.log("Max iterations: " + maxIterations);
+    if(endHour <= initialHour) {
+      return false
+    }
   
-  if(totalLikes > maxIterations) {
-    return false;
-  }
-  return true;
+    let maxIterations = (endHour - initialHour) * 60;
+    console.log("Max iterations: " + maxIterations);
+    
+    if(totalLikes > maxIterations) {
+      return false;
+    }
+    return true;
 }
-
 let hashtagArray = [
     "cats",
     "dogs",
@@ -43,18 +43,22 @@ function isArrayFinished(array) {
     });
     return result;
 }
-function arrayInitializer(initialHour, endHour) {
+function arrayInitializer(initialHour, endHour, activeDay = true) {
     let dayInMinutes = Array(24*60).fill(0);
-
     
     initialHour = initialHour * 60;
     endHour = endHour * 60 -1;
+    if(!activeDay) {
+      // Return void array
+      return dayInMinutes;
+    }
 
-    do{
+    do {
         let choosenIndex = Math.floor(Math.random() * (endHour - initialHour +1)) + initialHour;
         dayInMinutes[choosenIndex] = 1;
-    } while(totalAssigments(dayInMinutes) < totalLikes);
-    return dayInMinutes;
+    } while(totalAssigments(dayInMinutes) < totalLikes);  
+
+ return dayInMinutes;
 }
 
 function arrayConsoleViewer(dayInMinutes, initialHour, endHour) {
@@ -114,8 +118,8 @@ function totalAssigments(array) {
 
 (async () => {
     if(!isValidInput()) {
-      console.log("Not valid Input, check if there is enought time for the desired input");
-      return;
+        console.log("Not valid Input, check if there is enought time for the desired input");
+        return;
     }
     let dayArray = arrayInitializer(initialHour, endHour);
     
@@ -133,6 +137,11 @@ function totalAssigments(array) {
         let minutes = new Date().getMinutes();
         let arrayIndex = hour * 60 + minutes;
         
+        if(!isValidInput()) {
+            console.log("Not valid Input, check if there is enought time for the desired input");
+            return;
+        }
+        
         if(dayArray[arrayIndex] == 1) {
 
 
@@ -143,7 +152,15 @@ function totalAssigments(array) {
         }
         if(isArrayFinished(dayArray)) {
             console.log("Generating new Day array".green);
-            dayArray = arrayInitializer(initialHour, endHour);
+            if(activeDay) {
+              activeDay = false;
+              console.log("Generating NON active day");
+              dayArray = arrayInitializer(initialHour, endHour, activeDay);
+            } else {
+              activeDay = true;
+              console.log("Generating active day");
+              dayArray = arrayInitializer(initialHour, endHour, activeDay);
+            }
         }
 
         console.log(arrayIndex);

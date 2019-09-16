@@ -34,6 +34,7 @@ function toolsForInstagram() {
     global.loadConfig = require('./loadConfig.js');
     global.viewStoriesFromUser = require('./viewStoriesFromUser.js');
     global.viewStoriesFromId = require('./viewStoriesFromId.js');
+    global.viewStoriesFromIds = require('./viewStoriesFromId.js');
     global.viewStoriesFromFollowing = require('./viewStoriesFromFollowing.js');
     global.viewStoriesFromFollowers = require('./viewStoriesFromFollowers.js');
 }
