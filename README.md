@@ -33,11 +33,11 @@ IG_PASSWORD=myPassword
 
 ### Git way:
     1. Download the repo and install dependencies
-    ```
-     git clone https://github.com/linkfy/Tools-for-Instagram.git
-     cd Tools-for-Instagram
-     npm install
-    ```
+```
+    git clone https://github.com/linkfy/Tools-for-Instagram.git
+    cd Tools-for-Instagram
+    npm install
+```
     2. Rename .env_example to .env and edit the configuration.
     3. Execute 'node example.js' to test the scripts.
 
