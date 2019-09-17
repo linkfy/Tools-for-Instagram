@@ -12,7 +12,16 @@ require('./src/tools-for-instagram.js');
     //posts = await topHashtagList(ig, "dogs");
     //await likePost(ig, posts[0]);
 
-    let info = await getUserInfo(ig, 'thelinkfy');
+    let posts = await getUserRecentPosts(ig, 'instagram');
+    console.log(posts[0]);
+    let likers = await ig.media.likers(posts[0].pk).then((r) => {return r.users});
+    console.log(likers.length);
+    
+
+    
+    
+ 
+    /*     let info = await getUserInfo(ig, 'thelinkfy');
     let feed = await ig.feed.user(info.pk);
     let list = [];
     do {
@@ -28,10 +37,10 @@ require('./src/tools-for-instagram.js');
     return;
     let likers = await ig.media.likers(list[0].pk).then((r)=> {return r.users});
     
-
+ */
     //console.log(await ig.user.accountDetails(info.pk));
     //let likers = await ig.media.likers(posts[0].pk);
-    console.log(likers.length);
+   /*  console.log(likers.length);
     //console.log(likers[0]);
     
     setInterval(async function() {
@@ -42,11 +51,12 @@ require('./src/tools-for-instagram.js');
         likers = likers.concat(moreLikers2).uniqueIdUser();
         likers = likers.concat(moreLikers3).uniqueIdUser();
         console.log(likers.length);
-    },1000);
+    },1000); */
     console.log("\nProcess done!\n".green);
     
 })();
 
+//When concat dont add the same user Id on different iterations
 Array.prototype.uniqueIdUser = function() {
     var a = this.concat();
     for(var i=0; i<a.length; ++i) {

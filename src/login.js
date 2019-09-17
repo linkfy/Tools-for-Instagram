@@ -77,13 +77,24 @@ ig.simulate.preLoginFlow();
 // Optionally you can setup proxy url
 
 //if Input proxy == false then we force to not use the proxy
-async function login(inputLogin = null, inputPassword = null, inputProxy = null) {
+async function login(inputLogin = null, inputPassword = null, inputProxy = null, verificationMode = null) {
     if(inputLogin!=null && inputPassword !=null) {
         process.env.IG_USERNAME = inputLogin;
         process.env.IG_PASSWORD = inputPassword;
         if(inputProxy!=null && inputProxy != false)
             process.env.IG_PROXY = inputProxy;
         
+    }
+    //If instagramVerification parameter is not null then we parse it
+    //Parse Instagram verification to the real parameters
+    if(process.env.IG_VERIFICATION == 'sms') {
+        process.env.IG_VERIFICATION = 0; //By default IG Verification 0 means by sms
+    } else if(process.env.IG_VERIFICATION == 'email') {
+        process.env.IG_VERIFICATION = 1;
+    }
+    if(verificationMode!=null) {
+        //0 = sms; 1 = email
+        process.env.IG_VERIFICATION = verificationMode;
     }
 
     if(process.env.IG_PROXY && inputProxy != false) {
@@ -157,8 +168,14 @@ async function login(inputLogin = null, inputPassword = null, inputProxy = null)
         return ig;
     }).catch(Api.IgCheckpointError, async () => {
 
-        console.log(ig.state.checkpoint);
-        await ig.challenge.auto(true); //Sms it was me
+        if(process.env.IG_VERIFICATION == 1) {
+
+            await ig.challenge.selectVerifyMethod(1); //Email
+        } else {
+            
+            await ig.challenge.auto(true); //Sms it was me
+        }
+
         console.log(ig.state.checkpoint); //Challenge info here
         
         let code = await inquirer.prompt([
@@ -174,6 +191,8 @@ async function login(inputLogin = null, inputPassword = null, inputProxy = null)
         
         let sendCode = await ig.challenge.sendSecurityCode(code);
         console.log(sendCode);
+        console.log("Done! Restart me to start your new session!".green);
+        process.exit();
     }).catch(Api.IgLoginRequiredError, () => {
         if(hasCookies) {
             console.log("Invalid cookies");

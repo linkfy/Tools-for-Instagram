@@ -22,6 +22,8 @@ IG_PASSWORD=myPassword
 
 # Uncomment next line to use a proxy
 # IG_PROXY=http://proxyuser:proxypassword@xxx.xxx.xxx.xxx:xxxxx
+# Uncomment next line to use email verifications | sms by default
+# IG_VERIFICATION=email
 ```
     3. Copy the example.js on the root folder of your project from the repo
     4. Execute'node example.js' to test the scripts.
@@ -47,6 +49,7 @@ IG_PASSWORD=myPassword
 
 ## Bot skills:
 - [x] Login Flow
+- [x] SMS/Email verification modes
 - [x] Save Cookies in files
 - [x] Remove Cookies
 - [x] Get User Information

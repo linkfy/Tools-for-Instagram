@@ -11,7 +11,7 @@ async function getUserRecentPosts(ig, username) {
        
     } while(feed.moreAvailable == true); */
     
-    return items;
+    return list;
 }
 
 module.exports = getUserRecentPosts;
