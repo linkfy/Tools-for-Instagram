@@ -204,6 +204,10 @@ async function login(inputLogin = null, inputPassword = null, inputProxy = null,
     }).catch(Api.IgLoginBadPasswordError, () => {
         console.log("Incorrect password");
         return "incorrectPassword";
+    }).catch(Api.IgResponseError, () => {
+        console.log("IgResponseError:Bad request // Is your phone number verified?".yellow);
+        process.exit();
+        return "IgResponseError";
     });
     // If result is not undefined we send the ig object session
     return result;
