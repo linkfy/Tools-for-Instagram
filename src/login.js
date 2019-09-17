@@ -168,9 +168,9 @@ async function login(inputLogin = null, inputPassword = null, inputProxy = null,
         return ig;
     }).catch(Api.IgCheckpointError, async () => {
 
-        if(process.env.IG_VERIFICATION == 1 || process.env.IG_VERIFICATION == 'email') {
+        if(process.env.IG_VERIFICATION == 1) {
 
-            await ig.challenge.selectVerifyMethod('1'); //Email
+            await ig.challenge.selectVerifyMethod(1); //Email
         } else {
             
             await ig.challenge.auto(true); //Sms it was me
