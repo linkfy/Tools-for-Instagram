@@ -54,6 +54,7 @@ IG_PASSWORD=myPassword
 - [x] Remove Cookies
 - [x] Get User Information
 - [x] Get User Recent Posts
+- [x] Get recent post Likers / By Username
 - [x] Get Followers of account (save into a json file)
 - [x] Get Followings of account (save into a json file)
 - [x] Read Following/Followers files generated and return Array.
