@@ -169,6 +169,25 @@ Get the user information of the desired username
 ```javascript
    let info = await getUserInfo(ig, 'Instagram');
 ```
+
+
+#### getRecentPostLikers(ig, post);
+Get the last likers (max of 1000) of a post
+```javascript
+    let posts = await getUserRecentPosts(ig, username);
+    let likers = await getRecentPostLikers(ig, posts[0]);
+```
+
+#### getRecentPostLikersByUsername(ig, username)
+Get the last likers (max of 1000) of the last post of the desired username
+
+```javascript
+let likers = await getRecentPostLikersByUsername(ig,'instagram');
+//Show the last liker of the array
+console.log(likers[likers.length-1]);
+```
+
+
 #### getFollowers(ig, username)
 It will save the followers inside the outputfolder with the format "acountName_followers.json"
 ```javascript
@@ -273,3 +292,6 @@ It is also possible to stop the interval clearing it
 #### viewStoriesFromFollowing(ig, username)
 #### viewStoriesFromFollowers(ig, username)
 #### getUserRecentPosts(ig, username)
+
+
+

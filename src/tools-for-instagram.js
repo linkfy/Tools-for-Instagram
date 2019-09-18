@@ -37,6 +37,8 @@ function toolsForInstagram() {
     global.viewStoriesFromIds = require('./viewStoriesFromId.js');
     global.viewStoriesFromFollowing = require('./viewStoriesFromFollowing.js');
     global.viewStoriesFromFollowers = require('./viewStoriesFromFollowers.js');
+    global.getRecentPostLikers = require('./getRecentPostLikers.js');
+    global.getRecentPostLikersByUsername = require('./getRecentPostLikersByUsername.js');
 }
 
 module.exports = toolsForInstagram();
