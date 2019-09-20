@@ -1,6 +1,6 @@
 require('../src/tools-for-instagram.js');
 let totalLikes = 120;
-let initialHour = 15, endHour = 23;
+let initialHour = 7, endHour = 22;
 let activeDay = true;
 
 /*  When bot is started every row of '0's is an hour of the day
