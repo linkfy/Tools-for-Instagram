@@ -38,7 +38,7 @@ function isArrayFinished(array) {
     let result = true;
     array.forEach( element => {
         
-        if (element == 1)
+        if (element == 1 || element == -1)
             result = false;
     });
     return result;
@@ -50,6 +50,7 @@ function arrayInitializer(initialHour, endHour, activeDay = true) {
     endHour = endHour * 60 -1;
     if(!activeDay) {
       // Return void array
+      dayInMinutes = Array(24*60).fill(-1);
       return dayInMinutes;
     }
 
@@ -121,7 +122,7 @@ function totalAssigments(array) {
         console.log("Not valid Input, check if there is enought time for the desired input");
         return;
     }
-    let dayArray = arrayInitializer(initialHour, endHour);
+    let dayArray = arrayInitializer(initialHour, endHour, activeDay);
     
     arrayTimesViewer(dayArray);
     arrayConsoleViewer(dayArray, initialHour, endHour);
@@ -143,6 +144,8 @@ function totalAssigments(array) {
             let posts = await recentHashtagList(ig, rand);
             await likePost(ig, posts[0]);
             dayArray[arrayIndex] = 2;
+        } else if( dayArray[arrayIndex] == -1) {
+            dayArray[arrayIndex] = 0;
         }
         if(isArrayFinished(dayArray)) {
             console.log("Generating new Day array".green);
