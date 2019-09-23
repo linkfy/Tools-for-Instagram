@@ -2,6 +2,7 @@
 
 <img src="https://i.imgur.com/J2PsoIZ.png" width="100">
 
+[![Telegram Chat](https://img.shields.io/badge/telegram-join%20chat-informational.svg)](https://t.me/toolsforinstagram)
 ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/tools-for-instagram)
 ![NPM](https://img.shields.io/npm/l/tools-for-instagram)
 ![npm](https://img.shields.io/npm/dt/tools-for-instagram)
@@ -96,6 +97,11 @@ IG_PASSWORD=myPassword
 ## Wiki
 
 https://github.com/linkfy/Tools-for-Instagram/wiki
+
+
+## Telegram group
+
+https://t.me/toolsforinstagram
 
 ## Follow the project
 
