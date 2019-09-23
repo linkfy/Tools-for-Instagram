@@ -39,6 +39,7 @@ function toolsForInstagram() {
     global.viewStoriesFromFollowers = require('./viewStoriesFromFollowers.js');
     global.getRecentPostLikers = require('./getRecentPostLikers.js');
     global.getRecentPostLikersByUsername = require('./getRecentPostLikersByUsername.js');
+    global.requestLivestream = require('./requestLivestream.js');
 }
 
 module.exports = toolsForInstagram();

@@ -88,6 +88,7 @@ IG_PASSWORD=myPassword
 - [x] View Stories from User  Id/Ids
 - [x] View Stories from User Followers
 - [x] View Stories from User Following
+- [x] Live Streaming
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 
 <img src="https://media.giphy.com/media/ignhVpXU7h4qHMwXix/giphy.gif" width="340">
@@ -293,6 +294,6 @@ It is also possible to stop the interval clearing it
 #### viewStoriesFromFollowing(ig, username)
 #### viewStoriesFromFollowers(ig, username)
 #### getUserRecentPosts(ig, username)
-
+#### requestLivestream(ig)
 
 
