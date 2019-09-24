@@ -5,9 +5,11 @@ require('./src/tools-for-instagram.js');
 
     console.log("\n -- TESTING --\n".bold.underline);
 
-    let ig = await login();
+    console.log("\n1 -- LOGIN --\n".bold.underline);
+    //let ig = await login();
 
-    
+
+
     console.log("\nProcess done!\n".green);
     
 })();
