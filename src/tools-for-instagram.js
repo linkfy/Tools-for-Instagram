@@ -1,4 +1,5 @@
 function toolsForInstagram() {
+    global.Blob = require('blob');
     global.fs = require('fs');
     global.sleep = require('./sleep.js');
     global.sleepSync = require('./sleepSync.js');
@@ -40,6 +41,8 @@ function toolsForInstagram() {
     global.getRecentPostLikers = require('./getRecentPostLikers.js');
     global.getRecentPostLikersByUsername = require('./getRecentPostLikersByUsername.js');
     global.requestLivestream = require('./requestLivestream.js');
+    global.detectFaces = require('./detectFaces.js');
+    global.requestLivestream = require('./imageHaveFaces.js');
 }
 
 module.exports = toolsForInstagram();
