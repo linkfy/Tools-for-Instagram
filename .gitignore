@@ -7,3 +7,4 @@ db/*
 *.txt
 logins/*
 !logins/exampleAccount.js
+bots/test.js
