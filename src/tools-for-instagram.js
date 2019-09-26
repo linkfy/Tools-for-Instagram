@@ -45,6 +45,7 @@ function toolsForInstagram() {
     global.requestLivestream = require('./imageHaveFaces.js');
     global.commentMediaId = require('./commentPost.js');
     global.getMediaIdInfo = require('./getMediaIdInfo.js');
+    global.uploadPicture = require('./uploadPicture');
 }
 
 module.exports = toolsForInstagram();

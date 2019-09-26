@@ -8,3 +8,4 @@ db/*
 logins/*
 !logins/exampleAccount.js
 bots/test.js
+bots/private/img_1.jpg
