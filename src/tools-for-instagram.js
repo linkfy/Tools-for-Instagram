@@ -41,11 +41,11 @@ function toolsForInstagram() {
     global.getRecentPostLikers = require('./getRecentPostLikers.js');
     global.getRecentPostLikersByUsername = require('./getRecentPostLikersByUsername.js');
     global.requestLivestream = require('./requestLivestream.js');
-    global.detectFaces = require('./detectFaces.js');
-    global.requestLivestream = require('./imageHaveFaces.js');
     global.commentMediaId = require('./commentMediaId.js');
     global.getMediaIdInfo = require('./getMediaIdInfo.js');
     global.uploadPicture = require('./uploadPicture.js');
+    global.detectFaces = require('./detectFaces.js');
+    global.imageHaveFaces = require('./imageHaveFaces.js');
 }
 
 module.exports = toolsForInstagram();
