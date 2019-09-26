@@ -32,6 +32,7 @@ require('./src/tools-for-instagram.js');
     posts = await topHashtagList(ig, "dogs");
     await likePost(ig, posts[0]);
 
+
     
     console.log("\n7 -- Trying to get recent location list and like the first item -- \n".bold.underline);
     console.log("Getting the most accurated Location...\n[To get a randomized location of the search result specify 'true' at the end of function]\n- Example: recentLocationList(ig, 'Spain', true);".yellow);
@@ -60,7 +61,7 @@ require('./src/tools-for-instagram.js');
     console.log("\n-- 11: Unfollow User by username --\n".bold.underline);
     await unfollowUser(ig, 'Instagram');
 
-    
+
     console.log("\nProcess done!\n".green);
     
 })();
