@@ -90,6 +90,9 @@ IG_PASSWORD=myPassword
 - [x] View Stories from User Followers
 - [x] View Stories from User Following
 - [x] Live Streaming
+- [x] Comment Media by Id
+- [x] Get Media information by Id
+- [x] Upload Pictures 
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 
 <img src="https://media.giphy.com/media/ignhVpXU7h4qHMwXix/giphy.gif" width="340">
@@ -278,7 +281,20 @@ It is also possible to stop the interval clearing it
    clearInterval(likeInterval);
 ```
 
+#### uploadPicture(ig, caption, picturePath)
+Upload a picture from computer to Instagram account
+```javascript
+const path = require('path');
+let myPicturePath = path.join(__dirname, '/images');
+await uploadPicture(ig, "My picture", myPicturePath);
+```
 
+#### commentMediaId(ig, mediaId, commentContent)
+Post a comment on the desired post giving the media Id
+```javascript
+ let posts = await recentHashtagList(ig, "dogs");
+ await commentMediaId(ig, posts[0].pk, "Amazing!");
+```
 
 ### This documentation is not yet finished...
 #### recentHashtagList(ig, hashtag)
@@ -301,5 +317,5 @@ It is also possible to stop the interval clearing it
 #### viewStoriesFromFollowers(ig, username)
 #### getUserRecentPosts(ig, username)
 #### requestLivestream(ig)
-
+#### getMediaIdInfo(ig, mediaId)
 
