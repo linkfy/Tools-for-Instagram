@@ -64,6 +64,7 @@ IG_PASSWORD=myPassword
 - [x] Like Content by Post
 - [x] Follow by Username
 - [x] Follow User by Post
+- [x] Unfollow by Id
 - [x] Unfollow by Username
 - [x] View stories by User Id
 - [x] View stories by Username
@@ -300,7 +301,11 @@ Post a comment on the desired post giving the media Id
  let posts = await recentHashtagList(ig, "dogs");
  await commentMediaId(ig, posts[0].pk, "Amazing!");
 ```
-
+#### commentPost(ig, post, comment)
+```javascript
+    let posts = await recentHashtagList(ig, "dogs");
+    await commentPost(ig, posts[0], "Lovely!");
+```
 #### replyDirectMessage(ig, {userId:id}, message)
 Send message by user id
 ```javascript
@@ -343,3 +348,4 @@ Send message by Inbox thread Id
 #### getInboxPending(ig)
 #### approveInboxPending(ig, id)
 #### declineInboxPending(ig, id)
+#### unfollowById(ig, id)

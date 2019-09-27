@@ -21,6 +21,7 @@ function toolsForInstagram() {
     global.followUser = require('./followUser.js');
     global.followUserByPost = require('./followUserByPost');
     global.unfollowUser = require('./unfollowUser.js');
+    global.unfollowById = require('./unfollowById.js');
     global.getLikeActivityByHours = require('./getLikeActivityByHours.js');
     global.getFollowActivityByHours = require('./getFollowActivityByHours.js');
     global.getUnfollowActivityByHours = require('./getUnfollowActivityByHours.js');
@@ -54,6 +55,8 @@ function toolsForInstagram() {
     global.approveInboxPending = require('./approveInboxPending.js');
     global.declineInboxPending = require('./declineInboxPending.js');
     global.replyDirectMessage = require('./replyDirectMessage.js');
+    global.commentPost = require('./commentPost.js');
+
     global.detectFaces = require('./detectFaces.js');
     global.imageHaveFaces = require('./imageHaveFaces.js');
 }

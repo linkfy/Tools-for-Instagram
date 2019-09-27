@@ -5,6 +5,9 @@ require('./src/tools-for-instagram.js');
 
     console.log("\n1 -- LOGIN --\n".bold.underline);
     let ig = await login();
+    let insta = await getUserInfo(ig, 'instagram');
+    await sleep(5);
+    await unfollowById(ig, insta.pk, force= true);
 
     
     console.log("\n2 -- Get User Info -- \n".bold.underline);
@@ -60,7 +63,7 @@ require('./src/tools-for-instagram.js');
     
     console.log("\n-- 11: Unfollow User by username --\n".bold.underline);
     await unfollowUser(ig, 'Instagram');
-
+    
 
     console.log("\nProcess done!\n".green);
     

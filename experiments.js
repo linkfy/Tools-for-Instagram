@@ -4,22 +4,11 @@ require('./src/tools-for-instagram.js');
 (async () => {
 
 
-    console.log("\n -- Get last messages from Inbox --\n".bold.underline);
+    console.log("\n -- TESTING --\n".bold.underline);
     let ig = await login();
-
-    let inbox = await getInbox(ig);
-    console.log(inbox);
-    inbox.forEach(chat => {
-
         
-        if(chat.lastMessage.messageContent != undefined) {
-
-            console.log(chat.lastMessage.messageContent);
-            console.log("----");
-        }
-
-    });
-
+    let posts = await recentHashtagList(ig, "dogs");
+    await commentPost(ig, posts[0], "Lovely!");
     console.log("\nProcess done!\n".green);
     
 })();
