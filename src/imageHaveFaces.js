@@ -1,7 +1,7 @@
 
 async function imageHaveFaces(ig, url) {
     let result = await detectFaces(ig,url);
-    if(result.length > 0) {
+    if(result != false) {
         return true;
     } else {
         return false;

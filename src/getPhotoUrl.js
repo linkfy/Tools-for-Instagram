@@ -12,7 +12,7 @@ async function getPhotoUrl(ig, mediaIdOrPostUrl, hd = true){
         info = await getMediaIdInfo(ig, mediaIdOrPostUrl);
         
     }
-    console.log(type);
+    //console.log(type);
 
 
     if(hd) {

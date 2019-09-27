@@ -5,14 +5,18 @@ async function getMediaType(ig, mediaIdOrUrl, debug = false) {
         let mediaId = await urlToMediaId(ig, mediaIdOrUrl);
         let info = await getMediaIdInfo(ig, mediaId);
         type = info.items[0].media_type;
-        if(debug)
+        if(debug) {
+
             console.log(info.items[0]);
+        }
     //Is nor URL, them MediaId
     } else {
         let info = await getMediaIdInfo(ig, mediaIdOrUrl);
         type = info.items[0].media_type;
-        if(debug)
+        if(debug) {
+
             console.log(info.items[0]);
+        }
     }
     
 
