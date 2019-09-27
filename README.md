@@ -341,6 +341,7 @@ Send message by Inbox thread Id
 #### getUserRecentPosts(ig, username)
 #### requestLivestream(ig)
 #### getMediaIdInfo(ig, mediaId)
+#### getMediaUrlInfo(ig, url)
 #### getMediaType(ig, mediaIdOrUrl)
 #### getPhotoUrl(ig, mediaIdOrUrl)
 #### getVideoUrl(ig, mediaIdOrUrl)
