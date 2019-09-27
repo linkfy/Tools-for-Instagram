@@ -45,10 +45,12 @@ function toolsForInstagram() {
     global.urlToMediaId = require('./urlToMediaId.js');
     global.getMediaIdInfo = require('./getMediaIdInfo.js');
     global.uploadPicture = require('./uploadPicture.js');
-     global.detectFaces = require('./detectFaces.js');
+    global.detectFaces = require('./detectFaces.js');
     global.imageHaveFaces = require('./imageHaveFaces.js');
     global.getMediaType = require('./getMediaType.js');
     global.getPhotoUrl = require('./getPhotoUrl.js');
+    //The same as alias
+    global.getVideoUrl = require('./getPhotoUrl.js');
     global.getInbox = require('./getInbox.js');
     global.getInboxPending = require('./getInboxPending.js');
     global.approveInboxPending = require('./approveInboxPending.js');

@@ -93,6 +93,11 @@ IG_PASSWORD=myPassword
 - [x] Comment Media by Id
 - [x] Get Media information by Id
 - [x] Upload Pictures 
+- [x] Get Media Type (photo, video, album...)
+- [x] Get Photo/Video Url
+- [x] Get Ibox/Pending Messages
+- [x] Approve/Decline Pending Messages
+- [x] Reply Messages
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 
 <img src="https://media.giphy.com/media/ignhVpXU7h4qHMwXix/giphy.gif" width="340">
@@ -296,6 +301,19 @@ Post a comment on the desired post giving the media Id
  await commentMediaId(ig, posts[0].pk, "Amazing!");
 ```
 
+#### replyDirectMessage(ig, {userId:id}, message)
+Send message by user id
+```javascript
+    let user = await getUserInfo(ig, "Instagram");
+    let sendDm = await replyDirectMessage(ig,{ userId : user.pk }, "yay!");
+```
+#### replyDirectMessage(ig, {threadId:id}, message)
+Send message by Inbox thread Id
+```javascript
+    let inbox = await getInbox(ig);
+    let sendDm = await replyDirectMessage(ig,{ threadId : inbox[0].threadId }, "yay!");
+```
+
 ### This documentation is not yet finished...
 #### recentHashtagList(ig, hashtag)
 #### topHashtagList(ig, hashtag)
@@ -318,4 +336,10 @@ Post a comment on the desired post giving the media Id
 #### getUserRecentPosts(ig, username)
 #### requestLivestream(ig)
 #### getMediaIdInfo(ig, mediaId)
-
+#### getMediaType(ig, mediaIdOrUrl)
+#### getPhotoUrl(ig, mediaIdOrUrl)
+#### getVideoUrl(ig, mediaIdOrUrl)
+#### getInbox(ig)
+#### getInboxPending(ig)
+#### approveInboxPending(ig, id)
+#### declineInboxPending(ig, id)

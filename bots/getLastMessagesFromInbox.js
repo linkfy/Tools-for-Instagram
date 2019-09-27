@@ -1,5 +1,5 @@
 
-require('./src/tools-for-instagram.js');
+require('../src/tools-for-instagram.js');
 
 (async () => {
 
@@ -8,7 +8,6 @@ require('./src/tools-for-instagram.js');
     let ig = await login();
 
     let inbox = await getInbox(ig);
-    console.log(inbox);
     inbox.forEach(chat => {
 
         
