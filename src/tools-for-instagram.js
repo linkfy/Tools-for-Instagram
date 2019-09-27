@@ -46,6 +46,11 @@ function toolsForInstagram() {
     global.commentMediaId = require('./commentPost.js');
     global.getMediaIdInfo = require('./getMediaIdInfo.js');
     global.uploadPicture = require('./uploadPicture.js');
+    global.getInbox = require('./getInbox.js');
+    global.getInboxPending = require('./getInboxPending.js');
+    global.approveInboxPending = require('./approveInboxPending.js');
+    global.declineInboxPending = require('./declineInboxPending.js');
+    global.replyDirectMessage = require('./replyDirectMessage.js');
 }
 
 module.exports = toolsForInstagram();
