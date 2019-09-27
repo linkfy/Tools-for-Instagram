@@ -3,9 +3,11 @@
 <img src="https://i.imgur.com/J2PsoIZ.png" width="100">
 
 [![Telegram Chat](https://img.shields.io/badge/telegram-join%20chat-informational.svg)](https://t.me/toolsforinstagram)
+[![paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/LinkStudios/10)
 ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/tools-for-instagram)
 ![NPM](https://img.shields.io/npm/l/tools-for-instagram)
 ![npm](https://img.shields.io/npm/dt/tools-for-instagram)
+
 
 Automation scripts for Instagram </br></br>
 <img src="https://i.imgur.com/aaTVSP2.png" width="540">
