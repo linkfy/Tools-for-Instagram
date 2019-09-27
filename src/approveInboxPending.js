@@ -10,7 +10,7 @@ parser = require('instagram-id-to-url-segment');
 */
 
 async function approveInboxPending(ig, threadId){ 
-    let approve = ig.directThread.approve(threadId)
+    let approve = await ig.directThread.approve(threadId)
     return approve
 }
 

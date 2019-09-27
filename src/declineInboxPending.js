@@ -10,7 +10,7 @@ parser = require('instagram-id-to-url-segment');
     [ ]Improve return
 */
 async function declineInboxPending(ig, threadId){ 
-    let decline = ig.directThread.decline(threadId)
+    let decline = await ig.directThread.decline(threadId)
     return decline
 }
 

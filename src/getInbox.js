@@ -21,7 +21,7 @@ parser = require('instagram-id-to-url-segment');
 
 
 async function getInbox(ig, extraInfo = new Object()){ 
-    const inboxFeed = ig.feed.directInbox(); 
+    const inboxFeed = await ig.feed.directInbox(); 
     const threads = await inboxFeed.items(); 
 
 

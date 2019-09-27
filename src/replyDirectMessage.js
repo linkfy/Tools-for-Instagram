@@ -30,7 +30,9 @@ async function replyDirectMessage(ig, { threadId, userId }, message){
         return 'invalid_threadEntity';
     }
     
-    return threadEntity.broadcastText(message);
+    let sendDm = await threadEntity.broadcastText(message);
+
+    return sendDm ? "message_sent" : "something_went_wrong";
 }
 
 module.exports = replyDirectMessage;

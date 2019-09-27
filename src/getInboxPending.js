@@ -20,7 +20,7 @@ parser = require('instagram-id-to-url-segment');
 */
 
 async function getInboxPending(ig){ 
-    const inboxPendingFeed = ig.feed.directPending(); 
+    const inboxPendingFeed = await ig.feed.directPending(); 
     const threads = await inboxPendingFeed.items(); 
 
     let directMessagesPendingFormated = threads.map(function(dm) {
