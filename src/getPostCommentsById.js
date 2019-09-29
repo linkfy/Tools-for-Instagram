@@ -1,5 +1,5 @@
 //more available is not working well from API, looks like a bug, so we need to check manually the same objects
-async function getPostCommentsById(ig, id, maxComments = 20) {
+async function getCommentsOnPostById(ig, id, maxComments = 20) {
     
     
     let comments = [];
@@ -73,4 +73,4 @@ async function getPostCommentsById(ig, id, maxComments = 20) {
     
 }
 
-module.exports = getPostCommentsById;
+module.exports = getCommentsOnPostById;

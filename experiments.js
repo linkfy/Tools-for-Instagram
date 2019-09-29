@@ -10,7 +10,7 @@ require('./src/tools-for-instagram.js');
     let ig = await login();
 
 
-    let comments = await getCommentsOnPostById(ig, '1819847729498884138');
+    let comments = await getPostCommentsById(ig, '1819847729498884138');
     console.log("---");
 
     comments.forEach(comment => {
