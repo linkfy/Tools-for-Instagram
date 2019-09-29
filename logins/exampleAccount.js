@@ -2,5 +2,5 @@ module.exports = {
     account: 'accountName',
     password: 'password',
     proxy: 'http://proxyuser:proxypassword@xxx.xxx.xxx.xxx:xxxxx',
-    igVerificationMode: '0' // 0 = sms; 1 = email
+    igVerificationMode: '1' // 0 = OTP; 1 = sms, 2 = email
 }

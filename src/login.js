@@ -88,12 +88,14 @@ async function login(inputLogin = null, inputPassword = null, inputProxy = null,
     //If instagramVerification parameter is not null then we parse it
     //Parse Instagram verification to the real parameters
     if(process.env.IG_VERIFICATION == 'sms') {
-        process.env.IG_VERIFICATION = 0; //By default IG Verification 0 means by sms
+        process.env.IG_VERIFICATION = 1; //By default IG Verification 1 means by sms
     } else if(process.env.IG_VERIFICATION == 'email') {
-        process.env.IG_VERIFICATION = 1;
+        process.env.IG_VERIFICATION = 2;
+    }else if(process.env.IG_VERIFICATION == 'otp') {
+        process.env.IG_VERIFICATION = 0;
     }
     if(verificationMode!=null) {
-        //0 = sms; 1 = email
+        //1 = sms; 2 = email
         process.env.IG_VERIFICATION = verificationMode;
     }
 
@@ -109,7 +111,7 @@ async function login(inputLogin = null, inputPassword = null, inputProxy = null,
     //First we check if the user have cookies
     let hasCookies = await loadCookies();
     
-
+ 
     // Execute all requests prior to authorization in the real Android application
 	// This function executes after every request
 	ig.request.end$.subscribe(async () => {
@@ -134,7 +136,7 @@ async function login(inputLogin = null, inputPassword = null, inputProxy = null,
 		ig.state.adid = state.adid;
 		ig.state.build = state.build;
 	});	
-
+    
 	await ig.simulate.preLoginFlow();
     let result = await Bluebird.try( async() => {
         if(!hasCookies) {
@@ -168,11 +170,14 @@ async function login(inputLogin = null, inputPassword = null, inputProxy = null,
         return ig;
     }).catch(Api.IgCheckpointError, async () => {
 
-        if(process.env.IG_VERIFICATION == 1) {
-
-            await ig.challenge.selectVerifyMethod(1); //Email
-        } else {
-            
+        if(process.env.IG_VERIFICATION == 2) {
+            await ig.challenge.selectVerifyMethod(2); //email
+        } else if(process.env.IG_VERIFICATION == 1) {
+            await ig.challenge.selectVerifyMethod(1);//sms
+        }else if(process.env.IG_VERIFICATION == 0) {
+            await ig.challenge.selectVerifyMethod(0);//otp 
+        }
+         else {
             await ig.challenge.auto(true); //Sms it was me
         }
 
