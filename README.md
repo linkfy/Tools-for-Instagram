@@ -308,6 +308,26 @@ Post a comment on the desired post giving the media Id
     let posts = await recentHashtagList(ig, "dogs");
     await commentPost(ig, posts[0], "Lovely!");
 ```
+
+### getCommentsOnPostById(ig, id)
+By default you will get 20 comments:
+```javascript
+    let posts = await topHashtagList(ig, "dogs");
+    //Each post have a pk (private key) that is used as Id.
+    let comments = await getCommentsOnPostById(ig, posts[0].pk);
+    comments.forEach(comment => {
+        console.log(comment.text);
+    });
+```
+You can specify a max for the comments:
+```javascript
+    let posts = await topHashtagList(ig, "dogs");
+    //Get 100 comments
+    let comments = await getCommentsOnPostById(ig, posts[0].pk, 100);
+    comments.forEach(comment => {
+        console.log(comment.text);
+    });
+```
 #### replyDirectMessage(ig, {userId:id}, message)
 Send message by user id
 ```javascript

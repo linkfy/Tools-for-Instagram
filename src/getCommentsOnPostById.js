@@ -1,39 +1,66 @@
+//more available is not working well from API, looks like a bug, so we need to check manually the same objects
 async function getCommentsOnPostById(ig, id, maxComments = 20) {
     
     
     let comments = [];
-    let lastComment = null;
+    
     try{
-        let commentsFeed = await ig.feed.mediaComments(id);    
+        let commentsFeed = await ig.feed.mediaComments(id);
         let commentsResponse = await commentsFeed.items();
+        
 
         do{
+            let repeatedComment = false;
+            let repeats = 0;
             commentsResponse = await commentsFeed.items();
+            
+
             if(commentsResponse.length != 0) {
+               
                 commentsResponse.forEach(comment => {
                     
                     if (comments.length >= maxComments) {
                         //If already have the max comments, then return it
-                        return;
-                    }
-
-                    if(lastComment == comment) {
-                        //Last saved comment == current coment then return
-                        console.log("Same");
-                        return;
+                        return comments;
                     }
                     
                     if(comment.content_type == 'comment') {
-                        console.log(comment.text);
-                        console.log(comment.pk);
-                        comments.push(comment);
+                        
+                        for(var i = 0; i < comments.length; i++) {
+                            if (comments[i].pk == comment.pk) {
+                                repeatedComment = true;
+                                repeats++;
+                                break;
+                            }
+                        }
+                        if(!repeatedComment) {
+                            console.log(comment.text);
+                            comments.push(comment);
+                        }
+                        
                     }
-                    lastComment = comment;
+                    
                 });
+
+                if(commentsResponse.length == repeats) {
+                    //All the revieved elements are already on our comments, finish
+                    return comments;
+                }
             }
-     
-         await sleep(5);
-         console.log(comments.length);
+        
+        //more available is not working well from API, looks like a bug, so we need to check manually the same objects
+        /* if(commentsFeed.moreAvailable == false) {
+            //If there are no more, finish the process
+            return;
+        } */
+        
+        //If we only get one comment, skip the search too
+        if(commentsResponse.length!=0 && commentsResponse.length!=1 && comments.length < maxComments) {
+            await sleep(5);
+        } else {
+            break;
+        }
+         
         
         } while(commentsResponse.length!=0 && comments.length < maxComments);
         
