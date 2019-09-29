@@ -47,6 +47,8 @@ function toolsForInstagram() {
     global.getMediaIdInfo = require('./getMediaIdInfo.js');
     global.getMediaUrlInfo = require('./getMediaUrlInfo.js');
     global.uploadPicture = require('./uploadPicture.js');
+    global.detectFaces = require('./detectFaces.js');
+    global.imageHaveFaces = require('./imageHaveFaces.js');
     global.getMediaType = require('./getMediaType.js');
     global.getPhotoUrl = require('./getPhotoUrl.js');
     //The same as alias
@@ -56,6 +58,7 @@ function toolsForInstagram() {
     global.approveInboxPending = require('./approveInboxPending.js');
     global.declineInboxPending = require('./declineInboxPending.js');
     global.replyDirectMessage = require('./replyDirectMessage.js');
+    global.getSimilarAccountsByUserId = require('./getSimilarAccountsByUserId.js');
     global.commentPost = require('./commentPost.js');
     global.detectFaces = require('./detectFaces.js');
     global.imageHaveFaces = require('./imageHaveFaces.js');
