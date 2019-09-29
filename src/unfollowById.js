@@ -1,6 +1,8 @@
-async function unfollowUser(ig, username, forceUnfollow = false) {
-    const userId = (await ig.user.searchExact(username)).pk;
-
+async function unfollowById(ig, userId, forceUnfollow = false) {
+    let user =  await ig.user.info(userId);
+    let username = user.username;
+    
+    
 
     let alreadyExists = ig.db.get('follows').find({user_id: userId}).value();
     
@@ -37,4 +39,4 @@ async function unfollowUser(ig, username, forceUnfollow = false) {
     return response;
 }
 
-module.exports = unfollowUser;
+module.exports = unfollowById;

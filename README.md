@@ -3,9 +3,11 @@
 <img src="https://i.imgur.com/J2PsoIZ.png" width="100">
 
 [![Telegram Chat](https://img.shields.io/badge/telegram-join%20chat-informational.svg)](https://t.me/toolsforinstagram)
+[![paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/LinkStudios/10)
 ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/tools-for-instagram)
 ![NPM](https://img.shields.io/npm/l/tools-for-instagram)
 ![npm](https://img.shields.io/npm/dt/tools-for-instagram)
+
 
 Automation scripts for Instagram </br></br>
 <img src="https://i.imgur.com/aaTVSP2.png" width="540">
@@ -64,6 +66,7 @@ IG_PASSWORD=myPassword
 - [x] Like Content by Post
 - [x] Follow by Username
 - [x] Follow User by Post
+- [x] Unfollow by Id
 - [x] Unfollow by Username
 - [x] View stories by User Id
 - [x] View stories by Username
@@ -93,6 +96,11 @@ IG_PASSWORD=myPassword
 - [x] Comment Media by Id
 - [x] Get Media information by Id
 - [x] Upload Pictures 
+- [x] Get Media Type (photo, video, album...)
+- [x] Get Photo/Video Url
+- [x] Get Ibox/Pending Messages
+- [x] Approve/Decline Pending Messages
+- [x] Reply Messages
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 
 <img src="https://media.giphy.com/media/ignhVpXU7h4qHMwXix/giphy.gif" width="340">
@@ -295,6 +303,23 @@ Post a comment on the desired post giving the media Id
  let posts = await recentHashtagList(ig, "dogs");
  await commentMediaId(ig, posts[0].pk, "Amazing!");
 ```
+#### commentPost(ig, post, comment)
+```javascript
+    let posts = await recentHashtagList(ig, "dogs");
+    await commentPost(ig, posts[0], "Lovely!");
+```
+#### replyDirectMessage(ig, {userId:id}, message)
+Send message by user id
+```javascript
+    let user = await getUserInfo(ig, "Instagram");
+    let sendDm = await replyDirectMessage(ig,{ userId : user.pk }, "yay!");
+```
+#### replyDirectMessage(ig, {threadId:id}, message)
+Send message by Inbox thread Id
+```javascript
+    let inbox = await getInbox(ig);
+    let sendDm = await replyDirectMessage(ig,{ threadId : inbox[0].threadId }, "yay!");
+```
 
 ### This documentation is not yet finished...
 #### recentHashtagList(ig, hashtag)
@@ -318,4 +343,12 @@ Post a comment on the desired post giving the media Id
 #### getUserRecentPosts(ig, username)
 #### requestLivestream(ig)
 #### getMediaIdInfo(ig, mediaId)
-
+#### getMediaUrlInfo(ig, url)
+#### getMediaType(ig, mediaIdOrUrl)
+#### getPhotoUrl(ig, mediaIdOrUrl)
+#### getVideoUrl(ig, mediaIdOrUrl)
+#### getInbox(ig)
+#### getInboxPending(ig)
+#### approveInboxPending(ig, id)
+#### declineInboxPending(ig, id)
+#### unfollowById(ig, id)

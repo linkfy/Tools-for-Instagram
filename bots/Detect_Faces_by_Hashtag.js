@@ -1,5 +1,5 @@
 
-require('./src/tools-for-instagram.js');
+require('../src/tools-for-instagram.js');
 
 
 

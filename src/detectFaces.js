@@ -13,10 +13,13 @@ faceapi.env.monkeyPatch({Canvas, Image, ImageData });
 async function detectFaces(ig, url) {
     const referenceImage = await canvas.loadImage(url);
 
-    await faceapi.nets.tinyFaceDetector.loadFromDisk(path.join(__dirname, 'models'));
-    await faceapi.nets.ageGenderNet.loadFromDisk(path.join(__dirname, 'models'));
-    await faceapi.nets.faceLandmark68Net.loadFromDisk(path.join(__dirname, 'models'));
+    await faceapi.nets.tinyFaceDetector.loadFromDisk(path.join(__dirname, '../models'));
+    await faceapi.nets.ageGenderNet.loadFromDisk(path.join(__dirname, '../models'));
+    await faceapi.nets.faceLandmark68Net.loadFromDisk(path.join(__dirname, '../models'));
     const detections = await faceapi.detectAllFaces(referenceImage, new faceapi.TinyFaceDetectorOptions()).withAgeAndGender();
+    if(detections.length == 0) {
+        return false;
+    }
     return detections;
 }
 

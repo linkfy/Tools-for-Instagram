@@ -21,6 +21,7 @@ function toolsForInstagram() {
     global.followUser = require('./followUser.js');
     global.followUserByPost = require('./followUserByPost');
     global.unfollowUser = require('./unfollowUser.js');
+    global.unfollowById = require('./unfollowById.js');
     global.getLikeActivityByHours = require('./getLikeActivityByHours.js');
     global.getFollowActivityByHours = require('./getFollowActivityByHours.js');
     global.getUnfollowActivityByHours = require('./getUnfollowActivityByHours.js');
@@ -44,17 +45,21 @@ function toolsForInstagram() {
     global.commentMediaId = require('./commentMediaId.js');
     global.urlToMediaId = require('./urlToMediaId.js');
     global.getMediaIdInfo = require('./getMediaIdInfo.js');
+    global.getMediaUrlInfo = require('./getMediaUrlInfo.js');
     global.uploadPicture = require('./uploadPicture.js');
     global.detectFaces = require('./detectFaces.js');
     global.imageHaveFaces = require('./imageHaveFaces.js');
     global.getMediaType = require('./getMediaType.js');
     global.getPhotoUrl = require('./getPhotoUrl.js');
+    //The same as alias
+    global.getVideoUrl = require('./getPhotoUrl.js');
     global.getInbox = require('./getInbox.js');
     global.getInboxPending = require('./getInboxPending.js');
     global.approveInboxPending = require('./approveInboxPending.js');
     global.declineInboxPending = require('./declineInboxPending.js');
     global.replyDirectMessage = require('./replyDirectMessage.js');
     global.getSimilarAccountsByUserId = require('./getSimilarAccountsByUserId.js');
+    global.commentPost = require('./commentPost.js');
 }
 
 module.exports = toolsForInstagram();

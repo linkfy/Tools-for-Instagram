@@ -25,12 +25,22 @@ async function getInbox(ig, extraInfo = new Object()){
     const threads = await inboxFeed.items(); 
 
 
+
     let directMessagesFormated = threads.map(function(dm) {
+        //let isRead = (dm.last_seen_at[0] > dm.last_permanent_item.timestamp && ig.loggedInUser.pk != dm.last_seen_at[1]);
+        
+        let myId = ig.loggedInUser.pk;
         return {
             threadId: dm.thread_id,
             threadIdV2: dm.thread_v2_id,
             isGroup: dm.users.length == 1 ? false : true,
             users: dm.users,
+            readByUser: (dm.last_seen_at[Object.keys(dm.last_seen_at)[0]].timestamp == dm.last_permanent_item.timestamp),
+            readByMe: (dm.last_seen_at[Object.keys(dm.last_seen_at)[1]].timestamp == dm.last_permanent_item.timestamp),
+            //'MINCURSOR' means there is no older one
+            oldest_cursor: dm.oldest_cursor,
+            //'MAXCURSOR' means that theres no next one
+            next_cursor: dm.next_cursor,
             lastMessage: {
                 timeStamp: dm.last_permanent_item.timestamp,
                 type: dm.last_permanent_item.item_type,
