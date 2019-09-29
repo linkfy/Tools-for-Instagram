@@ -59,6 +59,7 @@ function toolsForInstagram() {
     global.commentPost = require('./commentPost.js');
     global.detectFaces = require('./detectFaces.js');
     global.imageHaveFaces = require('./imageHaveFaces.js');
+    global.getCommentsOnPostById = require('./getCommentsOnPostById.js');
 }
 
 module.exports = toolsForInstagram();
