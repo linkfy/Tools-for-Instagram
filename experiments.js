@@ -6,19 +6,12 @@ require('./src/tools-for-instagram.js');
 (async () => {
 
     
-    console.log("\n -- Testing --\n".bold.underline);
+    console.log("\n -- Check for new followers --\n".bold.underline);
     let ig = await login();
+    let followers = await getMyLastFollowers(ig);
 
-
-    let comments = await getPostCommentsById(ig, '1819847729498884138');
-    console.log("---");
-
-    comments.forEach(comment => {
-        console.log(comment.text);
-    });
-    console.log(comments.length);
-
-    
+    console.log(followers[0]);
+    console.log(followers[0].is_new_follower);
     
     //console.log(commentsResponse.length);
     

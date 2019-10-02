@@ -60,6 +60,7 @@ IG_PASSWORD=myPassword
 - [x] Get recent post Likers / By Username
 - [x] Get Followers of account (save into a json file)
 - [x] Get Followings of account (save into a json file)
+- [x] Get my Last followers / Detect new Followers
 - [x] Read Following/Followers files generated and return Array.
 - [x] Like Content by URL
 - [x] Like Content by MediaId 
@@ -215,6 +216,14 @@ It will save the followers inside the outputfolder with the format "acountName_f
    await getFollowers(ig, 'Instagram');
 ```
 
+### getMyLastFollowers(ig)
+Get your last 100 followers, and save it to database, when some follower is new you will a is_new_follower attirbute
+```javascript
+   let followers = await getMyLastFollowers(ig);
+   console.log(followers[0].is_new_follower);
+```
+
+
 #### getFollowing(ig, username)
 It will save the following inside the outputfolder with the format "acountName_following.json"
 ```javascript
@@ -311,7 +320,7 @@ Post a comment on the desired post giving the media Id
     await commentPost(ig, posts[0], "Lovely!");
 ```
 
-### getPostCommentsById(ig, id)
+#### getPostCommentsById(ig, id)
 By default you will get 20 comments:
 ```javascript
     let posts = await topHashtagList(ig, "dogs");
@@ -351,7 +360,7 @@ Send message by Inbox thread Id
 #### topLocationList(ig, location, [randomize: bool])
 #### savePosts(ig, posts, filename)
 #### followUser(ig, username)
-#### followUserByPost(ig. post)
+#### followUserByPost(ig, post)
 #### getLikeActivityByHours(ig, startingHour)
 #### getFollowActivityByHours(ig, startingHour)
 #### getUnfollowActivityByHours(ig, startingHour)

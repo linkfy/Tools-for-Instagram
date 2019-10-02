@@ -163,7 +163,7 @@ async function login(inputLogin = null, inputPassword = null, inputProxy = null,
         //Open DB
         const adapter = new FileSync("./db/"+(process.env.IG_USERNAME).toLowerCase()+".json");
         const db = low(adapter);
-        db.defaults({likes: [], comments:[], mediaUploaded: [], follows: []}).write()
+        db.defaults({likes: [], comments:[], mediaUploaded: [], follows: [], lastFollowers: []}).write()
         ig.shortid = shortid;
         ig.db = db;
         
