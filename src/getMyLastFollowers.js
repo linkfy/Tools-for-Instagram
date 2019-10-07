@@ -17,11 +17,14 @@ async function getMyLastFollowers(ig) {
     else {
         accountFollowers = accountFollowers;
     }
-    
+    let setAllAsNotNew = false;
     accountFollowers.forEach(follower => {
         let isNewFollower = false;
         let alreadyExists = ig.db.get('lastFollowers').find({pk: follower.pk}).value();
-        if(alreadyExists != undefined) {
+        if(alreadyExists != undefined || setAllAsNotNew == true) {
+            //Important: When an old follower is detected, all the next followers will be set to false
+            //to avoid set as new followers the end of the list when someone unfollows you
+            setAllAsNotNew = true;
             isNewFollower = false;
             follower.is_new_follower = isNewFollower;
         } else {
