@@ -10,13 +10,13 @@
     "canvas": "^2.6.0",
     "colors": "^1.4.0",
     "dotenv": "^8.1.0",
-    "face-api.js": "^0.21.0",
     "inquirer": "^6.5.2",
     "instagram-id-to-url-segment": "^0.0.0",
     "instagram-private-api": "^1.30.0",
     "lowdb": "^1.0.0",
     "node-fetch": "^2.6.0",
-    "shortid": "^2.2.15"
+    "shortid": "^2.2.15",
+    "face-api.js": "^0.21.0"
   },
   "devDependencies": {},
   "keywords": [

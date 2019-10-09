@@ -61,10 +61,14 @@ function toolsForInstagram() {
     global.replyDirectMessage = require('./replyDirectMessage.js');
     global.getSimilarAccountsByUserId = require('./getSimilarAccountsByUserId.js');
     global.commentPost = require('./commentPost.js');
-    global.detectFaces = require('./detectFaces.js');
-    global.imageHaveFaces = require('./imageHaveFaces.js');
     global.getPostCommentsById = require('./getPostCommentsById.js');
     global.getMyLastFollowers = require('./getMyLastFollowers.js');
+    try {
+        global.detectFaces = require('./detectFaces.js');
+        global.imageHaveFaces = require('./imageHaveFaces.js');
+    } catch (err) {
+        console.log("AI Modules can not be imported");
+    }
 }
 
 module.exports = toolsForInstagram();
