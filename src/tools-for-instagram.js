@@ -48,8 +48,6 @@ function toolsForInstagram() {
     global.getMediaIdInfo = require('./getMediaIdInfo.js');
     global.getMediaUrlInfo = require('./getMediaUrlInfo.js');
     global.uploadPicture = require('./uploadPicture.js');
-    global.detectFaces = require('./detectFaces.js');
-    global.imageHaveFaces = require('./imageHaveFaces.js');
     global.getMediaType = require('./getMediaType.js');
     global.getPhotoUrl = require('./getPhotoUrl.js');
     //The same as alias
