@@ -5,6 +5,8 @@ function toolsForInstagram() {
     global.sleepSync = require('./sleepSync.js');
     require('./logo.js')();
     global.login =  require('./login.js');
+    global.removeCookie = require('./removeCookie.js');
+    global.regenerateSession = require('./regenerateSession.js');
     global.getFollowers = require('./getFollowers.js');
     global.getFollowing = require('./getFollowing.js');
     global.readFollowers = require('./readFollowers.js');
@@ -30,7 +32,6 @@ function toolsForInstagram() {
     global.getFollowActivityFromHourToNow = require("./getFollowActivityFromHourToNow.js");
     global.lastLikeMinutesAgo = require("./lastLikeMinutesAgo.js");
     global.lastFollowMinutesAgo = require("./lastFollowMinutesAgo.js");
-    global.removeCookie = require('./removeCookie.js');
     global.likeRecentHashtagsByIntervals = require("./likeRecentHashtagsByIntervals.js");
     global.followRecentHashtagsByIntervals = require('./followRecentHashtagsByIntervals.js');
     global.loadConfig = require('./loadConfig.js');

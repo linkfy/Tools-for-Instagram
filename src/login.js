@@ -77,7 +77,7 @@ ig.simulate.preLoginFlow();
 // Optionally you can setup proxy url
 
 //if Input proxy == false then we force to not use the proxy
-async function login(inputLogin = null, inputPassword = null, inputProxy = null, verificationMode = null) {
+async function login(inputLogin = null, inputPassword = null, inputProxy = null, verificationMode = null, silentMode = false) {
     if(inputLogin!=null && inputPassword !=null) {
         process.env.IG_USERNAME = inputLogin;
         process.env.IG_PASSWORD = inputPassword;
@@ -141,9 +141,13 @@ async function login(inputLogin = null, inputPassword = null, inputProxy = null,
     let result = await Bluebird.try( async() => {
         if(!hasCookies) {
         console.log("User not logged in, login in");
-        const loggedInUser = await ig.account.login(process.env.IG_USERNAME, process.env.IG_PASSWORD);
-        console.log(loggedInUser);
-        //console.log(loggedInUser);
+        let loggedInUser = await ig.account.login(process.env.IG_USERNAME, process.env.IG_PASSWORD);
+
+        if(!silentMode) {
+            console.log("Logged")
+            console.log(loggedInUser);
+        } 
+
         
         }
         // Time to try if we can interact
@@ -158,7 +162,11 @@ async function login(inputLogin = null, inputPassword = null, inputProxy = null,
             console.log("Login failed from cookie | Remove incorrect cookie".red);
             return "removeCookie";
         };
-        
+        //Inject other parameters for regenerateSession() cases
+        ig.loggedInUser.inputLogin = inputLogin;
+        ig.loggedInUser.inputPassword = inputPassword;
+        ig.loggedInUser.inputProxy = inputProxy;
+        ig.loggedInUser.verificationMode = verificationMode;
 
         //Open DB
         const adapter = new FileSync("./db/"+(process.env.IG_USERNAME).toLowerCase()+".json");

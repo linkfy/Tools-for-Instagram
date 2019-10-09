@@ -383,3 +383,4 @@ Send message by Inbox thread Id
 #### approveInboxPending(ig, id)
 #### declineInboxPending(ig, id)
 #### unfollowById(ig, id)
+#### regenerateSession(ig)
