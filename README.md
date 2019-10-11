@@ -9,7 +9,7 @@
 ![npm](https://img.shields.io/npm/dt/tools-for-instagram)
 
 
-Automation scripts for Instagram </br></br>
+Automation scripts for Instagram </br></br>With AI and Avoid Bans Example codes </br>
 <img src="https://i.imgur.com/aaTVSP2.png" width="540">
 
 ![View changes](https://github.com/linkfy/Tools-for-Instagram/wiki/Changelog)
@@ -55,6 +55,7 @@ IG_PASSWORD=myPassword
 - [x] SMS/Email verification modes
 - [x] Save Cookies in files
 - [x] Remove Cookies
+- [x] Session Regeneration
 - [x] Get User Information
 - [x] Get User Recent Posts
 - [x] Get recent post Likers / By Username
@@ -104,6 +105,7 @@ IG_PASSWORD=myPassword
 - [x] Approve/Decline Pending Messages
 - [x] Reply Messages
 - [x] Detect Faces / Gender / Age Avg.
+- [x] Avoid Bans Example Bot (bots/Like_Avoid_Bans_24h.js)
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 
 <img src="https://media.giphy.com/media/ignhVpXU7h4qHMwXix/giphy.gif" width="340">
