@@ -4,7 +4,7 @@ let initialHour = 0, endHour = 24;
 
 /*  This is experimental stuff to avoid bans, currently testing on different configurations
  */
-
+console.log("Remember to use Residential proxies or 4G proxies to avoid like limitations before starting the bot".cyan);
 function isValidInput() {
   
   if(endHour <= initialHour) {
