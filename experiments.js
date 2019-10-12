@@ -63,4 +63,3 @@ let qs_stamp = '';
     
     //Send
 })();
-git 
