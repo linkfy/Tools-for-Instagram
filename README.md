@@ -193,7 +193,8 @@ To avoid the default proxy from the .env file use false as a third parameter on 
 
 ```
 #### setAntiBanMode(ig)
-Currently Antiban is for likes/follow/unfollow
+Currently Antiban is for likes/follow/unfollow. 
+WARNING: Antiban IS NOT MAGIC, if you use simple code/examples Like_Easy or Like_With_Scanner (Super simple codes) it is possible to be banned anyway. A good Example is Like_Avoid_Bans, use it with caution.
 ```javascript
     let ig = await login();
     await setAntiBanMode(ig);

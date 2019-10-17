@@ -122,6 +122,7 @@ function totalAssigments(array) {
 
     
     let ig = await login();
+    await setAntiBanMode(ig);
 
     setInterval(async function(){
         let hour = new Date().getHours();
@@ -133,7 +134,7 @@ function totalAssigments(array) {
 
             var rand = hashtagArray[Math.floor(Math.random() * hashtagArray.length)];
             let posts = await recentHashtagList(ig, rand);
-            ig = await regenerateSession(ig);
+            
             await likePost(ig, posts[0]);
             dayArray[arrayIndex] = 2;
         }
