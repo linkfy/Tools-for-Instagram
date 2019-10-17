@@ -1,5 +1,4 @@
-async function followUser(ig, username, forceFollow = false, extraInfo = new Object()) {
-    const userId = (await ig.user.searchExact(username)).pk;
+async function followById(ig, userId,  forceFollow = false, extraInfo = new Object()) {
     
     let alreadyExists = ig.db.get('follows').find({user_id: userId}).value();
     
@@ -13,9 +12,9 @@ async function followUser(ig, username, forceFollow = false, extraInfo = new Obj
     response.pk = userId;
 
     if (response.following == true) {
-        console.log(('Followed user ' + username).green);
+        console.log(('Followed user with Id' + userId).green);
     } else {
-        console.log(('Can not Follow user at the moment' + username).red);
+        console.log(('Can not Follow user at the moment with Id' + userId).red);
     }
     
 
@@ -30,4 +29,4 @@ async function followUser(ig, username, forceFollow = false, extraInfo = new Obj
     return response;
 }
 
-module.exports = followUser;
+module.exports = followById;

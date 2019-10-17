@@ -24,7 +24,7 @@ async function unfollowById(ig, userId, forceUnfollow = false) {
     } else {
         console.log('Follower not found in databse, [Skipping DB insertion]'.yellow);
     }
-
+    await executeAntiBanChecks(ig);
     let response = await ig.friendship.destroy(userId);
     
     //Inject user Id in response [pk: personal key]

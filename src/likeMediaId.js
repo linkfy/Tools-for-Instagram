@@ -25,7 +25,7 @@ async function likeMediaId(ig, media_id, forceLike = false, extraInfo = new Obje
         console.log('Already liked'.yellow);
         return "already_liked";
     }
-
+    await executeAntiBanChecks(ig);
     await ig.media.like({
         mediaId: media_id,
         moduleInfo: {

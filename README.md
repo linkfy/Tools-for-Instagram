@@ -67,6 +67,7 @@ IG_PASSWORD=myPassword
 - [x] Like Content by MediaId 
 - [x] Like Content by Post
 - [x] Follow by Username
+- [x] Follow by Id
 - [x] Follow User by Post
 - [x] Unfollow by Id
 - [x] Unfollow by Username
@@ -87,9 +88,10 @@ IG_PASSWORD=myPassword
 - [x] Current Time In Range Validator [ex: from 8:00 to 23:00]
 - [x] Proxies
 - [x] Multi-login
+- [x] Multi-proxy per login
 - [x] Like Recent Hashtags By Intervals
 - [x] Follow Recent Hashtags By Intervals
-- [x] Simple Bot
+- [x] Simple Bots Folder
 - [x] NPM package support
 - [x] View Stories from User  Id/Ids
 - [x] View Stories from User Followers
@@ -105,7 +107,10 @@ IG_PASSWORD=myPassword
 - [x] Approve/Decline Pending Messages
 - [x] Reply Messages
 - [x] Detect Faces / Gender / Age Avg.
-- [x] Avoid Bans Example Bot (bots/Like_Avoid_Bans_24h.js)
+- [x] Anti Ban Mode (Better with mobile proxies)
+- [x] Cookie validator/regenerator on Login
+- [x] "It was Me message" validator checker
+- [x] Low consumption proxies examples
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 
 <img src="https://media.giphy.com/media/ignhVpXU7h4qHMwXix/giphy.gif" width="340">
@@ -187,7 +192,17 @@ To avoid the default proxy from the .env file use false as a third parameter on 
     let myAccount2 = await login(acc.account, acc.password, false);
 
 ```
-
+#### setAntiBanMode(ig)
+Currently Antiban is for likes/follow/unfollow
+```javascript
+    let ig = await login();
+    await setAntiBanMode(ig);
+```
+Also it is possible to disable it:
+```javascript
+    let ig = await login();
+    await setAntiBanMode(ig, false);
+```
 #### getUserInfo(ig, username)
 Get the user information of the desired username
 ```javascript
@@ -362,6 +377,7 @@ Send message by Inbox thread Id
 #### topLocationList(ig, location, [randomize: bool])
 #### savePosts(ig, posts, filename)
 #### followUser(ig, username)
+#### followById(ig, userId)
 #### followUserByPost(ig, post)
 #### getLikeActivityByHours(ig, startingHour)
 #### getFollowActivityByHours(ig, startingHour)
@@ -386,3 +402,4 @@ Send message by Inbox thread Id
 #### declineInboxPending(ig, id)
 #### unfollowById(ig, id)
 #### regenerateSession(ig)
+#### executeAntiBanChecks(ig)

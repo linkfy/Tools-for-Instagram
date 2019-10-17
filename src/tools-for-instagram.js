@@ -21,6 +21,7 @@ function toolsForInstagram() {
     global.topLocationList = require('./topLocationList.js');
     global.savePosts = require('./savePosts.js');
     global.followUser = require('./followUser.js');
+    global.followById = require('./followById.js');
     global.followUserByPost = require('./followUserByPost');
     global.unfollowUser = require('./unfollowUser.js');
     global.unfollowById = require('./unfollowById.js');
@@ -61,6 +62,8 @@ function toolsForInstagram() {
     global.commentPost = require('./commentPost.js');
     global.getPostCommentsById = require('./getPostCommentsById.js');
     global.getMyLastFollowers = require('./getMyLastFollowers.js');
+    global.setAntiBanMode = require('./setAntiBanMode.js');
+    global.executeAntiBanChecks = require('./executeAntiBanChecks.js');
     try {
         global.detectFaces = require('./detectFaces.js');
         global.imageHaveFaces = require('./imageHaveFaces.js');

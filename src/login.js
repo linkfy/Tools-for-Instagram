@@ -2,19 +2,26 @@ require('dotenv').config();
 let fs = require('fs');
 let Bluebird = require('bluebird');
 let inquirer = require('inquirer');
-let Api = require('instagram-private-api');
 let _ = require('lodash');
-let ig = new Api.IgApiClient();
+let Api = null;
+let ig = null;
 let colors = require('colors');
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const shortid = require('shortid');
 
 
-function saveCookies(cookies, state) {
+
+function saveCookies(inputLogin, cookies, state) {
+    let filename = "Undefined";
+    if(inputLogin ==  null || inputLogin == undefined) {
+        filename = process.env.IG_USERNAME;
+    } else {
+        filename = inputLogin;
+    }
 	//console.log(cookies);
     //console.log(state);
-    var cookiepath = "cookies/" + (process.env.IG_USERNAME).toLowerCase() + ".json";
+    var cookiepath = "cookies/" + (filename).toLowerCase() + ".json";
     if(!fs.existsSync("cookies/")) {
         fs.mkdirSync("cookies/");
     }
@@ -35,9 +42,14 @@ function saveCookies(cookies, state) {
 		state,
 	};
 }
-async function loadCookies() {
-    
-    var cookiepath = "cookies/" + (process.env.IG_USERNAME).toLowerCase() + ".json";
+async function loadCookies(inputLogin, silentMode = false) {
+    let filename = "Undefined";
+    if(inputLogin ==  null || inputLogin == undefined) {
+        filename = process.env.IG_USERNAME;
+    } else {
+        filename = inputLogin;
+    }
+    var cookiepath = "cookies/" + (filename).toLowerCase() + ".json";
     //console.log("Trying to load filepath " + cookiepath);
     //console.log(__dirname);
     if (fs.existsSync(cookiepath)) {
@@ -56,7 +68,8 @@ async function loadCookies() {
         console.log("Cookies loaded".cyan);
         return true;
     }
-    console.log("No cookie file found in loadCookies function");
+    if(!silentMode)
+        console.log("No cookie file found in loadCookies function");
     return false;
 }
 
@@ -69,22 +82,26 @@ if(!fs.existsSync("logins/")) {
     fs.mkdirSync("logins/");
 }
 
-// You must generate device id's before login.
-// Id's generated based on seed
-// So if you pass the same value as first argument - the same id's are generated every time
-ig.state.generateDevice(process.env.IG_USERNAME);
-ig.simulate.preLoginFlow();
-// Optionally you can setup proxy url
-
 //if Input proxy == false then we force to not use the proxy
-async function login(inputLogin = null, inputPassword = null, inputProxy = null, verificationMode = null, silentMode = false) {
+async function login(inputLogin = null, inputPassword = null, inputProxy = null, verificationMode = null, silentMode = false, antiBanMode = false) {
+    Api = require('instagram-private-api');
+    ig = new Api.IgApiClient();
     if(inputLogin!=null && inputPassword !=null) {
         process.env.IG_USERNAME = inputLogin;
         process.env.IG_PASSWORD = inputPassword;
-        if(inputProxy!=null && inputProxy != false)
+        if(inputProxy!=null && inputProxy != false) {
             process.env.IG_PROXY = inputProxy;
+        }
         
     }
+
+    // You must generate device id's before login.
+    // Id's generated based on seed
+    // So if you pass the same value as first argument - the same id's are generated every time
+    ig.state.generateDevice(process.env.IG_USERNAME);
+    ig.simulate.preLoginFlow();
+    // Optionally you can setup proxy url
+
     //If instagramVerification parameter is not null then we parse it
     //Parse Instagram verification to the real parameters
     if(process.env.IG_VERIFICATION == 'sms') {
@@ -100,16 +117,21 @@ async function login(inputLogin = null, inputPassword = null, inputProxy = null,
     }
 
     if(process.env.IG_PROXY && inputProxy != false) {
-        console.log("Using proxy".green);
+        if(!silentMode)
+            console.log("Using proxy".green);
     } else {
-        console.log("Not using proxy".yellow);
-        console.log("Mobile/Residential proxy recommended".yellow);
+        if(!silentMode) {
+            console.log("Not using proxy".yellow);
+            console.log("Mobile/Residential proxy recommended".yellow);
+        }
     }
-
-    ig.state.proxyUrl = process.env.IG_PROXY;
-    console.log("Trying to log with ".cyan + process.env.IG_USERNAME.green);
+    //If proxy is set to false, avoid override using ENV proxy
+    if(inputProxy != false)
+        ig.state.proxyUrl = process.env.IG_PROXY;
+    if(!silentMode)
+        console.log("Trying to log with ".cyan + process.env.IG_USERNAME.green);
     //First we check if the user have cookies
-    let hasCookies = await loadCookies();
+    let hasCookies = await loadCookies(inputLogin ,mode = silentMode);
     
  
     // Execute all requests prior to authorization in the real Android application
@@ -126,7 +148,7 @@ async function login(inputLogin = null, inputPassword = null, inputProxy = null,
 			adid: ig.state.adid,
 			build: ig.state.build,
 		};
-		saveCookies(cookies, state);
+		saveCookies(inputLogin, cookies, state);
 		// In order to restore session cookies you need this
 		await ig.state.deserializeCookieJar(JSON.stringify(cookies));
 		ig.state.deviceString = state.deviceString;
@@ -138,9 +160,11 @@ async function login(inputLogin = null, inputPassword = null, inputProxy = null,
 	});	
     
 	await ig.simulate.preLoginFlow();
-    let result = await tryToLogin(hasCookies, silentMode,  inputLogin, inputPassword, inputProxy, verificationMode);
+    let result = await tryToLogin(inputLogin, inputPassword, inputProxy, verificationMode, hasCookies, silentMode);
     // If result is not undefined we send the ig object session
-    return result;
+    result.antiBanMode = antiBanMode;
+    //We use clone to be able to generate new sessions and not overwrite
+    return clone(result);
 }
 
 
@@ -148,10 +172,12 @@ async function login(inputLogin = null, inputPassword = null, inputProxy = null,
 module.exports =  login;
 
 
-async function tryToLogin(hasCookies, silentMode, inputLogin, inputPassword, inputProxy, verificationMode) {
+async function tryToLogin(inputLogin, inputPassword, inputProxy, verificationMode, hasCookies, silentMode) {
+    
     let result = await Bluebird.try( async() => {
         if(!hasCookies) {
-        console.log("User not logged in, login in");
+            if(!silentMode)
+                console.log("User not logged in, login in");
         let loggedInUser = await ig.account.login(process.env.IG_USERNAME, process.env.IG_PASSWORD);
 
         if(!silentMode) {
@@ -167,11 +193,20 @@ async function tryToLogin(hasCookies, silentMode, inputLogin, inputPassword, inp
         
         try{
             ig.loggedInUser = await ig.account.currentUser();
-            console.log("Logged in".green);
+            
+            if(!silentMode)
+                console.log("Logged in".green);
         } catch (e){
             console.log(e);
-            console.log("Login failed from cookie | Remove incorrect cookie".red);
-            return "removeCookie";
+            console.log("Login failed from cookie | Removing incorrect cookie | Trying to regenerate".red);
+            //Simulate needed fields:
+            ig.loggedInUser = new Object();
+            ig.loggedInUser.username = inputLogin;
+            ig.loggedInUser.inputLogin = inputLogin;
+            ig.loggedInUser.inputPassword = inputPassword;
+            ig.loggedInUser.inputProxy = inputProxy;
+            ig.loggedInUser.verificationMode = verificationMode;
+            return await regenerateSession(ig, log = false);//"removeCookie";
         };
         //Inject other parameters for regenerateSession() cases
         ig.loggedInUser.inputLogin = inputLogin;
@@ -186,7 +221,7 @@ async function tryToLogin(hasCookies, silentMode, inputLogin, inputPassword, inp
         ig.shortid = shortid;
         ig.db = db;
         
-        return ig;
+        return clone(ig);
     }).catch(Api.IgCheckpointError, async () => {
 
         if(process.env.IG_VERIFICATION == 2) {
@@ -230,11 +265,19 @@ async function tryToLogin(hasCookies, silentMode, inputLogin, inputPassword, inp
         return "incorrectPassword";
     }).catch(Api.IgResponseError, () => {
         console.log("IgResponseError:Bad request // Is your phone number verified? // Did you recieved a Verify message on instagram?".yellow);
-        console.log('Press any key to retry after verify "It was me" or Ctrl+C to Exit');
-
+        console.log('Press "r" key to retry after verify "It was me" or any other key to Exit'.cyan);
         process.stdin.setRawMode(true);
         process.stdin.resume();
-        process.stdin.on('data', function() {return tryToLogin(hasCookies, silentMode, inputLogin, inputPassword, inputProxy, verificationMode)});
+        process.stdin.on('data', function(buff) {
+            if(buff.toString() == 'r') {
+                console.log("retry");
+                return tryToLogin(hasCookies, silentMode, inputLogin, inputPassword, inputProxy, verificationMode)
+            } else {
+                console.log("exit");
+                process.exit();
+            }
+                
+        });
         
         //sleepSync(1000*30);
         //process.exit();
@@ -242,4 +285,14 @@ async function tryToLogin(hasCookies, silentMode, inputLogin, inputPassword, inp
         
     });
     return result;
+}
+
+//Use it to generate new sessions without overwrite last ones
+function clone(obj) {
+    if (null == obj || "object" != typeof obj) return obj;
+    var copy = new obj.constructor();
+    for (var attr in obj) {
+        if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+    }
+    return copy;
 }
