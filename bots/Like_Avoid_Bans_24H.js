@@ -1,5 +1,5 @@
 require('../src/tools-for-instagram.js');
-let totalLikes = 700;
+let totalLikes = 600;
 let initialHour = 0, endHour = 24;
 
 /*  This is experimental stuff to avoid bans, currently testing on different configurations
