@@ -138,6 +138,17 @@ async function login(inputLogin = null, inputPassword = null, inputProxy = null,
 	});	
     
 	await ig.simulate.preLoginFlow();
+    let result = await tryToLogin(hasCookies, silentMode,  inputLogin, inputPassword, inputProxy, verificationMode);
+    // If result is not undefined we send the ig object session
+    return result;
+}
+
+
+
+module.exports =  login;
+
+
+async function tryToLogin(hasCookies, silentMode, inputLogin, inputPassword, inputProxy, verificationMode) {
     let result = await Bluebird.try( async() => {
         if(!hasCookies) {
         console.log("User not logged in, login in");
@@ -218,14 +229,17 @@ async function login(inputLogin = null, inputPassword = null, inputProxy = null,
         console.log("Incorrect password");
         return "incorrectPassword";
     }).catch(Api.IgResponseError, () => {
-        console.log("IgResponseError:Bad request // Is your phone number verified?".yellow);
-        process.exit();
-        return "IgResponseError";
+        console.log("IgResponseError:Bad request // Is your phone number verified? // Did you recieved a Verify message on instagram?".yellow);
+        console.log('Press any key to retry after verify "It was me" or Ctrl+C to Exit');
+
+        process.stdin.setRawMode(true);
+        process.stdin.resume();
+        process.stdin.on('data', function() {return tryToLogin(hasCookies, silentMode, inputLogin, inputPassword, inputProxy, verificationMode)});
+        
+        //sleepSync(1000*30);
+        //process.exit();
+        //return "IgResponseError";
+        
     });
-    // If result is not undefined we send the ig object session
     return result;
 }
-
-
-
-module.exports =  login;
