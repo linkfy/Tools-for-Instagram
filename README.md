@@ -401,6 +401,7 @@ Send message by Inbox thread Id
 #### getInboxPending(ig)
 #### approveInboxPending(ig, id)
 #### declineInboxPending(ig, id)
+#### unfollowUser(ig, accountName)
 #### unfollowById(ig, id)
 #### regenerateSession(ig)
 #### executeAntiBanChecks(ig)
