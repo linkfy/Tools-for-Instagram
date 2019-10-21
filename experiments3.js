@@ -7,13 +7,8 @@ require("./src/tools-for-instagram.js");
 (async () => {
     
     
-    await login();
-    await login();
-    await login();
-    await login();
-    await login();
-    await login();
-    await login();
+    await login(loadConfig('linkfytester'));
+    
     //await executeWorker(ig, 'test', timeout= 1000);
 
     

@@ -180,18 +180,21 @@ By default it will use the proxy from .env file if the proxy is not set on login
 
 ```javascript
     let acc = loadConfig('exampleAccount');
-    let myAccount2 = await login(acc.account, acc.password, acc.proxy);
+    let myAccount2 = await login(acc);
     //same as await login("username", "password");
 
 ```
 
-To avoid the default proxy from the .env file use false as a third parameter on login:
+To avoid the default proxy from the .env file use false as inputProxy parameter on login file.
 
 ```javascript
-    let acc = loadConfig('exampleAccount');
-    let myAccount2 = await login(acc.account, acc.password, false);
-
+module.exports = {
+    inputLogin: 'accountName',
+    inputPassword: 'password',
+    inputProxy: false,
+}
 ```
+
 #### setAntiBanMode(ig)
 Currently Antiban is for likes/follow/unfollow. 
 WARNING: Antiban IS NOT MAGIC, if you use simple code/examples Like_Easy or Like_With_Scanner (Super simple codes) it is possible to be banned anyway. A good Example is Like_Avoid_Bans, use it with caution.

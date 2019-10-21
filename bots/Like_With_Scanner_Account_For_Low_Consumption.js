@@ -6,8 +6,8 @@ require("../src/tools-for-instagram.js");
     let config = loadConfig('exampleAccount');
     let config2 = loadConfig('exampleAccount2');
     
-    let account = await login(config.account, config.password, config.proxy);
-    let scanner = await login(config2.account, config2.password, proxy = false);
+    let account = await login(config);
+    let scanner = await login(config2);
     await setAntiBanMode(account); //← Prevent bans | Prevent default proxy ↑
     await scanAndLike(scanner, account, repeatSeconds = 120);
 })();

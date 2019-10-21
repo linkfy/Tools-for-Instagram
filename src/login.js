@@ -83,7 +83,11 @@ if(!fs.existsSync("logins/")) {
 }
 
 //if Input proxy == false then we force to not use the proxy
-async function login(inputLogin = null, inputPassword = null, inputProxy = null, verificationMode = null, silentMode = false, antiBanMode = false) {
+async function login(args={}) {
+    let {inputLogin=null, inputPassword=null, inputProxy=false, verificationMode=null, silentMode=false, antiBanMode=false} = args;
+    console.log(args);
+    console.log(antiBanMode);
+    
     Api = require('instagram-private-api');
     ig = new Api.IgApiClient();
     if(inputLogin!=null && inputPassword !=null) {
