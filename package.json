@@ -16,7 +16,8 @@
     "instagram-private-api": "^1.30.0",
     "lowdb": "^1.0.0",
     "node-fetch": "^2.6.0",
-    "shortid": "^2.2.15"
+    "shortid": "^2.2.15",
+    "worker-farm": "^1.7.0"
   },
   "devDependencies": {},
   "keywords": [

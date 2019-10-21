@@ -3,7 +3,8 @@ function toolsForInstagram() {
     global.fs = require('fs');
     global.sleep = require('./sleep.js');
     global.sleepSync = require('./sleepSync.js');
-    require('./logo.js')();
+    if(!global.noLogo)
+        require('./logo.js')();
     global.login =  require('./login.js');
     global.removeCookie = require('./removeCookie.js');
     global.regenerateSession = require('./regenerateSession.js');
