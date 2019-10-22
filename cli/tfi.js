@@ -65,6 +65,7 @@ function generateBot(botName) {
     console.log("\\n-- Bot `+botName+` --\\n".bold.underline);
     let ig = await login();
 
+    //Add your code here...
     
 })();
 `;
@@ -72,6 +73,6 @@ function generateBot(botName) {
     fs.mkdirSync(process.env.PWD+'/bots/', { recursive: true }, (err) => {
         if (err) throw err;
     });
-    fs.writeFileSync(process.env.PWD+"/bots/"+botName+".js", botContent);
+    fs.writeFileSync(process.env.PWD+"/bots/"+botName+".js", botContent,  { flag: 'wx' });
     console.log("Bot created :" + process.env.PWD+"/bots/"+botName+".js");
 }

@@ -17,7 +17,7 @@
     "lowdb": "^1.0.0",
     "node-fetch": "^2.6.0",
     "shortid": "^2.2.15",
-    "worker-farm": "^1.7.0"
+    "worker-farm": "git+https://github.com/sebamarynissen/node-worker-farm.git#worker-threads"
   },
   "devDependencies": {},
   "keywords": [
