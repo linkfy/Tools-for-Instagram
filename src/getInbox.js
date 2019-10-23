@@ -30,13 +30,27 @@ async function getInbox(ig, extraInfo = new Object()){
         //let isRead = (dm.last_seen_at[0] > dm.last_permanent_item.timestamp && ig.loggedInUser.pk != dm.last_seen_at[1]);
         
         let myId = ig.loggedInUser.pk;
+        let readByUser = null;
+        let readByMe = null;
+        
+        try { 
+            if(dm.last_seen_at[Object.keys(dm.last_seen_at)[0]] != undefined) {                readByUser = (dm.last_seen_at[Object.keys(dm.last_seen_at)[0]].timestamp == dm.last_permanent_item.timestamp);
+            }
+            if(dm.last_seen_at[Object.keys(dm.last_seen_at)[1]]!= undefined) {
+                readByMe = (dm.last_seen_at[Object.keys(dm.last_seen_at)[1]].timestamp == dm.last_permanent_item.timestamp);
+            }
+            
+        } catch (err) {
+            console.log(err);
+        }
+
         return {
             threadId: dm.thread_id,
             threadIdV2: dm.thread_v2_id,
             isGroup: dm.users.length == 1 ? false : true,
             users: dm.users,
-            readByUser: (dm.last_seen_at[Object.keys(dm.last_seen_at)[0]].timestamp == dm.last_permanent_item.timestamp),
-            readByMe: (dm.last_seen_at[Object.keys(dm.last_seen_at)[1]].timestamp == dm.last_permanent_item.timestamp),
+            readByUser: readByUser,
+            readByMe: readByMe,
             //'MINCURSOR' means there is no older one
             oldest_cursor: dm.oldest_cursor,
             //'MAXCURSOR' means that theres no next one

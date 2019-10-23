@@ -12,6 +12,7 @@ async function viewStoriesFromId(ig, id) {
         });
         await sleep(2, false);
         const storyItems = await reelsFeed.items();
+        
         if (storyItems.length != 0) {
             process.stdout.write("Viewing => ");
             /* for(var index = 0; index <  storyItems.length; index++) {

@@ -7,7 +7,17 @@ let workerMaxSeconds = 25;
     
     
     let ig = await login(loadConfig('linkfytester'));
+    let instagram = await getUserInfo(ig, 'instagram');
+    let stories = await getStoriesFromId(ig, instagram.id);
+    let linkfy = await getUserInfo(ig, 'linkfy');
+    //Share normal message
+    await replyDirectMessage(ig, {userId: linkfy.id}, 'I will send you a story');
+    //Share story test
+    await replyDirectMessage(ig, {userId: linkfy.id, story:stories[0]});
+
+    return;
     console.log(ig);
+
     //TODO send parameters to worker about file to execute, and login account
     await executeWorker('test', 'linkfytester', workerMaxSeconds); // Set to Infinity to avoid Timeout
     await executeWorker({

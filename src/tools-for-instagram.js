@@ -38,6 +38,7 @@ function toolsForInstagram() {
     global.followRecentHashtagsByIntervals = require('./followRecentHashtagsByIntervals.js');
     global.loadConfig = require('./loadConfig.js');
     global.viewStoriesFromUser = require('./viewStoriesFromUser.js');
+    global.getStoriesFromId = require('./getStoriesFromId.js');
     global.viewStoriesFromId = require('./viewStoriesFromId.js');
     global.viewStoriesFromIds = require('./viewStoriesFromId.js');
     global.viewStoriesFromFollowing = require('./viewStoriesFromFollowing.js');
