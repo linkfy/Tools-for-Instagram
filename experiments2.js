@@ -2,7 +2,7 @@ require("./src/tools-for-instagram.js");
 
 //How to use Residential proxies with low data consumption example:
 (async () => {
-    //See example file inside logins folder
+    //See example file inside accounts folder
     let config = loadConfig('linkfytester');
     let config2 = loadConfig('minioffer');
     

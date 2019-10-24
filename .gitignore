@@ -7,6 +7,8 @@ db/*
 *.txt
 logins/*
 !logins/exampleAccount.js
+accounts/*
+!accounts/exampleAccount.js
 bots/test.js
 bots/private/img_1.jpg
 bots/db/

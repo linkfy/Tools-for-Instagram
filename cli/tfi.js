@@ -58,7 +58,7 @@ function help() {
 
 function generateBot(botName) {
     let botContent =
-`require('./src/tools-for-instagram.js');
+`require('../src/tools-for-instagram.js');
 
 (async () => {
 

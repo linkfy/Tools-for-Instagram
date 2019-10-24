@@ -174,7 +174,7 @@ require('./src/tools-for-instagram');
 })();
 ```
 #### loadConfig(loginFileName)
-Load a config file from the logins folder
+Load a config file from the accounts folder
 
 By default it will use the proxy from .env file if the proxy is not set on login().
 
@@ -373,7 +373,21 @@ Send message by Inbox thread Id
     let sendDm = await replyDirectMessage(ig,{ threadId : inbox[0].threadId }, "yay!");
 ```
 
-### This documentation is not yet finished...
+#### replyDirectMessage(ig, {userId, story})
+
+Send Story as a Message to userId or ThreadId 
+```javascript
+    let ig = await login();
+    let instagram = await getUserInfo(ig, 'instagram');
+    let stories = await getStoriesFromId(ig, instagram.id);
+    let linkfy = await getUserInfo(ig, 'linkfytester');
+    //Share normal message
+    await replyDirectMessage(ig, {userId: linkfy.id}, 'I will send you a story');
+    //Share story test
+    await replyDirectMessage(ig, {userId: linkfy.id, story:stories[0]});
+```
+
+### Undocumented methods:
 #### recentHashtagList(ig, hashtag)
 #### topHashtagList(ig, hashtag)
 #### likePost(ig, post)
@@ -391,6 +405,7 @@ Send message by Inbox thread Id
 #### removeCookie(ig)
 #### followRecentHashtagsByIntervals(ig, hashtagArray, intervals, followsPerInterval, waitMinutesBetweenFollows)
 #### viewStoriesFromId(ig, userId)
+#### getStoriesFromId(ig, userId);
 #### viewStoriesFromFollowing(ig, username)
 #### viewStoriesFromFollowers(ig, username)
 #### getUserRecentPosts(ig, username)
@@ -408,3 +423,63 @@ Send message by Inbox thread Id
 #### unfollowById(ig, id)
 #### regenerateSession(ig)
 #### executeAntiBanChecks(ig)
+
+## Advanced Stuff
+
+### Using Bosses and Workers
+
+We will be able to use "workers". Multiple executions of bots that work as "threads" and report the execution to a Boss or Controller. Example Uses:
+1. Bot continue execution when one worker is not working
+2. Bot have a max time to resolve operations, (useful to know if a service is down)
+3. Bot can retry the worker code if it fails
+4. Bot can run code that is not from from the repo/or is another language like python or C++ and expect a result in a certain time
+
+#### How to use properly
+* All workers must go inside the bots/workers folder
+* All bosses must go inside the bots/bosses folder
+* The accounts used by th workers must be declared inside the account folder as the example show (not all the fields are required)
+* Not all the workers will need an account, it depends on the code of your worker, maybe you use want to use a worker for Maths for example
+
+#### Developing a worker and boss
+1. Copy the example worker from bots/workers and modify the code
+2. Copy the example boss from bots/bosses and edit the code, (a boss can work as a normal bot, but they are specially designed to manage workers)
+3. Use the executeWorker as the example shows to call workers sync/async as you preffer on the boss script, all parameters are optional except workerName
+4. Call the boss script from the root directory where the accounts are located (thats important, it will try to load the accounts from there), example below
+
+```sh
+node bots/bosses/exampleBoss
+```
+
+### Using CLI for development
+The CLI is currently under construction so it will change constantly
+
+#### Installing
+Inside the root folder on git / the node_modules folder on npm
+```sh
+cd cli
+npm link
+cd ..
+```
+Well done! Now you can use tfi on your current session
+
+#### Using tfi
+Use tfi from the root working folder to see expected results.
+
+Get the current available commands:
+
+```sh
+tfi help
+```
+
+Create a new bot:
+
+```sh
+tfi new bot
+```
+
+Create a new bot called myBot:
+
+```sh
+tfi new bot myBot
+```
+

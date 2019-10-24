@@ -30,10 +30,11 @@ async function replyDirectMessage(ig, { threadId, userId, story }, message=''){
         return 'invalid_threadEntity';
     }
     let sendDm = false;
-    
+
     if(story) {
         sendDm = await shareStory(threadEntity, story, message = '');
-    } else {
+
+    }  else {
         sendDm = await threadEntity.broadcastText(message);
     }
 
@@ -42,14 +43,14 @@ async function replyDirectMessage(ig, { threadId, userId, story }, message=''){
 
 module.exports = replyDirectMessage;
 
-
-async function replyToStory(threadEntity, story, message) {
+//story reply is not yet implemented
+/* async function replyToStory(threadEntity, story, message) {
     return await threadEntity.broadcastReel({
       mediaId: story.id,
       mediaType: story.media_type === 1 ? 'photo' : 'video',
       message,
     });
-  }
+  } */
   
 async function shareStory(threadEntity, story, message = '') {
     return await threadEntity.broadcastUserStory({

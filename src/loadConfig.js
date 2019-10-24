@@ -1,5 +1,5 @@
 function loadConfig(filename = 'exampleAccount') {
-    const config = require('../logins/'+filename);
+    const config = require(process.env.PWD+'/accounts/'+filename);
     return config;
 }
 

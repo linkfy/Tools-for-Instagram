@@ -30,8 +30,8 @@ async function getInbox(ig, extraInfo = new Object()){
         //let isRead = (dm.last_seen_at[0] > dm.last_permanent_item.timestamp && ig.loggedInUser.pk != dm.last_seen_at[1]);
         
         let myId = ig.loggedInUser.pk;
-        let readByUser = null;
-        let readByMe = null;
+        let readByUser = false; //By default the user did not readed the message if there is no timestamp
+        let readByMe = true; //By default you readed the message if there is no answer timestamp by user
         
         try { 
             if(dm.last_seen_at[Object.keys(dm.last_seen_at)[0]] != undefined) {                readByUser = (dm.last_seen_at[Object.keys(dm.last_seen_at)[0]].timestamp == dm.last_permanent_item.timestamp);

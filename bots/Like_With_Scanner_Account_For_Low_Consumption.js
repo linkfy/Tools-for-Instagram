@@ -2,7 +2,7 @@ require("../src/tools-for-instagram.js");
 
 //How to use Rotative Residential/Mobile proxies with low data consumption example:
 (async () => {
-    //See example file inside logins folder, create two files before testing
+    //See example file inside accounts folder, create two files before testing
     let config = loadConfig('exampleAccount');
     let config2 = loadConfig('exampleAccount2');
     

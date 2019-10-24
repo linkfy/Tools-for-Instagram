@@ -78,8 +78,8 @@ async function loadCookies(inputLogin, silentMode = false) {
 if(!fs.existsSync("output/")) {
     fs.mkdirSync("output/");
 }
-if(!fs.existsSync("logins/")) {
-    fs.mkdirSync("logins/");
+if(!fs.existsSync("accounts/")) {
+    fs.mkdirSync("accounts/");
 }
 
 //if Input proxy == false then we force to not use the proxy
