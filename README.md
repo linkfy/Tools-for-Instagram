@@ -105,12 +105,14 @@ IG_PASSWORD=myPassword
 - [x] Get Photo/Video Url
 - [x] Get Ibox/Pending Messages
 - [x] Approve/Decline Pending Messages
-- [x] Reply Messages
+- [x] Reply Messages / Send Stories
 - [x] Detect Faces / Gender / Age Avg.
 - [x] Anti Ban Mode (Better with mobile proxies)
 - [x] Cookie validator/regenerator on Login
 - [x] "It was Me message" validator checker
 - [x] Low consumption proxies examples
+- [x] Create Workers/Bosses threads
+- [ ] CLI Alpha under construction
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 
 <img src="https://media.giphy.com/media/ignhVpXU7h4qHMwXix/giphy.gif" width="340">
