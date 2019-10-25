@@ -114,6 +114,8 @@ IG_PASSWORD=myPassword
 - [x] "It was Me message" validator checker
 - [x] Low consumption proxies examples
 - [x] Create Workers/Bosses threads
+- [x] Cross Framework Support
+- [X] Cross Framework Instabot example
 - [ ] CLI Alpha under construction
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 
