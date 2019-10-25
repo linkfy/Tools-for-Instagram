@@ -9,7 +9,9 @@
 ![npm](https://img.shields.io/npm/dt/tools-for-instagram)
 
 
-Automation scripts for Instagram </br></br>With AI and Avoid Bans Example codes </br>
+Automation scripts for Instagram </br></br>
+- With AI and Avoid Bans Example codes </br>
+- Cross framework support: TFI can run their own tools or other tools like instabot </br>
 <img src="https://i.imgur.com/aaTVSP2.png" width="540">
 
 ![View changes](https://github.com/linkfy/Tools-for-Instagram/wiki/Changelog)

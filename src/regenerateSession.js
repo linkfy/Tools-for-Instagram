@@ -4,7 +4,7 @@ async function regenerateSession(ig, log = true) {
 
         console.log("Regenerating session".cyan);
     }
-    return await login(ig.loggedInUser.inputLogin, ig.loggedInUser.inputPassword, ig.loggedInUser.inputProxy,  ig.loggedInUser.verificationMode, silentMode=true, ig.antiBanMode);
+    return await login({inputLogin: ig.loggedInUser.inputLogin, inputPassword: ig.loggedInUser.inputPassword, inputProxy: ig.loggedInUser.inputProxy,  verificationMode: ig.loggedInUser.verificationMode, silentMode: true, antiBanMode: ig.antiBanMode});
 }
 
 module.exports = regenerateSession;
