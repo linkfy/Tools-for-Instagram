@@ -31,6 +31,7 @@ let workerMaxSeconds = 25;
 
     console.log("Before execution, be sure to be on the root directory and execute this code like this:");
     console.log("node bots/bosses/instabotBoss.js");
+    console.log("Also you will need 'pip' utility to install the required stuff for instabot");
     console.log("Press Any key to continue or Ctrl+C to exit");
 
 
