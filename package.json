@@ -15,6 +15,7 @@
     "instagram-id-to-url-segment": "^0.0.0",
     "instagram-private-api": "^1.31.1",
     "lowdb": "^1.0.0",
+    "node-cmd": "^3.0.0",
     "node-fetch": "^2.6.0",
     "shortid": "^2.2.15",
     "worker-farm": "git+https://github.com/sebamarynissen/node-worker-farm.git#worker-threads"

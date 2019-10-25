@@ -3,8 +3,9 @@ require("../../src/tools-for-instagram.js");
 
 let workerMaxSeconds = 25;
 (async () => {
-    
-    
+    console.log("Before execution, be sure to be on the root directory and execute this code like this:");
+    console.log("node bots/bosses/exampleBoss.js");
+
     console.log("loading workers");
 
     //The worker accounts are located on the accounts folder
