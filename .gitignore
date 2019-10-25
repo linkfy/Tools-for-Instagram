@@ -7,6 +7,9 @@ db/*
 *.txt
 logins/*
 !logins/exampleAccount.js
+bots/workers/instabotScripts/*
+!bots/workers/instabotScripts/example.py
+!logins/exampleAccount.js
 accounts/*
 !accounts/exampleAccount.js
 bots/test.js
