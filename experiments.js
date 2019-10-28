@@ -1,3 +1,75 @@
+var cmd=require('node-cmd');
+var Promise = require('bluebird');
+var fs = require("fs");
+var exec = require('child_process').execSync;
+const cmdAsync = Promise.promisify(cmd.get, { multiArgs: true, context: cmd });
+require('../Tools-for-Instagram');
+
+(async() => {
+    
+    let link = "https://www.instagram.com/p/B4GmSuZJm_D/";
+    //exec("adb shell am start -n com.instagram.android/com.instagram.android.activity.MainTabActivity -d "+link);
+    await sleep(2)
+    exec('adb exec-out screencap -p /mnt/sdcard/sc.png');
+    exec('adb pull /mnt/sdcard/sc.png');
+    res = getResolution();
+    //relativeLike(res[0], res[1]);
+    console.log(getResolution());
+})();
+
+
+
+
+
+
+
+function getResolution(){
+    let res = exec('adb shell wm size').toString();
+    res = res.replace("Physical size: ", "");
+    res = res.replace(" ", "");
+    res = res.replace("\r\n", "");
+    resolution = res.split("x");
+    resolution = [parseInt(resolution[0]), parseInt(resolution[1])];
+    return resolution;
+}
+
+
+function relativeLike(w, h) {
+    let relativeW = 0.072
+    let relativeH = 0.82
+
+    likeW = parseInt(w * relativeW)
+    likeH = parseInt(h * relativeH)
+
+    exec("adb shell input tap " + likeW + " " + likeH);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+
+
+
 let Api = require('instagram-private-api');
 let ig = new Api.IgApiClient();
 
@@ -62,4 +134,5 @@ let qs_stamp = '';
     //Sign Payload
     
     //Send
-})();
+//})();
+ 
