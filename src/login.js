@@ -84,7 +84,7 @@ if(!fs.existsSync("accounts/")) {
 
 //if Input proxy == false then we force to not use the proxy
 async function login(args={}) {
-    let {inputLogin=null, inputPassword=null, inputProxy=false, verificationMode=null, silentMode=false, antiBanMode=false} = args;
+    let {inputLogin=null, inputPassword=null, inputProxy=null, verificationMode=null, silentMode=false, antiBanMode=false} = args;
 
     
     Api = require('instagram-private-api');
@@ -92,18 +92,18 @@ async function login(args={}) {
     if(inputLogin!=null && inputPassword !=null) {
         process.env.IG_USERNAME = inputLogin;
         process.env.IG_PASSWORD = inputPassword;
-        if(inputProxy!=null && inputProxy != false) {
-            process.env.IG_PROXY = inputProxy;
-        }
         
     }
+    //If inputProxy == false then we dont set it later on lines below
+    if(inputProxy!=null || inputProxy != undefined) {
+        process.env.IG_PROXY = inputProxy;
+    } 
 
     // You must generate device id's before login.
     // Id's generated based on seed
     // So if you pass the same value as first argument - the same id's are generated every time
     ig.state.generateDevice(process.env.IG_USERNAME);
-    ig.simulate.preLoginFlow();
-    // Optionally you can setup proxy url
+    
 
     //If instagramVerification parameter is not null then we parse it
     //Parse Instagram verification to the real parameters
@@ -253,7 +253,7 @@ async function tryToLogin(inputLogin, inputPassword, inputProxy, verificationMod
         
         let sendCode = await ig.challenge.sendSecurityCode(code);
         console.log(sendCode);
-        console.log("Done! Restart me to start your new session!".green);
+        console.log("Done! Restart me to start your new session! (Sometimes you need to delete the cookie again after adding the code)".green);
         process.exit();
     }).catch(Api.IgLoginRequiredError, () => {
         if(hasCookies) {
