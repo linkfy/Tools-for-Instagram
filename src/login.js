@@ -239,7 +239,7 @@ async function tryToLogin(inputLogin, inputPassword, inputProxy, verificationMod
         }
 
         console.log(ig.state.checkpoint); //Challenge info here
-        
+        console.log('Recommended to not open the app during verification / do not answer "it was me" on the phone'.yellow);
         let code = await inquirer.prompt([
             {
                 type: 'input',
