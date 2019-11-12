@@ -430,6 +430,30 @@ Send Story as a Message to userId or ThreadId
 #### regenerateSession(ig)
 #### executeAntiBanChecks(ig)
 
+## Scrapper / Spider
+### Login is not required for the next functions
+
+#### spider.getUserInfo(username)
+Get the basic information of some user, also the last posts
+```javascript
+(async () => {
+
+    let info = await spider.getUserInfo("linkfytester");
+    console.log(info);
+})();
+```
+
+#### spider.userHasStories(usernames)
+Get true or false if the user has stories
+```javascript
+(async () => {
+
+    let info = await spider.userHasStories("linkfytester");
+    console.log(info);
+})();
+```
+
+
 ## Advanced Stuff
 
 ### Using Bosses and Workers
