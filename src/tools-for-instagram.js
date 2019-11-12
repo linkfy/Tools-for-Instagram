@@ -6,6 +6,7 @@ function toolsForInstagram() {
     if(!global.noLogo)
         require('./logo.js')();
     global.login =  require('./login.js');
+    global.spider = require('./spider.js');
     global.removeCookie = require('./removeCookie.js');
     global.regenerateSession = require('./regenerateSession.js');
     global.getFollowers = require('./getFollowers.js');
