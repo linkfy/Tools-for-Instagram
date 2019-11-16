@@ -443,7 +443,7 @@ Get the basic information of some user, also the last posts
 })();
 ```
 
-#### spider.userHasStories(usernames)
+#### spider.userHasStories(username)
 Get true or false if the user has stories
 ```javascript
 (async () => {
