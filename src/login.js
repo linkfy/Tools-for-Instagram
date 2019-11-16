@@ -228,7 +228,8 @@ async function tryToLogin(inputLogin, inputPassword, inputProxy, verificationMod
     }).catch(Api.IgCheckpointError, async () => {
 
         if(process.env.IG_VERIFICATION == 2) {
-            await ig.challenge.selectVerifyMethod(2); //email
+            //await ig.challenge.selectVerifyMethod(2); //email old method
+            await ig.challenge.auto(true); //Email quick fix, now Mode 2 is solved by automode
         } else if(process.env.IG_VERIFICATION == 1) {
             await ig.challenge.selectVerifyMethod(1);//sms
         }else if(process.env.IG_VERIFICATION == 0) {
