@@ -3,6 +3,7 @@ function toolsForInstagram() {
     global.fs = require('fs');
     global.sleep = require('./sleep.js');
     global.sleepSync = require('./sleepSync.js');
+    global.Api = require('instagram-private-api');
     if(!global.noLogo)
         require('./logo.js')();
     global.login =  require('./login.js');
@@ -74,6 +75,9 @@ function toolsForInstagram() {
     } catch (err) {
         console.log("AI Modules can not be imported");
     }
+    process.on('error', (e) => {
+        console.log("emmm.")
+    });
 }
 
 module.exports = toolsForInstagram();

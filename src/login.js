@@ -3,7 +3,7 @@ let fs = require('fs');
 let Bluebird = require('bluebird');
 let inquirer = require('inquirer');
 let _ = require('lodash');
-let Api = null;
+//let Api = null;
 let ig = null;
 let colors = require('colors');
 const low = require('lowdb');
@@ -87,7 +87,7 @@ async function login(args={}) {
     let {inputLogin=null, inputPassword=null, inputProxy=null, verificationMode=null, silentMode=false, antiBanMode=false} = args;
 
     
-    Api = require('instagram-private-api');
+    
     ig = new Api.IgApiClient();
     if(inputLogin!=null && inputPassword !=null) {
         process.env.IG_USERNAME = inputLogin;
@@ -199,8 +199,10 @@ async function tryToLogin(inputLogin, inputPassword, inputProxy, verificationMod
             
             if(!silentMode)
                 console.log("Logged in".green);
-        } catch (e){
+        } catch (e) {
             console.log(e);
+            //console.log(Object.getOwnPropertyNames ( e ));
+            //console.log(e.response.statusCode);
             console.log("Login failed from cookie | Removing incorrect cookie | Trying to regenerate".red);
             //Simulate needed fields:
             ig.loggedInUser = new Object();

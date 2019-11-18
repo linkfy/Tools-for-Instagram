@@ -7,7 +7,7 @@ async function likePost(ig, post, forceLike = false) {
         extraInfo.user = post.user;
         return await likeMediaId(ig, post.pk, forceLike, extraInfo);
     } catch (error) {
-        console.log("This User Has 0 Posts, SKIPPING!!!")
+        console.log("Error Liking, no posts received, Skipping".yellow)
 
     }
 }
