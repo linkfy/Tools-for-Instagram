@@ -21,7 +21,7 @@ async function sendMessageToNewFollowers(ig) {
     
     console.log("Sending Welcome Messages...");
     let followers = await getMyLastFollowers(ig);
-    
+    //console.log(followers[0]);
     if(followers!=undefined || followers != null) {
         
         for(let i = 0; i < followers.length; i++) {

@@ -1,14 +1,14 @@
 var workerFarm = require('worker-farm');    
-function executeWorker(args={}) {
+function executeAdvancedWorker(args={}) {
     
-    let {workerName = null, accountLoginFile = null, timeout = Infinity, extraParameters = {}} = args;
+    let {workerName = null, variables = {}, timeout = Infinity} = args;
     
     
     timeout = timeout * 1000;
     let worker = workerFarm.threaded({maxCallTime: timeout},require.resolve(process.env.PWD+'/bots/workers/'+ workerName +'.js'));
     
     return new Promise(function(resolve, reject) {
-        worker(accountLoginFile, function(err, result) {
+        worker(variables, function(err, result) {
             workerFarm.end(worker);
             resolve(result);    
         });
@@ -17,4 +17,4 @@ function executeWorker(args={}) {
     
 } 
 
-module.exports = executeWorker;
+module.exports = executeAdvancedWorker;

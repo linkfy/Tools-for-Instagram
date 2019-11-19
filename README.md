@@ -479,6 +479,27 @@ We will be able to use "workers". Multiple executions of bots that work as "thre
 ```sh
 node bots/bosses/exampleBoss
 ```
+#### Advanced workers, execution of script bots as a worker subroutine
+There is also possible to execute advanced workers with the function executeAdvancedWorker, instead of sending an 'accountLogin' parameter, use the 'variables' parameter to send all the related parameters and information to the bot. <br>
+
+For example the advanced boss scriptLoaderBoss.js sends an script name to the scriptLoader.js worker.
+
+```javascript
+    let worker1 =  executeAdvancedWorker({
+        workerName: 'scriptLoader',
+        variables: {scriptName: 'Message_New_Followers'},
+        timeout: Infinity  // Set to Infinity to avoid Timeout seconds on subroutines
+    });
+```
+
+The advanced worker read the variables like that:
+```javascript
+module.exports = function (variables, callback) {
+    (async () => {
+        console.log(variables.scriptName +'.js')
+        ///...
+```
+Recursive intervals (setInterval) are only executed once when normal scripts are called from a worker, so consider to set the intervals inside the worker code and not inside the script code. In this example (scriptLoader.js) you can see how Message_New_Followers is only executed once for that reason.
 
 ### Using CLI for development
 The CLI is currently under construction so it will change constantly

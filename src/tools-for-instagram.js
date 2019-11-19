@@ -69,6 +69,7 @@ function toolsForInstagram() {
     global.setAntiBanMode = require('./setAntiBanMode.js');
     global.executeAntiBanChecks = require('./executeAntiBanChecks.js');
     global.executeWorker = require('./executeWorker.js');
+    global.executeAdvancedWorker = require('./executeAdvancedWorker.js');
     try {
         global.detectFaces = require('./detectFaces.js');
         global.imageHaveFaces = require('./imageHaveFaces.js');

@@ -76,3 +76,4 @@ function generateBot(botName) {
     fs.writeFileSync(process.env.PWD+"/bots/"+botName+".js", botContent,  { flag: 'wx' });
     console.log("Bot created :" + process.env.PWD+"/bots/"+botName+".js");
 }
+

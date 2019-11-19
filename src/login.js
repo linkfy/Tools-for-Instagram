@@ -203,14 +203,24 @@ async function tryToLogin(inputLogin, inputPassword, inputProxy, verificationMod
             console.log(e);
             //console.log(Object.getOwnPropertyNames ( e ));
             //console.log(e.response.statusCode);
-            console.log("Login failed from cookie | Removing incorrect cookie | Trying to regenerate".red);
+            console.log("Login failed from cookie | Removing incorrect cookie | Trying to regenerate...".red);
+            
             //Simulate needed fields:
-            ig.loggedInUser = new Object();
+
+            /* ig.loggedInUser = new Object();
             ig.loggedInUser.username = inputLogin;
             ig.loggedInUser.inputLogin = inputLogin;
             ig.loggedInUser.inputPassword = inputPassword;
             ig.loggedInUser.inputProxy = inputProxy;
-            ig.loggedInUser.verificationMode = verificationMode;
+            ig.loggedInUser.verificationMode = verificationMode; */
+
+            ig.loggedInUser = new Object();
+            ig.loggedInUser.username = process.env.IG_USERNAME;
+            ig.loggedInUser.inputLogin = process.env.IG_USERNAME;
+            ig.loggedInUser.inputPassword = process.env.IG_PASSWORD;
+            ig.loggedInUser.inputProxy = process.env.IG_PROXY;
+            ig.loggedInUser.verificationMode = process.env.IG_VERIFICATION;
+            
             return await regenerateSession(ig, log = false);//"removeCookie";
         };
         //Inject other parameters for regenerateSession() cases
