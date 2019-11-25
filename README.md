@@ -116,6 +116,7 @@ IG_PASSWORD=myPassword
 - [x] Create Workers/Bosses threads
 - [x] Cross Framework Support
 - [X] Cross Framework Instabot example
+- [X] Online Simulation
 - [ ] CLI Alpha under construction
 - [ ] Postprocessing of scrape list (detect faces, language, business accounts)
 
@@ -146,6 +147,7 @@ https://trello.com/b/ZlwRr6l0/tools-for-instagram
 - Injected loggedInUser inside ig Object after login (ig.loggedInUser)
 - Injected db inside ig Object after login (ig.db)
 - Injected shortid generator inside ig Object
+- Injected realtime modules on login
 
 # Api
 ### Basic example

@@ -4,11 +4,15 @@ let Bluebird = require('bluebird');
 let inquirer = require('inquirer');
 let _ = require('lodash');
 //let Api = null;
+let MQTT= require('instagram_mqtt');
+let { GraphQLSubscriptions } = require('instagram_mqtt/dist/realtime/subscriptions/graphql.subscription');
+let { SkywalkerSubscriptions } = require('instagram_mqtt/dist/realtime/subscriptions/skywalker.subscription');
 let ig = null;
 let colors = require('colors');
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const shortid = require('shortid');
+
 
 
 
@@ -84,11 +88,12 @@ if(!fs.existsSync("accounts/")) {
 
 //if Input proxy == false then we force to not use the proxy
 async function login(args={}) {
-    let {inputLogin=null, inputPassword=null, inputProxy=null, verificationMode=null, silentMode=false, antiBanMode=false} = args;
+    let {inputLogin=null, inputPassword=null, inputProxy=null, verificationMode=null, silentMode=false, antiBanMode=false, showRealtimeNotifications = false} = args;
 
     
+    MQTT.IgApiClientRealtime =  MQTT.withRealtime(new Api.IgApiClient());
+    ig = MQTT.IgApiClientRealtime;
     
-    ig = new Api.IgApiClient();
     if(inputLogin!=null && inputPassword !=null) {
         process.env.IG_USERNAME = inputLogin;
         process.env.IG_PASSWORD = inputPassword;
@@ -166,7 +171,48 @@ async function login(args={}) {
     let result = await tryToLogin(inputLogin, inputPassword, inputProxy, verificationMode, hasCookies, silentMode);
     // If result is not undefined we send the ig object session
     result.antiBanMode = antiBanMode;
+    result.showRealtimeNotifications = showRealtimeNotifications;
     //We use clone to be able to generate new sessions and not overwrite
+    //After cloning realtime functions must be copied again from the original IG object, [cloning is not perfect]
+    result.realtime = ig.realtime;
+    
+    const subToLiveComments = (broadcastId) =>
+        // you can add other GraphQL subs using .subscribe
+        result.realtime.graphQlSubscribe(GraphQLSubscriptions.getLiveRealtimeCommentsSubscription(broadcastId));
+
+    if(result.showRealtimeNotifications) {
+        // whenever something gets sent and has no event, this is called
+        result.realtime.on('receive', (topic, messages) => {
+            console.log('receive', topic, messages);
+        });
+        result.realtime.on('direct', logEvent('direct'));
+        // this is called with a wrapper use {message} to only get the message from the wrapper
+        result.realtime.on('message', logEvent('messageWrapper'));
+        // whenever something gets sent to /ig_realtime_sub and has no event, this is called
+        result.realtime.on('realtimeSub', logEvent('realtimeSub'));
+        // whenever the client has a fatal error
+        result.realtime.on('error', console.error);
+        result.realtime.on('close', () => console.error('RealtimeClient closed'));
+    }
+   
+    //Connect to realtime nottifications
+    await result.realtime.connect({
+        graphQlSubs: [
+            // these are some subscriptions
+            GraphQLSubscriptions.getAppPresenceSubscription(),
+            GraphQLSubscriptions.getClientConfigUpdateSubscription(),
+            GraphQLSubscriptions.getZeroProvisionSubscription(ig.state.phoneId),
+            GraphQLSubscriptions.getDirectStatusSubscription(),
+            GraphQLSubscriptions.getDirectTypingSubscription(ig.state.cookieUserId),
+            GraphQLSubscriptions.getAsyncAdSubscription(ig.state.cookieUserId),
+        ],
+        skywalkerSubs: [
+            SkywalkerSubscriptions.directSub(ig.state.cookieUserId),
+            SkywalkerSubscriptions.liveSub(ig.state.cookieUserId)
+        ],
+        irisData: await ig.feed.directInbox().request(),
+    });
+    
     return clone(result);
 }
 
@@ -220,7 +266,6 @@ async function tryToLogin(inputLogin, inputPassword, inputProxy, verificationMod
             ig.loggedInUser.inputPassword = process.env.IG_PASSWORD;
             ig.loggedInUser.inputProxy = process.env.IG_PROXY;
             ig.loggedInUser.verificationMode = process.env.IG_VERIFICATION;
-            
             return await regenerateSession(ig, log = false);//"removeCookie";
         };
         //Inject other parameters for regenerateSession() cases
@@ -311,4 +356,9 @@ function clone(obj) {
         if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
     }
     return copy;
+}
+
+function logEvent(name) {
+    
+    return data => console.log(name, data);
 }
