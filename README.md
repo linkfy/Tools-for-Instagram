@@ -12,6 +12,8 @@
 Automation scripts for Instagram </br></br>
 - With AI and Avoid Bans Example codes </br>
 - Cross framework support: TFI can run their own tools or other tools like instabot </br>
+
+
 <img src="https://i.imgur.com/aaTVSP2.png" width="540">
 
 ![View changes](https://github.com/linkfy/Tools-for-Instagram/wiki/Changelog)
@@ -536,3 +538,4 @@ Create a new bot called myBot:
 tfi new bot myBot
 ```
 
+##### Thanks to Nerixyz, Dilame, Richard Hutta, Pasha Lev, valga, mgp25 and all the Tfi community researchers for doing an incredible work.
