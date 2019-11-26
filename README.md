@@ -456,7 +456,15 @@ Get true or false if the user has stories
     console.log(info);
 })();
 ```
+#### spider.getUserLikers(username)
+Get user likers of some post, it is useful when trying to scrap more than 10k users
+```javascript
+(async () => {
 
+    let users = await spider.getUserLikers("linkfytester");
+    console.log(info);
+})();
+```
 
 ## Advanced Stuff
 

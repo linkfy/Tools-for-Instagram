@@ -4,30 +4,44 @@ require('./src/tools-for-instagram.js');
 (async () => {
 
     console.log("\n1 -- LOGIN --\n".bold.underline);
-    await spider.getUserFans('instagram');
-
-
-    return;
+    
+/*  
+    //The same but using proxy:
+    let proxy = process.env.IG_PROXY;
+    proxy = proxy.split("@");
+    let proxyAuth = proxy[0].split(":");
+    proxyAuth[1] = proxyAuth[1].replace("//","")
+    let proxyInfo = proxy[1].split(":");
+    let proxyConfig = {
+        host: proxyInfo[0],
+        port: proxyInfo[1],
+        protocol: 'https',
+        auth: {
+            username: proxyAuth[1],
+            password: proxyAuth[2]
+        }
+    }
+    await spider.getUserLikers('instagram', proxyConfig);
+    */
+    
+    
     let ig = await login();
     //We need a clean session first.
     ig = await regenerateSession(ig);
     let counter = 0;
     let likes = 0;
+
+    /*
+    //CLASSIC WAY, not recommended for more than 10k users:
+
                                         //One iteration will get 10k~ aprox
-    let getResult = await getFollowers(ig, 'instagram', maxIterations = 4);
-    let followers = await readFollowers(ig, 'instagram');
+    //let getResult = await getFollowers(ig, 'instagram', maxIterations = 4);
+    //let followers = await readFollowers(ig, 'instagram');
+    */
+    
+    
+    let followers = await spider.getUserLikers('instagram', maxUsers = 1000);
     let currentUser = followers[0];
-    if(currentUser == undefined) {
-        pokeBug();
-        console.log("Some wild error appeared!".yellow);
-        await sleep(1, false);
-        console.log("It's a Pokemon Bug type");
-        await sleep(1, false);
-        console.log("Tfi used, teleport!");
-        await sleep(1, false);
-        console.log("Tfi ran from battle!");
-        process.exit();
-    }
 
     do {
         await sleep(1);
@@ -87,44 +101,3 @@ require('./src/tools-for-instagram.js');
     
 })();
 
-
-function pokeBug() {
-    console.log("           _,--'\"\"\"\"\"\"---.._");
-    console.log("         ,'                 `._");
-    console.log("       ,'                      `.");
-    console.log("     ,'                          \\");
-    console.log("    .                             \\");
-    console.log("  ,'.                  ,-`.        \\");
-    console.log(" /   \\               ,'    ,        \\");
-    console.log("|`.  |\\            ,`      |         |");
-    console.log("L  `.| |         .''     _,'        _'");
-    console.log(" \\    \"'        ,`'_..-''        _,'");
-    console.log("  `.            '\"\"          _,.' `.");
-    console.log("    /._                 _..-\"       \\");
-    console.log("   /   `.          _,.-'             \\");
-    console.log("  /      \\-.___.--'/                  \\");
-    console.log(" |      ,/.     .-^+.._               F");
-    console.log("  L..-''.' \\  .'   |   `'--.....___   .");
-    console.log("  /     /   `/     |               `\"-;");
-    console.log(" /     j    j      '                ,'");
-    console.log(" `.    |    |       L          _.-'Y");
-    console.log("  ,`._/     |        .    _,.-'     .");
-    console.log("  `.  '|    |         \\\"\"\"|         |");
-    console.log("   |   |    |         |   |         |");
-    console.log("   |   |    |        ,'   |         |");
-    console.log("   |   L    +      ,'     |         |");
-    console.log("   |    \\    L    ,\\      j         |");
-    console.log("   L     \\   |   /  `.   /          j");
-    console.log("    \\    j\\  |  /    `. /          .");
-    console.log("     L  .  ` | /       \\          /");
-    console.log("     +  |   `|/                  /");
-    console.log("      \\ | _,..._         \\      /");
-    console.log("       ./'      `-._      \\   ,'");
-    console.log("        l           `.     ^_/");
-    console.log("        +             `   /");
-    console.log("         L-\"\"--.       .,'");
-    console.log("         |      `.     ,");
-    console.log("         .        \\  ,'");
-    console.log("          `       _.'");
-    console.log("           `....-' mh");
-}

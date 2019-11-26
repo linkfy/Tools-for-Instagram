@@ -58,8 +58,27 @@ async function userHasStories(username) {
 
 }
 
-async function getUserLikers(username) {
+/* async function getFreeProxy() {
+    let result = undefined;
+    
+    const config = {
+        method: 'get',
+        url: 'https://api.getproxylist.com/proxy'
+    }
+    try {
+        result = await axios(config);
+        result = result.data;
+        return result;
+    } catch (e) {
+        console.log(e);
+        return result;
+    }
+}
+ */
+
+async function getUserLikers(username, maxUsers = undefined, proxyConfig = undefined) {
     let userInfo = await getUserInfo(username);
+    
     let lastPost = userInfo.lastFeedPosts[0];
     let urlSegment = parser.instagramIdToUrlSegment(lastPost.id);
     let results = [];
@@ -69,6 +88,12 @@ async function getUserLikers(username) {
         let nextCursor = null;
         let hasMoreUsers = false;
         do {
+            let proxy = null;
+            if(proxyConfig != undefined) {
+                proxy = proxyConfig;
+            }
+
+            //console.log("Continue");
             if(nextCursor) {
                 url = 'https://www.instagram.com/graphql/query/?query_hash=d5d763b1e2acf209d62d22d184488e57&variables={"shortcode":"'+urlSegment+'","include_reel":true,"first":50, "after": "'+nextCursor+'"}';
             } else {
@@ -77,7 +102,8 @@ async function getUserLikers(username) {
             const config = {
                 method: 'get',
                 url: url,
-                headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36' }
+                headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36' },
+                proxy: proxy
             }
             let info = await axios(config);
             info = info.data;
@@ -102,8 +128,21 @@ async function getUserLikers(username) {
             let receivedUsers = parsedData.edges;
             let users = receivedUsers.map(({node}) => node);
             results.push(...users);
-            console.log("Received users: " + results.length);
-            await sleep(1);
+            if(!hasMoreUsers) {
+                console.log("Received users: " + results.length);
+            } else {
+                process.stdout.clearLine();
+                process.stdout.cursorTo(0);
+                process.stdout.write("Received users: " + results.length);
+            }
+            if(maxUsers!= undefined && results.length >= maxUsers) {
+                console.log("\nMax users signal received!".cyan);
+                break;
+            }
+            if(results.length%8000 == 0) {
+                await sleep(60*15);
+            }
+            //await sleep(1);
 
         } while(hasMoreUsers);
 
@@ -113,9 +152,12 @@ async function getUserLikers(username) {
     }
     
     console.log("Received users: " + results.length);
+    return results;
 }
 spider.getUserInfo = getUserInfo;
 spider.userHasStories = userHasStories;
-spider.getUserFans = getUserLikers;
+//spider.getFreeProxy = getFreeProxy;
+spider.getUserLikers = getUserLikers;
+
 
 module.exports = spider;
