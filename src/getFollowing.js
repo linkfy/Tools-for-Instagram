@@ -60,7 +60,7 @@ async function getFollowing(ig, username, maxIterations = undefined){
         if (err) throw err;
     });
 
-    return console.log(("\nFollowers saved to 'output' folder with name " + username + "_following.json").green);
+    return console.log(("\nFollowing saved to 'output' folder with name " + username + "_following.json").green);
 }
 
 
