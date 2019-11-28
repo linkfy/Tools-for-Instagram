@@ -1,6 +1,6 @@
 # Tools-for-Instagram
 
-<img src="https://i.imgur.com/J2PsoIZ.png" width="100">
+<img src="https://i.imgur.com/T0dfIyQ.gif" width="100">
 
 [![Telegram Chat](https://img.shields.io/badge/telegram-join%20chat-informational.svg)](https://t.me/toolsforinstagram)
 [![paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/LinkStudios/10)
@@ -15,6 +15,8 @@ Automation scripts for Instagram </br></br>
 
 
 <img src="https://i.imgur.com/aaTVSP2.png" width="540">
+
+
 
 ![View changes](https://github.com/linkfy/Tools-for-Instagram/wiki/Changelog)
 
