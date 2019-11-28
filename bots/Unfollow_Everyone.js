@@ -5,6 +5,7 @@ require('./src/tools-for-instagram.js');
     console.log("\n-- : Unfollow Everyone --\n".bold.underline);
     console.log("\n -- Script by: @virginsince1997 --\n".bold.underline);
     let ig = await login();
+    await setAntiBanMode(ig);
     await getFollowing(ig, ig.loggedInUser.username);
     await sleep(60);
     followings = await readFollowing(ig, ig.loggedInUser.username);
