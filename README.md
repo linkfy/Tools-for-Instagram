@@ -556,4 +556,17 @@ Create a new bot called myBot:
 tfi new bot myBot
 ```
 
+Execute an existing bot [Proxy is optional]:
+
+```sh
+tfi start -b bots/botname.js -u username -p password -y proxy 
+```
+
+When the cookie exists you can use it without password
+```sh
+tfi start -b bots/botname.js -u username
+```
+
+
+
 ##### Thanks to Nerixyz, Dilame, Richard Hutta, Pasha Lev, valga, mgp25 and all the Tfi community researchers for doing an incredible work.

@@ -17,6 +17,7 @@
     "instagram-private-api": "^1.33.0",
     "instagram_mqtt": "github:Nerixyz/instagram_mqtt",
     "lowdb": "^1.0.0",
+    "minimist": "^1.2.0",
     "node-cmd": "^3.0.0",
     "node-fetch": "^2.6.0",
     "shortid": "^2.2.15",
