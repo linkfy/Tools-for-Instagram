@@ -44,12 +44,12 @@ function start() {
     console.log(argv.p);
     console.log(argv.y);
     //If proxy is undefined then send null
-    argv.y = (argv.y === undefined ? null : "'"+ argv.y + "'");
+    argv.y = (argv.y === undefined ? null : "'" + argv.y.toString() + "'");
     let file = fs.readFileSync(process.env.PWD+'/'+ argv.b).toString();
     file = file.replace("'./src/tools-for-instagram.js'", "'../src/tools-for-instagram.js'");
     file = file.replace('"./src/tools-for-instagram.js"', '"../src/tools-for-instagram.js"');
     file = file.replace("login()", `login({inputLogin: '${argv.u}', inputPassword: '${argv.p}', inputProxy: ${argv.y}})`);
-    
+    console.log(file);
     (async () => {await eval(file); process.exit();})();
     
     
