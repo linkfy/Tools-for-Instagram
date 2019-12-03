@@ -28,6 +28,7 @@ require('./src/tools-for-instagram.js');
     let ig = await login();
     //We need a clean session first.
     ig = await regenerateSession(ig);
+    
     let counter = 0;
     let likes = 0;
 
