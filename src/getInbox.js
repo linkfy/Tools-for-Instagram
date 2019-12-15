@@ -27,27 +27,22 @@ async function getInbox(ig, extraInfo = new Object()){
 
 
     let directMessagesFormated = threads.map(function(dm) {
-        //let isRead = (dm.last_seen_at[0] > dm.last_permanent_item.timestamp && ig.loggedInUser.pk != dm.last_seen_at[1]);
-        
         let myId = ig.loggedInUser.pk;
-        let readByUser = false; //By default the user did not readed the message if there is no timestamp
+        let readByUser = (dm.thread_title == '') || false; //By default the user did not read the message if there is no timestamp unless the user is me
         let readByMe = true; //By default you readed the message if there is no answer timestamp by user
-        
-        try { 
-            if(dm.last_seen_at[Object.keys(dm.last_seen_at)[0]] != undefined) {                readByUser = (dm.last_seen_at[Object.keys(dm.last_seen_at)[0]].timestamp == dm.last_permanent_item.timestamp);
-            }
-            if(dm.last_seen_at[Object.keys(dm.last_seen_at)[1]]!= undefined) {
-                readByMe = (dm.last_seen_at[Object.keys(dm.last_seen_at)[1]].timestamp == dm.last_permanent_item.timestamp);
-            }
-            
-        } catch (err) {
-            console.log(err);
+        let userId = Object.keys(dm.last_seen_at).find(pk => pk != myId); //This variable could be `undefined`
+
+        if(dm.last_seen_at[userId]) {
+            readByUser = (dm.last_seen_at[userId].timestamp >= dm.last_permanent_item.timestamp);
+        }
+        if(dm.last_seen_at[myId]) {
+            readByMe = (dm.last_seen_at[myId].timestamp >= dm.last_permanent_item.timestamp);
         }
 
         return {
             threadId: dm.thread_id,
             threadIdV2: dm.thread_v2_id,
-            isGroup: dm.users.length == 1 ? false : true,
+            isGroup: (dm.users.length > 1),
             users: dm.users,
             readByUser: readByUser,
             readByMe: readByMe,
