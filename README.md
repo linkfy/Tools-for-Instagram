@@ -57,6 +57,8 @@ IG_PASSWORD=myPassword
     2. Tests the bot using 'node bots/bot.js'
 #### Npm install errors on Windows?:
 [Download this](https://mega.nz/#!kAQFGYbT!NwZfLBmjZuVvOheprlruV31cTs2EZs5zXt342p9Jjdo) - Replace the node_modules folder (1.8.0) on Windows
+#### Npm install errors on Linux?:
+[Download this](https://mega.nz/#!tRgmiKRR!Cgi0OgKx3eyfYkPY8SSTbNLWk_gOc9KsSpDqFekSeyY) - Replace the node_modules folder (1.8.2) on Linux
 
 ## Bot skills:
 - [x] Login Flow
