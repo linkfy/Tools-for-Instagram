@@ -1,5 +1,11 @@
 async function regenerateSession(ig, log = true) {
-    await removeCookie(ig);
+    try{
+        await removeCookie(ig);
+    } catch(e) {
+        if(log) {
+            console.log("No cookie found, not needed to remove.".yellow);
+        }
+    }
     if(log) {
 
         console.log("Regenerating session".cyan);
