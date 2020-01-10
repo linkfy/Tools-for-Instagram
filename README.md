@@ -29,6 +29,8 @@ Automation scripts for Instagram </br></br>
 IG_USERNAME=myUsername
 IG_PASSWORD=myPassword
 
+# Uncomment next line if you want to be in offline chat status
+# ONLINE_MODE=false
 # Uncomment next line to use a proxy
 # IG_PROXY=http://proxyuser:proxypassword@xxx.xxx.xxx.xxx:xxxxx
 # Uncomment next line to use email verifications | sms by default
@@ -83,6 +85,8 @@ IG_PASSWORD=myPassword
 - [x] Unfollow by Username
 - [x] View stories by User Id
 - [x] View stories by Username
+- [x] Get polls from stories
+- [x] Vote poll from story
 - [x] Get recent posts list of a hashtag
 - [x] Get top posts list of a hashtag
 - [x] Get recent post list by location
@@ -292,6 +296,26 @@ If 'force' is set to true, when the item was already liked before it will force 
 View all the current stories of the given username
 ```javascript
    await viewStoriesFromUser(ig, 'instagram');
+```
+
+#### getPollsFromStories(ig, username)
+Get Stories that currently have polls
+```javascript
+    let user = await getUserInfo(ig, "its.crystinx");
+    let stories = await getStoriesFromId(ig, user.id);
+    let polls = await getPollsFromStories(ig, stories);
+```
+
+#### voteStoryPoll(ig, username, value = 1)
+Vote a poll, the value can be 0 or 1 (left or right)
+```javascript
+    let stories = await getStoriesFromId(ig, 18839378120);
+    let polls = await getPollsFromStories(ig, stories);
+    
+    for(p in polls) {
+        await voteStoryPoll(ig, polls[p]);//By default the value is always 1 if we don't set it
+    }
+    
 ```
 
 #### isTimeInRange(startTime, endTime)

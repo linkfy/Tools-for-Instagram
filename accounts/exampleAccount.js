@@ -7,6 +7,7 @@ module.exports = {
     verificationMode: '1', // '0' = OTP; '1' = sms, '2' = email, null = automatic mode,
     silentMode: false,
     antiBanMode: false,
+    onlineMode: true, //Show green dot status, true is recommended to avoid some scrap limitations
     showRealtimeNotifications: false //False is recommended, use only for facebook/graphql notification system debugging
     //END OF OPTIONAL PARAMETERS
 

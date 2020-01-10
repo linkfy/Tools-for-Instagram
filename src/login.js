@@ -88,7 +88,7 @@ if(!fs.existsSync("accounts/")) {
 
 //if Input proxy == false then we force to not use the proxy
 async function login(args={}) {
-    let {inputLogin=null, inputPassword=null, inputProxy=null, verificationMode=null, silentMode=false, antiBanMode=false, showRealtimeNotifications = false} = args;
+    let {inputLogin=null, inputPassword=null, inputProxy=null, verificationMode=null, silentMode=false, antiBanMode=false, showRealtimeNotifications = false, onlineMode = true} = args;
 
     
     MQTT.IgApiClientRealtime =  MQTT.withRealtime(new Api.IgApiClient());
@@ -102,7 +102,17 @@ async function login(args={}) {
     //If inputProxy == false then we dont set it later on lines below
     if(inputProxy!=null || inputProxy != undefined) {
         process.env.IG_PROXY = inputProxy;
-    } 
+    }
+    //If Online mode is changed on the config, it have priority to change the default value:
+    if(onlineMode != true) {
+        process.env.ONLINE_MODE = onlineMode;
+    } else if(process.env.ONLINE_MODE == undefined){
+        //console.log("AUTOSET ONLINE MODE");
+        process.env.ONLINE_MODE = true;
+    } else if(process.env.ONLINE_MODE != undefined) {
+        //console.log("Set online mode from ENV");
+    
+    }
 
     // You must generate device id's before login.
     // Id's generated based on seed
@@ -194,24 +204,28 @@ async function login(args={}) {
         result.realtime.on('error', console.error);
         result.realtime.on('close', () => console.error('RealtimeClient closed'));
     }
-   
-    //Connect to realtime nottifications
-    await result.realtime.connect({
-        graphQlSubs: [
-            // these are some subscriptions
-            GraphQLSubscriptions.getAppPresenceSubscription(),
-            GraphQLSubscriptions.getClientConfigUpdateSubscription(),
-            GraphQLSubscriptions.getZeroProvisionSubscription(ig.state.phoneId),
-            GraphQLSubscriptions.getDirectStatusSubscription(),
-            GraphQLSubscriptions.getDirectTypingSubscription(ig.state.cookieUserId),
-            GraphQLSubscriptions.getAsyncAdSubscription(ig.state.cookieUserId),
-        ],
-        skywalkerSubs: [
-            SkywalkerSubscriptions.directSub(ig.state.cookieUserId),
-            SkywalkerSubscriptions.liveSub(ig.state.cookieUserId)
-        ],
-        irisData: await ig.feed.directInbox().request(),
-    });
+
+    //Go online if online mode is set to true
+    if(process.env.ONLINE_MODE) {
+        console.log("Online Mode".green);
+        //Connect to realtime nottifications
+        await result.realtime.connect({
+            graphQlSubs: [
+                // these are some subscriptions
+                GraphQLSubscriptions.getAppPresenceSubscription(),
+                GraphQLSubscriptions.getClientConfigUpdateSubscription(),
+                GraphQLSubscriptions.getZeroProvisionSubscription(ig.state.phoneId),
+                GraphQLSubscriptions.getDirectStatusSubscription(),
+                GraphQLSubscriptions.getDirectTypingSubscription(ig.state.cookieUserId),
+                GraphQLSubscriptions.getAsyncAdSubscription(ig.state.cookieUserId),
+            ],
+            skywalkerSubs: [
+                SkywalkerSubscriptions.directSub(ig.state.cookieUserId),
+                SkywalkerSubscriptions.liveSub(ig.state.cookieUserId)
+            ],
+            irisData: await ig.feed.directInbox().request(),
+        });
+    }
     
     return clone(result);
 }
