@@ -430,6 +430,7 @@ Send Story as a Message to userId or ThreadId
 ### Undocumented methods:
 #### recentHashtagList(ig, hashtag)
 #### topHashtagList(ig, hashtag)
+#### likeMediaId(ig, pk)
 #### likePost(ig, post)
 #### recentLocationList(ig, location, [randomize: bool])
 #### topLocationList(ig, location, [randomize: bool])

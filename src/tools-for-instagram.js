@@ -19,6 +19,7 @@ function toolsForInstagram() {
     global.likeUrl = require('./likeUrl.js');
     global.recentHashtagList = require('./recentHashtagList.js');
     global.topHashtagList = require('./topHashtagList.js');
+    global.likeMediaId = require('./likeMediaId.js');
     global.likePost = require('./likePost.js');
     global.recentLocationList = require('./recentLocationList.js');
     global.topLocationList = require('./topLocationList.js');
