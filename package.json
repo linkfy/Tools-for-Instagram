@@ -1,6 +1,6 @@
 {
   "name": "tools-for-instagram",
-  "version": "1.8.5",
+  "version": "1.8.6",
   "description": "Tools for instagram",
   "main": "src/tools-for-instagram.js",
   "dependencies": {
