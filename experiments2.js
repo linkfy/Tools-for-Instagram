@@ -13,10 +13,13 @@ require('./src/tools-for-instagram');
         await voteStoryPoll(ig, polls[p]);
     } */
     let ig = await login();
+    
+    
+    
     console.log(await getLikeActivityByHours(ig, 24));
     
-    console.log(await getMediaIdInfo(ig, '2111579218110733346'));
+    //console.log(await getMediaIdInfo(ig, '2111579218110733346'));
     
-    console.log(a);
+    //console.log(a);
     //console.log(polls);
 })();

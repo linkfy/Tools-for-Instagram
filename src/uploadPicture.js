@@ -20,24 +20,27 @@ async function uploadPicture(ig, caption, picturePath, namesToTag = [], extraInf
     if (caption.length <= 2200 || pictureSizeInBytes <= 60000000) {
         if (namesToTag.length > 0 && namesToTag != null) {
             //For can't be a foreach to respect the awaits
+            let users = [];
             for (i = 0; i < namesToTag.length; i++) {
-
                 let id_tag = await ig.user.searchExact(namesToTag[i]);
+                let user = {
+                    user_id: id_tag.pk,
+                    position: [Math.ceil((Math.random() * 0.9998 + 0.0001) * 100) / 100,
+                    Math.ceil((Math.random() * 0.9998 + 0.0001) * 100) / 100]
+                }
+                users.push(user);
+                
+
+            }
                 publishedPicture = await ig.publish.photo({
                     caption: caption,
                     file: pictureBuffer,
                     usertags: {
-                        in: [
-                            {
-                                user_id: id_tag.pk,
-                                position: [Math.ceil((Math.random() * 0.9998 + 0.0001) * 100) / 100,
-                                Math.ceil((Math.random() * 0.9998 + 0.0001) * 100) / 100]
-                            }
-                        ]
+                        in: users
                     },
                 })
     
-            }
+            
             
         }
         else {
