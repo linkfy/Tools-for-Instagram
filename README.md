@@ -361,12 +361,19 @@ It is also possible to stop the interval clearing it
    clearInterval(likeInterval);
 ```
 
-#### uploadPicture(ig, caption, picturePath)
+#### uploadPicture(ig, caption, picturePath, namesToTag = [])
 Upload a picture from computer to Instagram account
 ```javascript
 const path = require('path');
 let myPicturePath = path.join(__dirname, '/images');
 await uploadPicture(ig, "My picture", myPicturePath);
+```
+
+Set tagged accounts to it
+```javascript
+const path = require('path');
+let myPicturePath = path.join(__dirname, '/images');
+await uploadPicture(ig, "My picture", myPicturePath, namesToTag = ['linkfytester', 'instagram']);
 ```
 
 #### commentMediaId(ig, mediaId, commentContent)

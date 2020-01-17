@@ -2,10 +2,11 @@ parser = require('instagram-id-to-url-segment');
 let Promise = require("bluebird");
 let fs = Promise.promisifyAll(require("fs"));
 
-async function uploadPicture(ig, caption, picturePath,extraInfo = new Object()){ 
+async function uploadPicture(ig, caption, picturePath, namesToTag = [], extraInfo = new Object()) {
     //ig.publish.photo It can only support files in buffer
-    let pictureBuffer = await fs.readFileAsync(picturePath)
+    let pictureBuffer = await fs.readFileAsync(picturePath);
     let pictureSizeInBytes = await fs.statSync(picturePath);
+    let publishedPicture
 
     /*  
         As of today 26/09/2019 
@@ -16,20 +17,44 @@ async function uploadPicture(ig, caption, picturePath,extraInfo = new Object()){
         TODO: check the sizes and aspect ratios... ¿Use a excternal package?
     */
 
-    
-    if(caption.length <= 2200 || pictureSizeInBytes <= 60000000){
-        let publishedPicture = await ig.publish.photo({
-            caption: caption,
-            file: pictureBuffer,
-        });
+    if (caption.length <= 2200 || pictureSizeInBytes <= 60000000) {
+        if (namesToTag.length > 0 && namesToTag != null) {
+            //For can't be a foreach to respect the awaits
+            for (i = 0; i < namesToTag.length; i++) {
 
-        const timestamp = new Date().getTime() - new Date().getTimezoneOffset()*60*1000;        
+                let id_tag = await ig.user.searchExact(namesToTag[i]);
+                publishedPicture = await ig.publish.photo({
+                    caption: caption,
+                    file: pictureBuffer,
+                    usertags: {
+                        in: [
+                            {
+                                user_id: id_tag.pk,
+                                position: [Math.ceil((Math.random() * 0.9998 + 0.0001) * 100) / 100,
+                                Math.ceil((Math.random() * 0.9998 + 0.0001) * 100) / 100]
+                            }
+                        ]
+                    },
+                })
+    
+            }
+            
+        }
+        else {
+            publishedPicture = await ig.publish.photo({
+                caption: caption,
+                file: pictureBuffer,
+            })
+
+        }
+        const timestamp = new Date().getTime() - new Date().getTimezoneOffset() * 60 * 1000;
         const link = "https://www.instagram.com/p/" + publishedPicture.media.code
 
-        ig.db.get('mediaUploaded').push({id: ig.shortid.generate(), type: "picture", media_id: parser.urlSegmentToInstagramId(publishedPicture.media.code),caption: caption ,link: link, created_at: timestamp, extra_info: extraInfo}).write();
+        ig.db.get('mediaUploaded').push({ id: ig.shortid.generate(), type: "picture", media_id: parser.urlSegmentToInstagramId(publishedPicture.media.code), caption: caption, link: link, created_at: timestamp, extra_info: extraInfo }).write();
 
         return console.log("Posted new media: ".green + link.green);
-    }else{
+
+    } else {
         return "cant_post";
     }
 
