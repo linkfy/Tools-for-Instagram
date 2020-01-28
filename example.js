@@ -62,5 +62,8 @@ require('./src/tools-for-instagram.js');
     
 
     console.log("\nProcess done!\n".green);
+
+    // If ONLINE_MODE is enabled, this example will run until we send an exit signal
+    process.exit();
     
 })();

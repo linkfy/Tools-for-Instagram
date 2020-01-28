@@ -5,7 +5,7 @@
   "main": "src/tools-for-instagram.js",
   "dependencies": {
     "@tensorflow/tfjs-node": "^1.5.1",
-    "axios": "^0.19.1",
+    "axios": "^0.19.2",
     "blob": "0.0.5",
     "bluebird": "^3.7.2",
     "canvas": "^2.6.1",
@@ -14,7 +14,7 @@
     "face-api.js": "^0.21.0",
     "inquirer": "^6.5.2",
     "instagram-id-to-url-segment": "^0.0.0",
-    "instagram-private-api": "^1.37.1",
+    "instagram-private-api": "^1.39.0",
     "instagram_mqtt": "github:Nerixyz/instagram_mqtt",
     "lowdb": "^1.0.0",
     "minimist": "^1.2.0",
