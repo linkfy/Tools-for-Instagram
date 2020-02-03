@@ -376,7 +376,7 @@ let myPicturePath = path.join(__dirname, '/images');
 await uploadPicture(ig, "My picture", myPicturePath, namesToTag = ['linkfytester', 'instagram']);
 ```
 
-#### uploadPicture(ig, caption, pictureUrl)
+#### uploadPictureByUrl(ig, caption, pictureUrl)
 ```javascript
 
 let pictureUrl = "https://i.ytimg.com/vi/w6-1O0WCdGM/maxresdefault.jpg";
