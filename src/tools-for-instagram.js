@@ -8,6 +8,7 @@ function toolsForInstagram() {
         require('./logo.js')();
     global.login =  require('./login.js');
     global.spider = require('./spider.js');
+    global.getTelegramGroup = require('./getTelegramGroup.js');
     global.removeCookie = require('./removeCookie.js');
     global.regenerateSession = require('./regenerateSession.js');
     global.getFollowers = require('./getFollowers.js');
@@ -56,6 +57,7 @@ function toolsForInstagram() {
     global.getMediaIdInfo = require('./getMediaIdInfo.js');
     global.getMediaUrlInfo = require('./getMediaUrlInfo.js');
     global.uploadPicture = require('./uploadPicture.js');
+    global.uploadPictureByUrl = require('./uploadPictureByUrl.js');
     global.getMediaType = require('./getMediaType.js');
     global.getPhotoUrl = require('./getPhotoUrl.js');
     //The same as alias

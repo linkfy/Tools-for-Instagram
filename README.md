@@ -2,7 +2,7 @@
 
 <img src="https://i.imgur.com/T0dfIyQ.gif" width="100">
 
-[![Telegram Chat](https://img.shields.io/badge/telegram-join%20chat-informational.svg)](https://t.me/toolsforinstagram)
+[![Telegram Chat](https://img.shields.io/badge/telegram-join%20chat-informational.svg)](https://github.com/linkfy/Tools-for-Instagram/wiki/Access-telegram-group)
 [![paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/LinkStudios/10)
 ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/tools-for-instagram)
 ![NPM](https://img.shields.io/npm/l/tools-for-instagram)
@@ -374,6 +374,14 @@ Set tagged accounts to it
 const path = require('path');
 let myPicturePath = path.join(__dirname, '/images');
 await uploadPicture(ig, "My picture", myPicturePath, namesToTag = ['linkfytester', 'instagram']);
+```
+
+#### uploadPicture(ig, caption, pictureUrl)
+```javascript
+
+let pictureUrl = "https://i.ytimg.com/vi/w6-1O0WCdGM/maxresdefault.jpg";
+let caption = "This is a test image that I'll delete in a few seconds";
+let image = await uploadPictureByUrl(ig, caption, pictureUrl);
 ```
 
 #### commentMediaId(ig, mediaId, commentContent)
