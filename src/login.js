@@ -206,7 +206,8 @@ async function login(args={}) {
     }
 
     //Go online if online mode is set to true
-    if(process.env.ONLINE_MODE) {
+    //ONLINE_MODE is a string on the env, otherwise if we change the status inside code it is a boolean
+    if(process.env.ONLINE_MODE == true || process.env.ONLINE_MODE == "true") {
         console.log("Online Mode".green);
         //Connect to realtime nottifications
         await result.realtime.connect({
@@ -225,6 +226,8 @@ async function login(args={}) {
             ],
             irisData: await ig.feed.directInbox().request(),
         });
+    } else {
+        console.log("Online Mode disabled".green);
     }
     
     return clone(result);
