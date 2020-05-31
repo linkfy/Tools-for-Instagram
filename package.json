@@ -15,7 +15,7 @@
     "inquirer": "^6.5.2",
     "instagram-id-to-url-segment": "^0.0.0",
     "instagram-private-api": "^1.40.1",
-    "instagram_mqtt": "github:Nerixyz/instagram_mqtt",
+    "instagram_mqtt": "^0.2.16",
     "lowdb": "^1.0.0",
     "minimist": "^1.2.5",
     "node-cmd": "^3.0.0",

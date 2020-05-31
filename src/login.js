@@ -214,7 +214,11 @@ async function login(args={}) {
             graphQlSubs: [
                 // these are some subscriptions
                 GraphQLSubscriptions.getAppPresenceSubscription(),
-                GraphQLSubscriptions.getClientConfigUpdateSubscription(),
+
+                //Commented for testing purposes:
+                //Instagram sends a config update. The App also doesn't subscribe to it anymore:
+                //GraphQLSubscriptions.getClientConfigUpdateSubscription(),
+                
                 GraphQLSubscriptions.getZeroProvisionSubscription(ig.state.phoneId),
                 GraphQLSubscriptions.getDirectStatusSubscription(),
                 GraphQLSubscriptions.getDirectTypingSubscription(ig.state.cookieUserId),
