@@ -5,7 +5,7 @@
   "main": "src/tools-for-instagram.js",
   "dependencies": {
     "@tensorflow/tfjs-node": "^1.7.4",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "blob": "0.0.5",
     "bluebird": "^3.7.2",
     "canvas": "^2.6.1",
