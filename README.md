@@ -368,12 +368,15 @@ const path = require('path');
 let myPicturePath = path.join(__dirname, '/images');
 await uploadPicture(ig, "My picture", myPicturePath);
 ```
-
+#### uploadAlbum(ig, caption, album, namesToTag = [])
+This example is not tested yet, if anyone can verify, please send a message to Issues section:
 Set tagged accounts to it
 ```javascript
 const path = require('path');
-let myPicturePath = path.join(__dirname, '/images');
-await uploadPicture(ig, "My picture", myPicturePath, namesToTag = ['linkfytester', 'instagram']);
+let myPicture = path.join(__dirname, '/images/image.jpg');
+let album = [];
+album.push(myPicture);
+await uploadAlbum(ig, "My picture", "caption", album, namesToTag = ['linkfytester', 'instagram']);
 ```
 
 #### uploadPictureByUrl(ig, caption, pictureUrl)
