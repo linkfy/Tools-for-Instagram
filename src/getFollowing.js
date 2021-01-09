@@ -17,6 +17,7 @@ async function getFollowing(ig, username, maxIterations = undefined){
     let counter = 0;
     let sleep_after = 10000;
     let iterations = 0;
+    let users = []
     console.log("");
     do {
         try {
@@ -26,6 +27,7 @@ async function getFollowing(ig, username, maxIterations = undefined){
             process.stdout.write(logOutput);
             Object.keys(i).map(function(objectKey, index) {
                 var value = i[objectKey];
+                users.push(value);
                 //console.log(value);
                 fs.appendFileSync(filepath ,JSON.stringify(value, undefined, '\t')+",\r\n", function (err){
                     if (err) throw err;
@@ -59,8 +61,9 @@ async function getFollowing(ig, username, maxIterations = undefined){
     fs.appendFileSync(filepath ,'{"EOF": true}\n]', function (err){
         if (err) throw err;
     });
-
-    return console.log(("\nFollowing saved to 'output' folder with name " + username + "_following.json").green);
+    
+    console.log(("\nFollowing saved to 'output' folder with name " + username + "_following.json").green);
+    return users;
 }
 
 
