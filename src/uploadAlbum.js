@@ -49,7 +49,7 @@ async function uploadAlbum(ig, caption, album, namesToTag = [], extraInfo = new 
             items: albumPublish
         };
 
-        console.log("publicação: ", uploadAlbum);
+        console.log("Publication: ", uploadAlbum);
 
         let publishedPicture = await ig.publish.album(uploadAlbum);
 
